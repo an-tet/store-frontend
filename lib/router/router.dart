@@ -13,9 +13,10 @@ class RouterManager {
   static String notFoundRoute = '/no-page-pound';
 
   static void configureRoutes() {
+    router.define(rootRoute, handler: AuthHandlers.login);
     router.define(loginRoute, handler: AuthHandlers.login);
     router.define(registerRoute, handler: AuthHandlers.login);
     // router.define(dashboardRoute, handler: handler)
-    router.define(dashboardRoute, handler: NoPageFoundHandlers.noPageFound);
+    router.notFoundHandler = NoPageFoundHandlers.noPageFound;
   }
 }
