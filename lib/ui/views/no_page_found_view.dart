@@ -8,7 +8,7 @@ class NoPageFound extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        '',
+        '404',
         style: GoogleFonts.robotoMono(
           fontSize: 70,
           fontWeight: FontWeight.bold,
