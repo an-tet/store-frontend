@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:store/ui/layouts/auth/widgets/background.dart';
 
 class AuthLayout extends StatelessWidget {
-  const AuthLayout({super.key});
+  final Widget child;
+
+  const AuthLayout({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        children: const [
-          _DesktopBody(),
+        physics: const ClampingScrollPhysics(),
+        children: [
+          _DesktopBody(child: child),
         ],
       ),
     );
@@ -16,7 +24,12 @@ class AuthLayout extends StatelessWidget {
 }
 
 class _DesktopBody extends StatelessWidget {
-  const _DesktopBody();
+  final Widget child;
+
+  const _DesktopBody({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +40,25 @@ class _DesktopBody extends StatelessWidget {
       color: Colors.white,
       child: Row(
         children: [
-          Expanded(
-            child: Container(
-              color: Colors.blue,
-            ),
-          ),
-          Container(
-            width: 400,
+          const Background(),
+          SizedBox(
+            width: size.width * .6,
             height: double.infinity,
+            child: Column(
+              children: [
+                Text(
+                  'Inicio de sesión',
+                  style: GoogleFonts.roboto(
+                      fontSize: 30,
+                      color: const Color(0xff49454F),
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Expanded(child: child),
+              ],
+            ),
           )
         ],
       ),
