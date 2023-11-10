@@ -1,0 +1,77 @@
+@startuml
+node "Seller desktop" as sellerDesktop {
+    package "Frontend" as front {
+      component "Web App" as webApp {
+        interface "Backup repository" as backUpRepositoryW
+      }
+    }
+
+    package "Desktop" as desktop {
+        component "Desktop App" as desktopApp {
+            interface "Backup repository" as backUpRepositoryD
+        }
+    }
+
+    note left of front
+        The frontend it isn't
+        necessary at the real
+        app, but it's an interesting
+        exercise for practice  the
+        usage of the framework
+        (flutter or react)
+    end note
+}
+
+
+node "Seller cellphone" as sellerCellphone {
+    package "App" as app {
+        component "Mobile App" as mobileApp {
+            interface "Backup repository" as backUpRepositoryM
+        }
+    }
+}
+
+node "Google Drive" as googleDrive {
+    component "Google sheet" as googleSheet {
+
+    }
+}
+
+package "Application components detail" as details {
+  component "Rest API" as apiBack {
+    interface "Persistence repository" as repositoryI {
+    }
+    interface "Backup repository" as backUpRepository{
+    }
+  }
+  component "Database Adapter" as dbAdapter {
+    component "SQL Lite Adapter" as sqlLite {
+    }
+  }
+  component "backup Adapter" as backupAdapter {
+      component "One Drive Task" as oneDriveI{
+      }
+      component "Google Drive Task" as googleDriveI{
+      }
+  }
+}
+note left of details
+    Mobile, desktop and Web App
+    with all details because the framework
+    will be cross platform
+end note
+
+ () "HTTP" as http
+
+app -> mobileApp
+http <.up. backUpRepositoryM : consume
+
+repositoryI <-up- dbAdapter : Implement
+backUpRepository <-- backupAdapter : Implement
+
+desktop -> desktopApp
+webApp -> backUpRepositoryW
+http <-- googleSheet : expose
+http <.up. backUpRepositoryD : consume
+http <.up. backUpRepositoryW : consume
+@enduml

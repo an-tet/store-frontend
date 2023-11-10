@@ -1,0 +1,153 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface People {
+    - id: Bigint
+    - documentType: String
+    - dni: String
+    - fullName: String
+    - email: String
+    - birthday: Date
+    - phone: String
+    - status: Boolean
+    ---
+    + getId() : Bigint
+    + getDocumentType() : String
+    + getDni() : String
+    + getFullName() : String
+    + getEmail() : String
+    + getBirthday() : String
+    + getPhone() : String
+    + getStatus(): String
+    + setDocumentType(documentType) : String
+    + setDni(dni) : void
+    + setFullName(fullName) : void
+    + setEmail(email) : void
+    + setBirthday(birthday) : void
+    + setPhone(phone) : void
+    + setStatus(status) : void
+    ---
+    + create(J : <J>) : <J>
+    + update(T : <T> ) : <T>
+    + disable() : Boolean
+    + enable() : Boolean
+}
+
+note right of People::getId
+    Getter's and Setter's
+end note
+
+class User implements People {
+    - shirtSize: char
+    - emergencyContact: String
+    - emergencyContactNumber: String
+    ---
+    + getShirtSize() : String
+    + getEmergencyContact() : String
+    + getEmergencyContactNumber() : String
+    + setShirtSize() : void
+    + setEmergencyContact() : void
+    + setEmergencyContactNumber() : void
+    ---
+    + create(user : User ) : User
+    + update(user : User ) : User
+    + enable() : Boolean
+    + disable() : Boolean
+}
+
+class Client implements People {
+    + create(client : Client) : Client
+    + update(client : Client ) : Client
+}
+
+note right of User::getShirtSize
+Getter's and Setter's
+end note
+
+class Auth {
+    - token : String
+    - currentUser : User
+    ---
+    + getToken() : String
+    + getCurrentUser() : User
+    + setToken() : String
+    ---
+    + register(user : USer) : void
+    + login(user, password) : void
+    + closeSession() : void
+    + recoverCredentials(email) : void
+    + validateSession() : void
+}
+
+note right of Auth::getToken
+Getter's and Setter's
+end note
+
+Auth --- User
+
+class Product {
+    - id : Bigint
+    - price : Float
+    - stock : Bigint
+    - description : String
+    - detail : String
+    - status : Boolean
+    --
+    + getId() : Bigint
+    + getPrice() : Float
+    + getStock() : Bigint
+    + getDescription() : String
+    + getDetail() : String
+    + setPrice(price) : void
+    + setStock(stock) : void
+    + setDescription(description) : void
+    + setDetail(detail) : void
+    + setStatus(status) : void
+}
+
+note right of Product::getId()
+Getter's and Setter's
+end note
+
+class Item {
+    - idProduct : Bigint
+    - quantity : Int
+    + setQuantity() : void
+}
+note right of Item::setQuantity()
+Getter's and Setter's
+end note
+
+Item::idProduct -- Product::id
+
+class Sale {
+    - products : Item[]
+    - clientId : Bigint
+    - idUser : Bigint
+    - subTotal : Float
+    - date : Date
+    ---
+    getProducts() : Item[]
+    getClientId() : Bigint
+    getIdUser() : Bigint
+    getSubTotal() : Float
+    getDate() : Date
+    setProducts(products) : void
+    setSubTotal(subTotal) : void
+    ---
+    + sell() : void
+    + cancel() : void
+    + add(idProduct, quantity) : void
+    + update(index, quantity) : void
+    + remove(index) : void
+}
+
+note right of Sale::getProducts()
+Getter's and Setter's
+end note
+
+Sale::idUser -- User::id
+Sale::products -- Item::idProduct
+
+
+@enduml
