@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store/router/router.dart';
+import 'package:store/constants/colors_constants.dart';
+import 'package:store/router/router_manager.dart';
 import 'package:store/ui/layouts/auth/auth_layout.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MainApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(
         scrollbarTheme: const ScrollbarThemeData().copyWith(
           thumbColor: MaterialStateProperty.all(
-            const Color(0xff5f6c7b),
+            ColorsConstants.neutral,
           ),
         ),
       ),

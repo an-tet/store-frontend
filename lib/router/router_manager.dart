@@ -10,7 +10,6 @@ class RouterManager {
   static String registerRoute = '/auth/register';
 
   static String dashboardRoute = '/dashboard';
-  static String notFoundRoute = '/no-page-pound';
 
   static void configureRoutes() {
     router.define(rootRoute, handler: AuthHandlers.login);

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:store/constants/colors_constants.dart';
+import 'package:store/router/router_manager.dart';
 import 'package:store/ui/layouts/auth/widgets/background.dart';
 
 class AuthLayout extends StatelessWidget {

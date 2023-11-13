@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:store/constants/colors_constants.dart';
-import 'package:store/router/router.dart';
+import 'package:store/router/router_manager.dart';
 import 'package:store/ui/buttons/custom_outlined_button.dart';
 import 'package:store/ui/buttons/link_text.dart';
 import 'package:store/ui/inputs/custom_inputs.dart';
@@ -32,18 +32,20 @@ class LoginView extends StatelessWidget {
                 TextFormField(
                   style: const TextStyle(color: ColorsConstants.primary),
                   decoration: CustomInputs.loginInputDecoration(
-                      hint: 'Ingrese su usuario',
-                      label: 'User',
-                      icon: Icons.person_2_outlined),
+                    hint: 'Ingrese su usuario',
+                    label: 'User',
+                    icon: Icons.person_2_outlined,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
                   obscureText: true,
                   style: const TextStyle(color: ColorsConstants.primary),
                   decoration: CustomInputs.loginInputDecoration(
-                      hint: '*********',
-                      label: 'Contraseña',
-                      icon: Icons.lock_outline_rounded),
+                    hint: '*********',
+                    label: 'Contraseña',
+                    icon: Icons.lock_outline_rounded,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 CustomOutlinedButton(
