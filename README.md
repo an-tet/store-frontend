@@ -8,6 +8,6 @@ The application stores the data in cloud storage tear like Google Drive and OneD
 
 For help to install the environment in local with Flutter, use the [online documentation](https://docs.flutter.dev/get-started/install) and select your operating system.
 
-or use the following resource in video to instal the Flutter SDK and execute the application  
+Use the following resource in video to install the Flutter SDK and execute the application  
 
 - [List of install process in multiple operating systems](https://www.youtube.com/watch?v=W9clR_Wg3ho&list=PLCKuOXG0bPi3xBRYOmcfoqrchgRJOafo9)
