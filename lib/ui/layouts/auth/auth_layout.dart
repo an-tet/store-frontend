@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:store/router/router_manager.dart';
 import 'package:store/ui/layouts/auth/widgets/background.dart';
 
 class AuthLayout extends StatelessWidget {
