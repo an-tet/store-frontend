@@ -1,26 +1,13 @@
-# flutter_web
+# Store
 
-A new Flutter project.
+Flutter project with the propose to create a portable sales system for small and medium-sized enterprises without costs and running in all places desktop, web and mobile environment.
+
+The application stores the data in cloud storage tear like Google Drive and OneDrive, resulting in minimal costs over time.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+For help to install the environment in local with Flutter, use the [online documentation](https://docs.flutter.dev/get-started/install) and select your operating system.
 
-A few resources to get you started if this is your first Flutter project:
+or use the following resource in video to instal the Flutter SDK and execute the application  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-## Material theme colors
-
-|Rol | Exa |
-| --- | --- |
-| primary | #094067 |
-| secondary | #90b4ce |
-| tertiary | #3da9fc |
-| neutral | #5f6c7b |
-| error | #ef4565 |
+- [List of install process in multiple operating systems](https://www.youtube.com/watch?v=W9clR_Wg3ho&list=PLCKuOXG0bPi3xBRYOmcfoqrchgRJOafo9)
