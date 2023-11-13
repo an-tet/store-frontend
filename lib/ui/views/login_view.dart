@@ -59,7 +59,7 @@ class LoginView extends StatelessWidget {
                     text: 'Recuperar credenciales',
                     align: TextAlign.end,
                     onPressed: () {
-                      Navigator.pushNamed(context, RouterManager.registerRoute);
+                      Navigator.pushNamed(context, RouterManager.recoveryRoute);
                     },
                   ),
                 )

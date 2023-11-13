@@ -11,8 +11,8 @@ class CustomOutlinedButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     required this.text,
-    this.color = ColorsConstants.tertiary,
     this.isFilled = false,
+    this.color = ColorsConstants.tertiary,
   }) : super(key: key);
 
   @override

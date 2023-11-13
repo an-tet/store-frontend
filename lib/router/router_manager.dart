@@ -7,14 +7,14 @@ class RouterManager {
 
   static String rootRoute = '/';
   static String loginRoute = '/auth/login';
-  static String registerRoute = '/auth/register';
+  static String recoveryRoute = '/auth/recovery';
 
   static String dashboardRoute = '/dashboard';
 
   static void configureRoutes() {
     router.define(rootRoute, handler: AuthHandlers.login);
     router.define(loginRoute, handler: AuthHandlers.login);
-    router.define(registerRoute, handler: AuthHandlers.login);
+    router.define(recoveryRoute, handler: AuthHandlers.recovery);
     // router.define(dashboardRoute, handler: handler)
     router.notFoundHandler = NoPageFoundHandlers.noPageFound;
   }
