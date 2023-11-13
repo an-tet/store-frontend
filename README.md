@@ -1,19 +1,13 @@
-# store
+# Store
 
-<!-- TODO: traducir el README.md -->
-El proyecto desarrollara un sistema de ventas portable que almacene la información en una plataforma de
-almacenamiento como puede ser Google drive, drop box, one drive, etc. Haciendo uso de copias de seguridad.
+Flutter project with the propose to create a portable sales system for small and medium-sized enterprises without costs and running in all places desktop, web and mobile environment.
 
-Dicho sistema contara con funcionalidades básicas para operaciones como:
+The application stores the data in cloud storage tear like Google Drive and OneDrive, resulting in minimal costs over time.
 
-- Usuarios
-- Clientes
-- Ventas
-- Inventarios
-- Informes
-- Autenticación
-- Otros por definir o tener en cuenta
+## Getting Started
 
-El sistema tiene como propósito de que sea un desarrollo OpenSource que sirva a los pequeños y medianos empresarios
-a manejar sus ventas de forma ordenada y eficiente por lo mismo el sistema será Cross platform contando con aplicativo
-a nivel web, escritorio y móvil.
+For help to install the environment in local with Flutter, use the [online documentation](https://docs.flutter.dev/get-started/install) and select your operating system.
+
+or use the following resource in video to instal the Flutter SDK and execute the application  
+
+- [List of install process in multiple operating systems](https://www.youtube.com/watch?v=W9clR_Wg3ho&list=PLCKuOXG0bPi3xBRYOmcfoqrchgRJOafo9)

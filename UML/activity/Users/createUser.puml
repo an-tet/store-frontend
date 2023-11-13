@@ -1,4 +1,4 @@
-@startuml
+@startuml create_user
 start
     :Ingresar a la página crear usuario;
     repeat

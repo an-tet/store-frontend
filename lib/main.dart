@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store/router/router.dart';
+import 'package:store/constants/colors_constants.dart';
+import 'package:store/router/router_manager.dart';
 import 'package:store/ui/layouts/auth/auth_layout.dart';
 
 void main() {
@@ -17,8 +18,17 @@ class MainApp extends StatelessWidget {
       initialRoute: RouterManager.rootRoute,
       onGenerateRoute: RouterManager.router.generator,
       builder: (_, child) {
-        return const AuthLayout();
+        return AuthLayout(
+          child: child!,
+        );
       },
+      theme: ThemeData.light().copyWith(
+        scrollbarTheme: const ScrollbarThemeData().copyWith(
+          thumbColor: MaterialStateProperty.all(
+            ColorsConstants.neutral,
+          ),
+        ),
+      ),
     );
   }
 }
