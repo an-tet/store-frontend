@@ -12,9 +12,21 @@ class RouterManager {
   static String dashboardRoute = '/dashboard';
 
   static void configureRoutes() {
-    router.define(rootRoute, handler: AuthHandlers.login);
-    router.define(loginRoute, handler: AuthHandlers.login);
-    router.define(recoveryRoute, handler: AuthHandlers.recovery);
+    router.define(
+      rootRoute,
+      handler: AuthHandlers.login,
+      transitionType: TransitionType.none,
+    );
+    router.define(
+      loginRoute,
+      handler: AuthHandlers.login,
+      transitionType: TransitionType.none,
+    );
+    router.define(
+      recoveryRoute,
+      handler: AuthHandlers.recovery,
+      transitionType: TransitionType.none,
+    );
     // router.define(dashboardRoute, handler: handler)
     router.notFoundHandler = NoPageFoundHandlers.noPageFound;
   }

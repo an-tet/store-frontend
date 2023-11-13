@@ -32,8 +32,8 @@ class LoginView extends StatelessWidget {
                 TextFormField(
                   style: const TextStyle(color: ColorsConstants.primary),
                   decoration: CustomInputs.loginInputDecoration(
-                    hint: 'Ingrese su usuario',
-                    label: 'User',
+                    hint: 'Ingrese nombre de usuario',
+                    label: 'Usuario',
                     icon: Icons.person_2_outlined,
                   ),
                 ),
