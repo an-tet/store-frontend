@@ -21,6 +21,13 @@ class MainApp extends StatelessWidget {
           child: child!,
         );
       },
+      theme: ThemeData.light().copyWith(
+        scrollbarTheme: const ScrollbarThemeData().copyWith(
+          thumbColor: MaterialStateProperty.all(
+            const Color(0xff5f6c7b),
+          ),
+        ),
+      ),
     );
   }
 }

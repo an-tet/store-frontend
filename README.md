@@ -14,3 +14,13 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Material theme colors
+
+|Rol | Exa |
+| --- | --- |
+| primary | #094067 |
+| secondary | #90b4ce |
+| tertiary | #3da9fc |
+| neutral | #5f6c7b |
+| error | #ef4565 |

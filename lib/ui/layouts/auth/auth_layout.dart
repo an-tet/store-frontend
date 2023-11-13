@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:store/constants/colors_constants.dart';
 import 'package:store/ui/layouts/auth/widgets/background.dart';
 
 class AuthLayout extends StatelessWidget {
@@ -12,12 +13,18 @@ class AuthLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: ListView(
-        physics: const ClampingScrollPhysics(),
-        children: [
-          _DesktopBody(child: child),
-        ],
+      body: Scrollbar(
+        trackVisibility: true,
+        child: ListView(
+          physics: const ClampingScrollPhysics(),
+          children: [
+            size.width > 1000
+                ? _DesktopBody(child: child)
+                : _MobileBody(child: child),
+          ],
+        ),
       ),
     );
   }
@@ -46,13 +53,6 @@ class _DesktopBody extends StatelessWidget {
             height: double.infinity,
             child: Column(
               children: [
-                Text(
-                  'Inicio de sesión',
-                  style: GoogleFonts.roboto(
-                      fontSize: 30,
-                      color: const Color(0xff49454F),
-                      fontWeight: FontWeight.bold),
-                ),
                 const SizedBox(
                   height: 50,
                 ),
@@ -60,6 +60,31 @@ class _DesktopBody extends StatelessWidget {
               ],
             ),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class _MobileBody extends StatelessWidget {
+  final Widget child;
+  const _MobileBody({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Container(
+      color: Colors.white,
+      child: Column(
+        children: [
+          SizedBox(
+            width: double.infinity,
+            height: size.height,
+            child: child,
+          ),
         ],
       ),
     );
