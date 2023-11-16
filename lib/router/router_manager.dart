@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:store/router/handlers/auth_handlers.dart';
+import 'package:store/router/handlers/dashboard_handlers.dart';
 import 'package:store/router/handlers/no_page_found_handlers.dart';
 
 class RouterManager {
@@ -27,7 +28,11 @@ class RouterManager {
       handler: AuthHandlers.recovery,
       transitionType: TransitionType.none,
     );
-    // router.define(dashboardRoute, handler: handler)
+    router.define(
+      dashboardRoute,
+      handler: DashboardHandler.dashboard,
+      transitionType: TransitionType.none,
+    );
     router.notFoundHandler = NoPageFoundHandlers.noPageFound;
   }
 }

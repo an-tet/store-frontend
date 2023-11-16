@@ -8,7 +8,7 @@ import 'package:store/router/router_manager.dart';
 import 'package:store/ui/buttons/custom_outlined_button.dart';
 import 'package:store/ui/buttons/link_text.dart';
 import 'package:store/ui/inputs/custom_inputs.dart';
-import 'package:store/ui/views/login_form_validation.dart';
+import 'package:store/ui/views/auth/login_form_validation.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
