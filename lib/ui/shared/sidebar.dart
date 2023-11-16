@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store/constants/colors_constants.dart';
-import 'package:store/ui/shared/widgets/Logo.dart';
+import 'package:store/ui/shared/widgets/logo.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({super.key});
