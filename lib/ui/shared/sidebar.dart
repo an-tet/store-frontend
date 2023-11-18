@@ -1,21 +1,80 @@
 import 'package:flutter/material.dart';
 import 'package:store/constants/colors_constants.dart';
 import 'package:store/ui/shared/widgets/logo.dart';
+import 'package:store/ui/shared/widgets/menu_item.dart';
 
-class SideBar extends StatelessWidget {
+class SideBar extends StatefulWidget {
   const SideBar({super.key});
 
   @override
+  State<SideBar> createState() => _SideBarState();
+}
+
+class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin {
+  final bool _hideText = true;
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 100,
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      // width: size.width < 540 ? 90 : 140, TODO: check the animation
+      width: 90,
       height: double.infinity,
       margin: const EdgeInsets.all(10),
       decoration: buildBoxDecoration(),
       child: ListView(
         physics: const ClampingScrollPhysics(),
-        children: const [
-          Logo(),
+        children: [
+          const SizedBox(height: 10),
+          const Logo(),
+          const SizedBox(height: 40),
+          MenuItem(
+            text: 'Principal',
+            icon: Icons.home_outlined,
+            isActive: false,
+            hideText: _hideText,
+            onPressed: () {},
+          ),
+          MenuItem(
+            text: 'Usuarios',
+            icon: Icons.support_agent_outlined,
+            isActive: false,
+            hideText: _hideText,
+            onPressed: () {},
+          ),
+          MenuItem(
+            text: 'Clientes',
+            icon: Icons.person_3_outlined,
+            isActive: false,
+            hideText: _hideText,
+            onPressed: () {},
+          ),
+          MenuItem(
+            text: 'Productos',
+            icon: Icons.shopping_bag_outlined,
+            isActive: false,
+            hideText: _hideText,
+            onPressed: () {},
+          ),
+          MenuItem(
+            text: 'Ventas',
+            icon: Icons.store_outlined,
+            isActive: false,
+            hideText: _hideText,
+            onPressed: () {},
+          ),
+          Divider(color: Colors.white.withOpacity(0.3)),
+          MenuItem(
+            text: 'Informes',
+            icon: Icons.troubleshoot_outlined,
+            isActive: false,
+            hideText: _hideText,
+            onPressed: () {},
+          ),
         ],
       ),
     );

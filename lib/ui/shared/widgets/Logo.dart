@@ -15,7 +15,8 @@ class Logo extends StatelessWidget {
           const Icon(Icons.photo, color: ColorsConstants.tertiary, size: 30),
           const SizedBox(width: 10),
           Text(
-            'Store',
+            // size.width > 540 ? 'Tienda' : '', TODO: check the animation
+            '',
             style: GoogleFonts.roboto(
               color: Colors.white,
               fontSize: 15,
