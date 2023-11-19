@@ -9,7 +9,6 @@ class Navbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Container(
       width: double.infinity,
       height: 50,
@@ -28,7 +27,7 @@ class Navbar extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    'Principal',
+                    'module',
                     style: GoogleFonts.roboto(
                       color: ColorsConstants.primary,
                       fontSize: 20,
@@ -37,7 +36,7 @@ class Navbar extends StatelessWidget {
                   ),
                   SizedBox(width: size.width * 0.05),
                   Text(
-                    'Principal',
+                    'view',
                     style: GoogleFonts.roboto(
                       color: ColorsConstants.tertiary,
                       fontSize: 14,
@@ -48,7 +47,7 @@ class Navbar extends StatelessWidget {
               ),
               if (size.width > 540)
                 Text(
-                  'Esta es la pagina principal del aplicativo',
+                  'descripción de la vista que se muestra',
                   style: GoogleFonts.roboto(
                     color: ColorsConstants.neutral,
                     fontSize: 14,

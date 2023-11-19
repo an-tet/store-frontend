@@ -21,7 +21,7 @@ class _DashboardLayoutState extends State<DashboardLayout> {
           Expanded(
             child: Column(
               children: [
-                const Navbar(),
+                Navbar(),
                 Expanded(
                   child: Container(
                     padding: const EdgeInsets.symmetric(

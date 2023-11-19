@@ -46,17 +46,9 @@ class MainApp extends StatelessWidget {
       onGenerateRoute: RouterManager.router.generator,
       navigatorKey: NavigationService.navigatorKey,
       builder: (_, child) {
-        final authProvider = Provider.of<AuthProvider>(context);
-
-        if (authProvider.authStatus == AuthStatus.authenticating) {
-          return const SplashScreenLayout();
-        }
-
-        if (authProvider.authStatus == AuthStatus.authenticated) {
-          return DashboardLayout(child: child!);
-        } else {
-          return AuthLayout(child: child!);
-        }
+        return ConstrainedBox(
+            constraints: const BoxConstraints(minWidth: 300),
+            child: authValidation(context, child!));
       },
       theme: ThemeData.light().copyWith(
         scrollbarTheme: const ScrollbarThemeData().copyWith(
@@ -66,5 +58,19 @@ class MainApp extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget authValidation(BuildContext context, Widget child) {
+    final authProvider = Provider.of<AuthProvider>(context);
+
+    if (authProvider.authStatus == AuthStatus.authenticating) {
+      return const SplashScreenLayout();
+    }
+
+    if (authProvider.authStatus == AuthStatus.authenticated) {
+      return DashboardLayout(child: child);
+    } else {
+      return AuthLayout(child: child);
+    }
   }
 }
