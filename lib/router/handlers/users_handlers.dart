@@ -4,16 +4,16 @@ import 'package:store/provider/auth_provider.dart';
 import 'package:store/provider/side_menu_provider.dart';
 import 'package:store/router/router_manager.dart';
 import 'package:store/ui/views/auth/login_view.dart';
-import 'package:store/ui/views/dashboard/dashboard_view.dart';
+import 'package:store/ui/views/dashboard/users/users_list_view.dart';
 
-class DashboardHandler {
-  static Handler dashboard = Handler(handlerFunc: (context, params) {
+class UsersHandlers {
+  static Handler list = Handler(handlerFunc: (context, params) {
     final authProvider = Provider.of<AuthProvider>(context!);
 
     if (authProvider.authStatus == AuthStatus.authenticated) {
       Provider.of<SideMenuProvider>(context, listen: false)
-          .setCurrentPageUrl(RouterManager.dashboardRoute);
-      return const DashboardView();
+          .setCurrentPageUrl(RouterManager.usersListRoute);
+      return const UsersListView();
     } else {
       return const LoginView();
     }

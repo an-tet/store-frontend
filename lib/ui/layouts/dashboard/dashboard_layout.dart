@@ -14,24 +14,23 @@ class _DashboardLayoutState extends State<DashboardLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffEDF1F2),
+      backgroundColor: Colors.white,
       body: Row(
         children: [
           const SideBar(),
           Expanded(
             child: Column(
               children: [
-                // Navbar
                 const Navbar(),
-                // View
                 Expanded(
-                    child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 10,
+                    ),
+                    child: widget.child,
                   ),
-                  child: widget.child,
-                )),
+                ),
               ],
             ),
           ),
