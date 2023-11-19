@@ -6,8 +6,8 @@ import 'package:store/ui/buttons/custom_outlined_button.dart';
 import 'package:store/ui/buttons/link_text.dart';
 import 'package:store/ui/inputs/custom_inputs.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class RecoveryView extends StatelessWidget {
+  const RecoveryView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +21,13 @@ class LoginView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Inicio de sesión',
+                  'Recuperación de credenciales',
                   style: GoogleFonts.roboto(
                     fontSize: 30,
                     color: ColorsConstants.primary,
                     fontWeight: FontWeight.bold,
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 50),
                 TextFormField(
@@ -34,35 +35,30 @@ class LoginView extends StatelessWidget {
                   decoration: CustomInputs.loginInputDecoration(
                     hint: 'Ingrese nombre de usuario',
                     label: 'Usuario',
-                    icon: Icons.person_2_outlined,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                TextFormField(
-                  obscureText: true,
-                  style: const TextStyle(color: ColorsConstants.primary),
-                  decoration: CustomInputs.loginInputDecoration(
-                    hint: '*********',
-                    label: 'Contraseña',
-                    icon: Icons.lock_outline_rounded,
+                    icon: Icons.person_outlined,
                   ),
                 ),
                 const SizedBox(height: 20),
                 CustomOutlinedButton(
                   onPressed: () {},
-                  text: 'Ingresar',
+                  text: 'Recuperar',
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
-                  width: double.infinity,
-                  child: LinkText(
-                    text: 'Recuperar credenciales',
-                    align: TextAlign.end,
-                    onPressed: () {
-                      Navigator.pushNamed(context, RouterManager.recoveryRoute);
-                    },
-                  ),
-                )
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        const Icon(Icons.arrow_back),
+                        LinkText(
+                          text: 'Recuperar credenciales',
+                          align: TextAlign.start,
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, RouterManager.loginRoute);
+                          },
+                        ),
+                      ],
+                    ))
               ],
             ),
           ),
