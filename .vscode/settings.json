@@ -2,11 +2,14 @@
     "cSpell.words": [
         "autovalidate",
         "Autovalidate",
+        "datasource",
+        "datatables",
         "fluro",
         "isar",
         "roboto",
         "Schyler",
-        "sqlite"
+        "sqlite",
+        "vsync"
     ],
     "cSpell.language": "en,es-ES"
 }
