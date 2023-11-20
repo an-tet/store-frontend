@@ -26,7 +26,7 @@ class _DashboardLayoutState extends State<DashboardLayout> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
-                      vertical: 10,
+                      vertical: 50,
                     ),
                     child: widget.child,
                   ),
