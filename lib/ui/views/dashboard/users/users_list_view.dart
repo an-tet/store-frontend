@@ -53,7 +53,8 @@ class _UsersListViewState extends State<UsersListView> {
                 child: Tooltip(
                   message: 'Crear',
                   child: CustomButton(
-                    onPressed: () {},
+                    onPressed: () => NavigationService.navigateTo(
+                        RouterManager.usersCreateRoute),
                     icon: Icons.add,
                   ),
                 ),
