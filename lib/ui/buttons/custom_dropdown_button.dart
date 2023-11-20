@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:store/constants/colors_constants.dart';
 
 class CustomDropdownButton extends StatefulWidget {
   final List<String> list;
