@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:store/constants/colors_constants.dart';
 import 'package:store/provider/auth_provider.dart';
 import 'package:store/provider/side_menu_provider.dart';
+import 'package:store/provider/user_create_form_provider.dart';
 import 'package:store/router/router_manager.dart';
 import 'package:store/services/device_storage_service.dart';
 import 'package:store/services/navigation_service.dart';
@@ -29,6 +30,10 @@ class AppState extends StatelessWidget {
       ),
       ChangeNotifierProvider(
         create: (_) => SideMenuProvider(),
+        lazy: false,
+      ),
+      ChangeNotifierProvider(
+        create: (_) => UserCreateFormProvider(),
         lazy: false,
       ),
     ], child: const MainApp());

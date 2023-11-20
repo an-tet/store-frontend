@@ -32,7 +32,7 @@ class RecoveryView extends StatelessWidget {
                 const SizedBox(height: 50),
                 TextFormField(
                   style: const TextStyle(color: ColorsConstants.primary),
-                  decoration: CustomInputs.loginInputDecoration(
+                  decoration: CustomDecorationInput.loginInputDecoration(
                     hint: 'Ingrese nombre de usuario',
                     label: 'Usuario',
                     icon: Icons.person_outlined,

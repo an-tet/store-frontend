@@ -46,7 +46,7 @@ class LoginView extends StatelessWidget {
                       TextFormField(
                         style: const TextStyle(color: ColorsConstants.primary),
                         onChanged: (value) => loginFormProvider.user = value,
-                        decoration: CustomInputs.loginInputDecoration(
+                        decoration: CustomDecorationInput.loginInputDecoration(
                           hint: 'Ingrese nombre de usuario',
                           label: 'Usuario',
                           icon: Icons.person_2_outlined,
@@ -64,7 +64,7 @@ class LoginView extends StatelessWidget {
                                 value, 'Contraseña'),
                         obscureText: true,
                         style: const TextStyle(color: ColorsConstants.primary),
-                        decoration: CustomInputs.loginInputDecoration(
+                        decoration: CustomDecorationInput.loginInputDecoration(
                           hint: '*********',
                           label: 'Contraseña',
                           icon: Icons.lock_outline_rounded,
