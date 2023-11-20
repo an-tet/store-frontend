@@ -13,8 +13,17 @@ class RouterManager {
 
   static String dashboardRoute = '/home';
   static String usersListRoute = '/users';
+  static String usersCreateRoute = '/users/create';
+  static String usersEditRoute = '/users/edit';
 
   static void configureRoutes() {
+    _authRoutes();
+    _dashboardRoutes();
+    _usersRoutes();
+    router.notFoundHandler = NoPageFoundHandlers.noPageFound;
+  }
+
+  static void _authRoutes() {
     router.define(
       rootRoute,
       handler: AuthHandlers.login,
@@ -30,16 +39,30 @@ class RouterManager {
       handler: AuthHandlers.recovery,
       transitionType: TransitionType.none,
     );
-    router.define(
-      dashboardRoute,
-      handler: DashboardHandler.dashboard,
-      transitionType: TransitionType.none,
-    );
+  }
+
+  static _dashboardRoutes() => router.define(
+        dashboardRoute,
+        handler: DashboardHandler.dashboard,
+        transitionType: TransitionType.none,
+      );
+
+  static void _usersRoutes() {
     router.define(
       usersListRoute,
       handler: UsersHandlers.list,
       transitionType: TransitionType.none,
     );
-    router.notFoundHandler = NoPageFoundHandlers.noPageFound;
+
+    router.define(
+      usersCreateRoute,
+      handler: UsersHandlers.create,
+      transitionType: TransitionType.none,
+    );
+    router.define(
+      usersEditRoute,
+      handler: UsersHandlers.edit,
+      transitionType: TransitionType.none,
+    );
   }
 }

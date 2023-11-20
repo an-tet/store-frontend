@@ -27,7 +27,7 @@ class Navbar extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    'module',
+                    'modulo',
                     style: GoogleFonts.roboto(
                       color: ColorsConstants.primary,
                       fontSize: 20,
@@ -36,7 +36,7 @@ class Navbar extends StatelessWidget {
                   ),
                   SizedBox(width: size.width * 0.05),
                   Text(
-                    'view',
+                    'vista',
                     style: GoogleFonts.roboto(
                       color: ColorsConstants.tertiary,
                       fontSize: 14,
