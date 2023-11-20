@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store/constants/colors_constants.dart';
 import 'package:store/provider/auth_provider.dart';
+import 'package:store/provider/side_menu_provider.dart';
+import 'package:store/provider/user_create_form_provider.dart';
+import 'package:store/provider/user_modify_form_provider.dart';
 import 'package:store/router/router_manager.dart';
 import 'package:store/services/device_storage_service.dart';
 import 'package:store/services/navigation_service.dart';
@@ -26,6 +29,18 @@ class AppState extends StatelessWidget {
         create: (_) => AuthProvider(),
         lazy: false,
       ),
+      ChangeNotifierProvider(
+        create: (_) => SideMenuProvider(),
+        lazy: false,
+      ),
+      ChangeNotifierProvider(
+        create: (_) => UserCreateFormProvider(),
+        lazy: false,
+      ),
+      ChangeNotifierProvider(
+        create: (_) => UserEditFormProvider(),
+        lazy: false,
+      ),
     ], child: const MainApp());
   }
 }
@@ -41,17 +56,9 @@ class MainApp extends StatelessWidget {
       onGenerateRoute: RouterManager.router.generator,
       navigatorKey: NavigationService.navigatorKey,
       builder: (_, child) {
-        final authProvider = Provider.of<AuthProvider>(context);
-
-        if (authProvider.authStatus == AuthStatus.authenticating) {
-          return const SplashScreenLayout();
-        }
-
-        if (authProvider.authStatus == AuthStatus.authenticated) {
-          return DashboardLayout(child: child!);
-        } else {
-          return AuthLayout(child: child!);
-        }
+        return ConstrainedBox(
+            constraints: const BoxConstraints(minWidth: 300),
+            child: authValidation(context, child!));
       },
       theme: ThemeData.light().copyWith(
         scrollbarTheme: const ScrollbarThemeData().copyWith(
@@ -61,5 +68,19 @@ class MainApp extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget authValidation(BuildContext context, Widget child) {
+    final authProvider = Provider.of<AuthProvider>(context);
+
+    if (authProvider.authStatus == AuthStatus.authenticating) {
+      return const SplashScreenLayout();
+    }
+
+    if (authProvider.authStatus == AuthStatus.authenticated) {
+      return DashboardLayout(child: child);
+    } else {
+      return AuthLayout(child: child);
+    }
   }
 }

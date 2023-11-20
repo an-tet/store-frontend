@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store/router/router_manager.dart';
 import 'package:store/services/device_storage_service.dart';
 import 'package:store/services/navigation_service.dart';
 
@@ -17,7 +18,7 @@ class AuthProvider extends ChangeNotifier {
     DeviceStorageService.preferences.setString('token', _token!);
     authStatus = AuthStatus.authenticated;
     notifyListeners();
-    NavigationService.navigateTo('/dashboard');
+    NavigationService.navigateTo(RouterManager.dashboardRoute);
   }
 
   Future<bool> isAuthenticated() async {

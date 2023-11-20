@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:store/constants/colors_constants.dart';
+import 'package:store/provider/side_menu_provider.dart';
+import 'package:store/router/router_manager.dart';
+import 'package:store/services/navigation_service.dart';
 import 'package:store/ui/shared/widgets/logo.dart';
 import 'package:store/ui/shared/widgets/menu_item.dart';
 
@@ -19,6 +23,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final sideMenuProvider = Provider.of<SideMenuProvider>(context);
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       // width: size.width < 540 ? 90 : 140, TODO: check the animation
@@ -33,19 +38,21 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin {
           const Logo(),
           const SizedBox(height: 40),
           MenuItem(
-            text: 'Principal',
-            icon: Icons.home_outlined,
-            isActive: false,
-            hideText: _hideText,
-            onPressed: () {},
-          ),
+              text: 'Principal',
+              icon: Icons.home_outlined,
+              isActive:
+                  sideMenuProvider.currentPage == RouterManager.dashboardRoute,
+              hideText: _hideText,
+              onPressed: () =>
+                  NavigationService.navigateTo(RouterManager.dashboardRoute)),
           MenuItem(
-            text: 'Usuarios',
-            icon: Icons.support_agent_outlined,
-            isActive: false,
-            hideText: _hideText,
-            onPressed: () {},
-          ),
+              text: 'Usuarios',
+              icon: Icons.support_agent_outlined,
+              isActive:
+                  sideMenuProvider.currentPage == RouterManager.usersListRoute,
+              hideText: _hideText,
+              onPressed: () =>
+                  NavigationService.navigateTo(RouterManager.usersListRoute)),
           MenuItem(
             text: 'Clientes',
             icon: Icons.person_3_outlined,
