@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store/constants/colors_constants.dart';
 import 'package:store/provider/auth_provider.dart';
-import 'package:store/provider/side_menu_provider.dart';
+import 'package:store/provider/menu_provider.dart';
 import 'package:store/provider/user_create_form_provider.dart';
 import 'package:store/provider/user_modify_form_provider.dart';
 import 'package:store/router/router_manager.dart';
@@ -30,7 +30,7 @@ class AppState extends StatelessWidget {
         lazy: false,
       ),
       ChangeNotifierProvider(
-        create: (_) => SideMenuProvider(),
+        create: (_) => MenuProvider(),
         lazy: false,
       ),
       ChangeNotifierProvider(
