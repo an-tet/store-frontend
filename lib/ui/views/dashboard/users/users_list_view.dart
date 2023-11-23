@@ -17,24 +17,27 @@ class _UsersListViewState extends State<UsersListView> {
   int _rowsPerPage = PaginatedDataTable.defaultRowsPerPage;
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      physics: const ClampingScrollPhysics(),
-      children: [
-        const SizedBox(height: 50),
-        if (MediaQuery.of(context).size.width > 600) _desktopSize(context),
-        if (MediaQuery.of(context).size.width <= 600) _mobileSize(),
-        const SizedBox(height: 50),
-        PaginatedDataTable(
-          showFirstLastButtons: true,
-          arrowHeadColor: ColorsConstants.primary,
-          columns: getTableColumns(),
-          source: UsersDataSource(),
-          onRowsPerPageChanged: (value) => setState(() {
-            _rowsPerPage = value ?? 10;
-          }),
-          rowsPerPage: _rowsPerPage,
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: ListView(
+        physics: const ClampingScrollPhysics(),
+        children: [
+          const SizedBox(height: 50),
+          if (MediaQuery.of(context).size.width > 600) _desktopSize(context),
+          if (MediaQuery.of(context).size.width <= 600) _mobileSize(),
+          const SizedBox(height: 50),
+          PaginatedDataTable(
+            showFirstLastButtons: true,
+            arrowHeadColor: ColorsConstants.primary,
+            columns: getTableColumns(),
+            source: UsersDataSource(),
+            onRowsPerPageChanged: (value) => setState(() {
+              _rowsPerPage = value ?? 10;
+            }),
+            rowsPerPage: _rowsPerPage,
+          )
+        ],
+      ),
     );
   }
 

@@ -1,66 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:store/constants/colors_constants.dart';
-import 'package:store/ui/shared/widgets/notification_indicator.dart';
+import 'package:store/provider/menu_provider.dart';
 
-class Navbar extends StatelessWidget {
+class Navbar extends StatelessWidget implements PreferredSizeWidget {
   const Navbar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Container(
-      width: double.infinity,
-      height: 50,
-      margin: const EdgeInsets.only(top: 20),
-      padding: const EdgeInsets.only(left: 20),
-      child: Row(
-        children: [
-          if (size.width > 540)
-            const VerticalDivider(color: ColorsConstants.primary),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    'modulo',
-                    style: GoogleFonts.roboto(
-                      color: ColorsConstants.primary,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(width: size.width * 0.05),
-                  Text(
-                    'vista',
-                    style: GoogleFonts.roboto(
-                      color: ColorsConstants.tertiary,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              if (size.width > 540)
-                Text(
-                  'descripción de la vista que se muestra',
-                  style: GoogleFonts.roboto(
-                    color: ColorsConstants.neutral,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-            ],
-          ),
-          const Spacer(),
-          const NotificationIndicator(),
-          SizedBox(width: size.width * 0.04),
-        ],
-      ),
-    );
+    final isSmallScreen = MediaQuery.of(context).size.width < 600;
+    final menuProvider = Provider.of<MenuProvider>(context);
+    return isSmallScreen
+        ? AppBar(
+            backgroundColor: ColorsConstants.primary.withOpacity(0.8),
+            title: Text(
+                _getTitleByIndex(menuProvider.menuController.selectedIndex)),
+            leading: IconButton(
+              onPressed: () {
+                // if (!Platform.isAndroid && !Platform.isIOS) {
+                //   _controller.setExtended(true);
+                // }
+                menuProvider.menuKey.currentState?.openDrawer();
+              },
+              icon: const Icon(Icons.menu),
+            ),
+          )
+        : const SizedBox.shrink();
   }
+
+  String _getTitleByIndex(int index) {
+    switch (index) {
+      case 0:
+        return 'Principal';
+      case 1:
+        return 'Usuarios';
+      case 2:
+        return 'Clientes';
+      case 3:
+        return 'Productos';
+      case 4:
+        return 'Ventas';
+      default:
+        return 'Not found page';
+    }
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
