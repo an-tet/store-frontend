@@ -1,0 +1,54 @@
+CREATE TABLE user
+(
+    id INTEGER NOT NULL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    status   BOOLEAN     NOT NULL DEFAULT TRUE
+);
+
+CREATE TABLE user_info
+(
+    id           INTEGER PRIMARY KEY,
+    documentType VARCHAR(50) NOT NULL,
+    dni          VARCHAR(50) NOT NULL,
+    fullName     VARCHAR(50) NOT NULL,
+    email        VARCHAR(50) NOT NULL,
+    birthday     DATE        NOT NULL,
+    phone        VARCHAR(50) NOT NULL,
+    status       BOOLEAN     NOT NULL,
+    type         VARCHAR(10) NOT NULL DEFAULT 'CLIENT' CHECK (type IN ('CLIENT', 'ADMIN', 'SELLER')),
+    user_id      INTEGER,
+    FOREIGN KEY (user_id) REFERENCES user (id)
+);
+
+CREATE TABLE supplier
+(
+    id    INTEGER    NOT NULL,
+    name  VARCHAR(50) NOT NULL,
+    phone VARCHAR(10) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE product
+(
+    id          INTEGER PRIMARY KEY,
+    name        VARCHAR(50)    NOT NULL,
+    detail      VARCHAR        NOT NULL,
+    price       REAL NOT NULL,
+    stock       INT            NOT NULL,
+    status      BOOLEAN        NOT NULL,
+    supplier_id INTEGER       NOT NULL,
+    FOREIGN KEY (supplier_id) REFERENCES supplier (id)
+);
+
+CREATE TABLE user_product
+(
+    id           INTEGER PRIMARY KEY,
+    user_info_id INTEGER         NOT NULL,
+    product_id   INTEGER         NOT NULL,
+    subtotal     REAL NOT NULL,
+    quantity     INT            NOT NULL,
+    date         DATE      NOT NULL,
+    FOREIGN KEY (user_info_id) REFERENCES user_info (id),
+    FOREIGN KEY (product_id) REFERENCES product (id)
+);

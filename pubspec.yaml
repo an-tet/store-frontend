@@ -14,17 +14,27 @@ dependencies:
   provider: ^6.1.1
   shared_preferences: ^2.2.2
   sidebarx: ^0.16.2
+  drift: ^2.13.0
+  sqlite3_flutter_libs: ^0.5.0
+  path_provider: ^2.0.0
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  drift_dev: ^2.13.0
+  build_runner: ^2.4.6
 
 flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+  
+analyzer:
+  exclude:
+    - "**/*.g.dart"
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

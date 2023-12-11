@@ -1,6 +1,9 @@
+import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store/constants/colors_constants.dart';
+import 'package:store/datasources/database_manager.dart';
 import 'package:store/provider/auth_provider.dart';
 import 'package:store/provider/menu_provider.dart';
 import 'package:store/provider/user_create_form_provider.dart';
@@ -12,7 +15,10 @@ import 'package:store/ui/layouts/auth/auth_layout.dart';
 import 'package:store/ui/layouts/dashboard/dashboard_layout.dart';
 import 'package:store/ui/layouts/splash/splash_screen_layout.dart';
 
-void main() async {
+Future<void> main() async {
+  final db = Database(NativeDatabase.memory());
+  await db.user.all().get().then((listUser) => listUser.forEach((user) => print(
+      '${user.id} - ${user.username} - ${user.password} - ${user.status}\n')));
   await DeviceStorageService.configurePreferences();
   WidgetsFlutterBinding.ensureInitialized();
   RouterManager.configureRoutes();

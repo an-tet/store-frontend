@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store/constants/colors_constants.dart';
-import 'package:store/datatables/users_datasource.dart';
+import 'package:store/ui/datatables/users_datasource.dart';
 import 'package:store/router/router_manager.dart';
 import 'package:store/services/navigation_service.dart';
 import 'package:store/ui/buttons/custom_button.dart';
