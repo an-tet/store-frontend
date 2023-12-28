@@ -21,6 +21,13 @@ class AuthProvider extends ChangeNotifier {
     NavigationService.navigateTo(RouterManager.dashboardRoute);
   }
 
+  logout() async {
+    DeviceStorageService.preferences.remove('token');
+    authStatus = AuthStatus.unauthenticated;
+    notifyListeners();
+    NavigationService.navigateTo(RouterManager.loginRoute);
+  }
+
   Future<bool> isAuthenticated() async {
     if (DeviceStorageService.preferences.getString('token') == null) {
       authStatus = AuthStatus.unauthenticated;

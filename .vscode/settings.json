@@ -2,7 +2,9 @@
     "cSpell.words": [
         "autovalidate",
         "Autovalidate",
+        "cachebase",
         "datasource",
+        "datasources",
         "datatables",
         "fluro",
         "isar",
@@ -10,6 +12,7 @@
         "roboto",
         "Schyler",
         "sidebarx",
+        "sqflite",
         "sqlite",
         "vsync"
     ],
