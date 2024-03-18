@@ -1,0 +1,45 @@
+@startmindmap
++ Login
+++ dashboard
+
++++ User
+++++ List and search (home)
++++++ Disable
++++++ Create
+++++++ Create role
++++++ Update
++++++ Roles
+++++++ List and search (home)
++++++++ Create
++++++++ Disable
++++++++ Update
+
++++ Clients
+++++ List and search (home)
++++++ Create
++++++ Detail
+++++++ Update client
++++++ Update
++++++ Disable
+
++++ Products
+++++ List and search (home)
++++++ Create
++++++ Update
++++++ Disable
+
++++ Sales
+++++ List and search (home)
++++++ Create
++++++ Update
++++++ Invalidate
+
++++ Providers
+++++ List and search (home)
++++++ Create
++++++ Update
++++++ Invalidate
+
+++ Recovery
+-- No page found
+@endmindmap
