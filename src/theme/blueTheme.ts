@@ -1,11 +1,10 @@
 import { createTheme } from '@mui/material';
-import { AppColors } from './AppColors';
 
-export const AppTheme = createTheme({
+export const blueTheme = createTheme({
   palette: {
     primary: {
-      light: '#062c48',
-      main: '#094067',
+      light: '#094067',
+      main: '#3DA9FC',
       contrastText: '#fff',
     },
     secondary: {
@@ -14,7 +13,7 @@ export const AppTheme = createTheme({
       contrastText: '#185b86',
     },
     error: {
-      main: AppColors.error,
+      main: '#ba1a1a',
     },
   },
 });
