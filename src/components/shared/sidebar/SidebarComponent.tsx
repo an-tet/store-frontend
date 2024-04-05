@@ -1,58 +1,56 @@
-import { BallotOutlined, WalletOutlined } from '@mui/icons-material';
-import {
-  Divider,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import { Home, Person, ShoppingBag, SupportAgent } from '@mui/icons-material';
+import { Drawer } from './SidebarStyles';
 
-const drawerWidth = 240;
-
-export const SidebarComponent = ({
-  state,
-}: {
-  state: boolean;
-  close: () => void;
-}) => {
+export const SidebarComponent = ({ state }: { state: boolean }) => {
   return (
-    <Drawer
-      sx={{
-        width: drawerWidth,
-        flexShrink: 0,
-        '& .MuiDrawer-paper': {
-          width: drawerWidth,
-          boxSizing: 'border-box',
-        },
-      }}
-      variant='persistent'
-      anchor='left'
-      open={state}
-    >
-      <Divider />
+    <Drawer variant='permanent' open={state}>
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <WalletOutlined /> : <BallotOutlined />}
+        {[
+          { text: 'Principal', icon: Home },
+          { text: 'Usuarios', icon: SupportAgent },
+          { text: 'Clientes', icon: Person },
+          { text: 'Productos', icon: ShoppingBag },
+        ].map((item, index) => (
+          <ListItem
+            key={index}
+            disablePadding
+            sx={{
+              display: 'block',
+              color: 'primary.contrastText',
+              // '&:focus': {
+              //   backgroundColor: 'primary.main',
+              // },
+              // '&:hover': {
+              //   backgroundColor: 'primary.main',
+              // },
+            }}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: state ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: state ? 3 : 'auto',
+                  justifyContent: 'center',
+                  color: 'primary.contrastText',
+                }}
+              >
+                {<item.icon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <WalletOutlined /> : <BallotOutlined />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText
+                primary={item.text}
+                sx={{ opacity: state ? 1 : 0 }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
