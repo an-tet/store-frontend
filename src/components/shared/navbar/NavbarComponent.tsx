@@ -1,7 +1,8 @@
+import { useLocation } from 'react-router-dom';
+
 import { Flip } from '@mui/icons-material';
 import { IconButton, Toolbar, Typography } from '@mui/material';
 
-import { useLocation } from 'react-router-dom';
 import { AppBar } from './NavbarStyles';
 
 export const NavbarComponent = ({

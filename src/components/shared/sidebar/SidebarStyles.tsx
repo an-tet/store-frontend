@@ -1,7 +1,10 @@
 import { styled, Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
+
 import { blueTheme } from '../../../theme/blueTheme';
 import { drawerWidth } from '../constants';
+
+import './Sidebar.css';
 
 const openedMixin = (theme: Theme = blueTheme): CSSObject => ({
   width: drawerWidth,
