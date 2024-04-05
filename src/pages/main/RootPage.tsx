@@ -4,7 +4,6 @@ export const RootPage = () => {
   return (
     <>
       <Outlet />
-      <h2>sidebar</h2>
     </>
   );
 };

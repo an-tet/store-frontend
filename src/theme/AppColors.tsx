@@ -1,5 +1,5 @@
 import { ColorsInterface } from '../interfaces/theme/ColorsInterface';
-
+// TODO: It's a reference file for colors used, but no applied anywhere.
 export const AppColors: ColorsInterface = {
   primary: '#094067',
   secondary: '#00639d',

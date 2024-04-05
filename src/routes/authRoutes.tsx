@@ -1,5 +1,5 @@
 import { Navigate, RouteObject } from 'react-router-dom';
-import { LoginPage, RecoveryPage } from '../components/pages';
+import { LoginPage, RecoveryPage } from '../pages';
 
 export const authRoutes: RouteObject = {
   path: 'auth',

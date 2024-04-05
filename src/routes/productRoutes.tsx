@@ -3,7 +3,7 @@ import {
   CreateProductPage,
   ListProductPage,
   UpdateProductPage,
-} from '../components/pages';
+} from '../pages';
 
 export const productRoutes: RouteObject = {
   path: 'product',
