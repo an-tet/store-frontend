@@ -1,6 +1,6 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 import { RootPage } from '../pages';
-import { HomeRoutes } from './omeRoutes';
+import { HomeRoutes } from './HomeRoutes';
 import { ProductRoutes } from './roductRoutes';
 import { UserRoutes } from './UserRoutes';
 
