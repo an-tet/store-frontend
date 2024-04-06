@@ -44,7 +44,7 @@ export const NavbarComponent = ({
           onClick={handleDrawerToggle}
           edge='start'
           sx={{
-            marginRight: 5,
+            mr: 5,
           }}
         >
           <Flip />

@@ -1,14 +1,27 @@
+import { Grid } from '@mui/material';
+
 import { RootLayout } from '../../../layout';
-import { Grid, Typography } from '@mui/material';
+import { Image } from '@mui/icons-material';
 
 export const HomePage = () => {
   return (
     <RootLayout>
-      <Grid container>
+      <Grid
+        container
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+      >
         <Grid item>
-          <Typography variant='h3' sx={{ marginTop: '2rem' }}>
-            Home Page
-          </Typography>
+          <Image
+            sx={{
+              fontSize: '8rem',
+              color: 'primary.main',
+            }}
+          />
         </Grid>
       </Grid>
     </RootLayout>

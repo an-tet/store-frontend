@@ -4,8 +4,6 @@ import Box from '@mui/material/Box';
 
 import { NavbarComponent, SidebarComponent } from '../../components';
 
-import './root.css';
-
 export const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = useState(false);
 
