@@ -11,7 +11,10 @@ export const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <Box sx={{ display: 'flex' }}>
       <NavbarComponent setOpen={setOpen} state={open} />
       <SidebarComponent state={open} />
-      <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
+      <Box
+        component='main'
+        sx={{ flexGrow: 1, p: 3, maxHeight: '100vh', overflow: 'auto' }}
+      >
         {children}
       </Box>
     </Box>

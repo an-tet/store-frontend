@@ -10,8 +10,8 @@ const openedMixin = (theme: Theme = blueTheme): CSSObject => ({
   width: drawerWidth,
   backgroundColor: theme.palette.primary.light,
   color: theme.palette.getContrastText(theme.palette.primary.light),
-  height: `calc(100% - ${theme.spacing(4)})`,
-  borderRadius: '24px 24px 24px 24px',
+  height: `calc(100% - ${theme.spacing(3)})`,
+  borderRadius: 24,
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -23,7 +23,7 @@ const closedMixin = (theme: Theme = blueTheme): CSSObject => ({
   backgroundColor: theme.palette.primary.light,
   color: theme.palette.getContrastText(theme.palette.primary.light),
   height: `calc(100% - ${theme.spacing(3)})`,
-  borderRadius: '24px 24px 24px 24px',
+  borderRadius: 24,
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,

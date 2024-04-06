@@ -13,7 +13,7 @@ export const ListProductPage = () => {
         }}
       >
         <Grid item>
-          <Typography variant='h1'>List Product Page</Typography>
+          <Typography variant='h3'>List Product Page</Typography>
         </Grid>
       </Grid>
     </RootLayout>

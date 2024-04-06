@@ -2,7 +2,7 @@ import { Grid } from '@mui/material';
 import { Typography } from '@mui/material';
 import { RootLayout } from '../../RootLayout';
 
-export const ListUserPage = () => {
+export const ListCustomerPage = () => {
   return (
     <RootLayout>
       <Grid
@@ -13,7 +13,7 @@ export const ListUserPage = () => {
         }}
       >
         <Grid item>
-          <Typography variant='h3'>List User Page</Typography>
+          <Typography variant='h3'>List customer Page</Typography>
         </Grid>
       </Grid>
     </RootLayout>

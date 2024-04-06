@@ -15,3 +15,8 @@ export { UpdateUserPage } from './main/users/update/UpdateUserPage';
 export { ListProductPage } from './main/product/List/ListProductPage';
 export { CreateProductPage } from './main/product/create/CreateProductPage';
 export { UpdateProductPage } from './main/product/update/UpdateProductPage';
+
+// Customer module
+export { ListCustomerPage } from './main/customer/List/ListCustomerPage';
+export { CreateCustomerPage } from './main/customer/create/CreateCustomerPage';
+export { UpdateCustomerPage } from './main/customer/update/UpdateCustomerPage';
