@@ -1,7 +1,7 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 import { RootPage } from '../pages';
-import { HomeRoutes } from './HomeRoutes';
-import { ProductRoutes } from './ProductRoutes';
+import { HomeRoutes } from './omeRoutes';
+import { ProductRoutes } from './roductRoutes';
 import { UserRoutes } from './UserRoutes';
 
 export const RootRoutes: RouteObject = {
