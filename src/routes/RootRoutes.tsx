@@ -1,8 +1,8 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 import { RootPage } from '../pages';
 import { HomeRoutes } from './HomeRoutes';
-import { ProductRoutes } from './roductRoutes';
 import { UserRoutes } from './UserRoutes';
+import { ProductRoutes } from './ProductRoutes';
 
 export const RootRoutes: RouteObject = {
   path: '',
