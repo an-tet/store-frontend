@@ -47,9 +47,14 @@ export const NavbarComponent = ({
             mr: 5,
           }}
         >
-          <Flip />
+          <Flip sx={{ color: 'primary.light' }} />
         </IconButton>
-        <Typography variant='h6' noWrap component='div'>
+        <Typography
+          variant='h6'
+          noWrap
+          component='div'
+          sx={{ color: 'primary.light' }}
+        >
           {resolvePathname(pathname)}
         </Typography>
       </Toolbar>
