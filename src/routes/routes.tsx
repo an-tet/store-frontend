@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { authRoutes } from './authRoutes';
-import { rootRoutes } from './rootRoutes';
+import { AuthRoutes } from './AuthRoutes';
+import { RootRoutes } from './RootRoutes';
 
-export const routes = createBrowserRouter([authRoutes, rootRoutes]);
+export const Routes = createBrowserRouter([AuthRoutes, RootRoutes]);

@@ -1,14 +1,16 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 import { RootPage } from '../pages';
-import { productRoutes } from './productRoutes';
-import { homeRoutes } from './homeRoutes';
+import { HomeRoutes } from './HomeRoutes';
+import { ProductRoutes } from './ProductRoutes';
+import { UserRoutes } from './UserRoutes';
 
-export const rootRoutes: RouteObject = {
+export const RootRoutes: RouteObject = {
   path: '',
   element: <RootPage />,
   children: [
-    homeRoutes,
-    productRoutes,
+    HomeRoutes,
+    UserRoutes,
+    ProductRoutes,
     { path: '*', element: <Navigate to='' /> },
   ],
 };
