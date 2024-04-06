@@ -1,0 +1,27 @@
+import { ColorsInterface } from '../interfaces/theme/ColorsInterface';
+// TODO: It's a reference file for colors used, but no applied anywhere.
+export const AppColors: ColorsInterface = {
+  primary: '#094067',
+  secondary: '#00639d',
+  tertiary: '#695779',
+  error: '#ba1a1a',
+  background: '#fdfbff',
+  outline: '#72777f',
+  onPrimary: '#ffffff',
+  onSecondary: '#ffffff',
+  onTertiary: '#ffffff',
+  onError: '#ffffff',
+  onBackground: '#001b3d',
+  primaryContainer: '#cfe5ff',
+  secondaryContainer: '#cfe5ff',
+  tertiaryContainer: '#f0dbff',
+  errorContainer: '#ffdad6',
+  surface: '#fdfbff',
+  surfaceVariant: '#dee3eb',
+  onPrimaryContainer: '#001d34',
+  onSecondaryContainer: '#001d33',
+  onTertiaryContainer: '#241532',
+  onErrorContainer: '#410002',
+  onSurface: '#001b3d',
+  onSurfaceVariant: '#42474e',
+};
