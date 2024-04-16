@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import { NavbarComponent, SidebarComponent } from '../../components';
 
 export const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -13,7 +13,7 @@ export const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <SidebarComponent state={open} />
       <Box
         component='main'
-        sx={{ flexGrow: 1, p: 3, maxHeight: '100vh', overflow: 'auto' }}
+        sx={{ flexGrow: 1, p: 3, minHeight: '100vh', overflow: 'auto' }}
       >
         {children}
       </Box>

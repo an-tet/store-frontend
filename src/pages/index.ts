@@ -12,9 +12,9 @@ export { CreateUserPage } from './main/users/create/CreateUserPage';
 export { UpdateUserPage } from './main/users/update/UpdateUserPage';
 
 // Product module
-export { ListProductPage } from './main/product/List/ListProductPage';
-export { CreateProductPage } from './main/product/create/CreateProductPage';
-export { UpdateProductPage } from './main/product/update/UpdateProductPage';
+export { ListProductPage } from './main/products/List/ListProductPage';
+export { CreateProductPage } from './main/products/create/CreateProductPage';
+export { UpdateProductPage } from './main/products/update/UpdateProductPage';
 
 // Customer module
 export { ListCustomerPage } from './main/customer/List/ListCustomerPage';

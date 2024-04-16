@@ -12,6 +12,6 @@ export const ProductRoutes: RouteObject = {
     { path: '', element: <Navigate to='list' /> },
     { index: true, path: 'list', element: <ListProductPage /> },
     { path: 'create', element: <CreateProductPage /> },
-    { path: 'update/:id', element: <UpdateProductPage /> },
+    { path: 'edit/:id', element: <UpdateProductPage /> },
   ],
 };
