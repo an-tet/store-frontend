@@ -15,8 +15,10 @@ export const NavbarComponent = ({
   const { pathname } = useLocation();
 
   const resolvePathname = (pathname: string): string => {
+    console.log(pathname);
+
     switch (pathname) {
-      case '/product' ||
+      case '/product/list' ||
         '/product/create' ||
         '/product/edit' ||
         '/product/delete':
@@ -31,7 +33,7 @@ export const NavbarComponent = ({
   };
 
   return (
-    <AppBar position='fixed' open={state} color={'transparent'}>
+    <AppBar position='fixed' open={state} color={'transparent'} sx={{}}>
       <Toolbar
         sx={{
           display: 'flex',
@@ -43,9 +45,6 @@ export const NavbarComponent = ({
           aria-label='open drawer'
           onClick={handleDrawerToggle}
           edge='start'
-          sx={{
-            mr: 5,
-          }}
         >
           <Flip sx={{ color: 'primary.light' }} />
         </IconButton>

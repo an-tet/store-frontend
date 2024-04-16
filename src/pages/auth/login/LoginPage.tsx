@@ -13,7 +13,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { AuthLayout } from '../../../layout';
+import { AuthLayout } from './AuthLayout';
 
 export const LoginPage = () => {
   const navigate: NavigateFunction = useNavigate();
