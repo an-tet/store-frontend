@@ -6,33 +6,30 @@ import { drawerWidth } from '../constants';
 
 import './Sidebar.css';
 
-const openedMixin = (theme: Theme = blueTheme): CSSObject => ({
-  width: drawerWidth,
-  backgroundColor: theme.palette.primary.light,
-  color: theme.palette.getContrastText(theme.palette.primary.light),
+const hideDrawer = (theme: Theme = blueTheme): CSSObject => ({
+  width: 0,
+  backgroundColor: 'transparent',
+  color: 'transparent',
   height: `calc(100% - ${theme.spacing(3)})`,
-  borderRadius: 24,
-  transition: theme.transitions.create('width', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
-  }),
-  overflowX: 'hidden',
-});
-
-const closedMixin = (theme: Theme = blueTheme): CSSObject => ({
-  backgroundColor: theme.palette.primary.light,
-  color: theme.palette.getContrastText(theme.palette.primary.light),
-  height: `calc(100% - ${theme.spacing(3)})`,
-  borderRadius: 24,
-  transition: theme.transitions.create('width', {
+  transition: theme.transitions.create(['width', 'border'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
+  border: 'none',
+});
+
+const openDrawer = (theme: Theme = blueTheme): CSSObject => ({
+  backgroundColor: theme.palette.primary.light,
+  color: theme.palette.getContrastText(theme.palette.primary.light),
+  height: `calc(100% - ${theme.spacing(3)})`,
+  borderRadius: 24,
+  overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
+  transition: theme.transitions.create(['width', 'border'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
 });
 
 export const Drawer = styled(MuiDrawer, {
@@ -44,11 +41,11 @@ export const Drawer = styled(MuiDrawer, {
   whiteSpace: 'nowrap',
   boxSizing: 'border-box',
   ...(open && {
-    ...openedMixin(theme),
-    '& .MuiDrawer-paper': openedMixin(theme),
+    ...hideDrawer(theme),
+    '& .MuiDrawer-paper': hideDrawer(theme),
   }),
   ...(!open && {
-    ...closedMixin(theme),
-    '& .MuiDrawer-paper': closedMixin(theme),
+    ...openDrawer(theme),
+    '& .MuiDrawer-paper': openDrawer(theme),
   }),
 }));
