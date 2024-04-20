@@ -21,6 +21,7 @@ export const searchTableStyles: SxProps<Theme> = (theme: Theme = blueTheme) => {
     mt: 2,
     mb: 2,
     p: '2px 4px',
+    display: 'flex',
     [breakpoints.up('sm')]: {
       width: '60%',
     },

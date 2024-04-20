@@ -17,7 +17,11 @@ export const ListProductPage = () => {
       <RootLayout>
         <Grid container sx={containerStyles}>
           <Grid item xs={12} sx={buttonContainerStyles}>
-            <Button variant='contained' sx={buttonStyles}>
+            <Button
+              variant='contained'
+              sx={buttonStyles}
+              href='/product/create'
+            >
               <Add />
             </Button>
           </Grid>
