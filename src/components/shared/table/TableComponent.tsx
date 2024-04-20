@@ -1,9 +1,13 @@
+import { ChangeEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Table from '@mui/material/Table';
 import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
-import { TablePropsInterface } from '../interfaces/TablePropsInterface';
+import SearchIcon from '@mui/icons-material/Search';
+import IconButton from '@mui/material/IconButton';
+import { Delete, Edit } from '@mui/icons-material';
 import {
   Grid,
   InputBase,
@@ -11,12 +15,13 @@ import {
   TableContainer,
   TablePagination,
 } from '@mui/material';
-import { ChangeEvent, useState } from 'react';
-import { searchTableStyles, tableStyles } from './TableStyles';
-import SearchIcon from '@mui/icons-material/Search';
-import IconButton from '@mui/material/IconButton';
-import { useNavigate } from 'react-router-dom';
-import { Delete, Edit } from '@mui/icons-material';
+import { TablePropsInterface } from '../interfaces/TablePropsInterface';
+import {
+  containerStyles,
+  inputStyles,
+  searchTableStyles,
+  tableStyles,
+} from './TableStyles';
 
 export const TableComponent = (props: TablePropsInterface) => {
   const { headers, searchItem, actions } = props;
@@ -49,17 +54,10 @@ export const TableComponent = (props: TablePropsInterface) => {
 
   return (
     <>
-      <Grid
-        sx={{
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
+      <Grid sx={containerStyles}>
         <Paper component='form' sx={searchTableStyles}>
           <InputBase
-            sx={{ ml: 1, flex: 1 }}
+            sx={inputStyles}
             placeholder={searchItem.placeholder}
             inputProps={{ 'aria-label': searchItem.placeholder }}
             onChange={handleSearch}
@@ -138,7 +136,7 @@ export const TableComponent = (props: TablePropsInterface) => {
             width={700}
           />
         </TableContainer>
-      </Grid>{' '}
+      </Grid>
     </>
   );
 };
