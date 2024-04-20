@@ -1,7 +1,11 @@
 import { Button, Grid } from '@mui/material';
 import { Add } from '@mui/icons-material';
 
-import { containerStyles } from './ListProductStyles';
+import {
+  buttonContainerStyles,
+  buttonStyles,
+  containerStyles,
+} from './ListProductStyles';
 
 import { RootLayout } from '../../RootLayout';
 import { TableComponent } from '../../../../components';
@@ -12,15 +16,8 @@ export const ListProductPage = () => {
     <>
       <RootLayout>
         <Grid container sx={containerStyles}>
-          <Grid
-            item
-            xs={12}
-            sx={{
-              display: 'flex',
-              justifyContent: 'flex-end',
-            }}
-          >
-            <Button variant='contained' sx={{ backgroundColor: 'primary' }}>
+          <Grid item xs={12} sx={buttonContainerStyles}>
+            <Button variant='contained' sx={buttonStyles}>
               <Add />
             </Button>
           </Grid>

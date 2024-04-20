@@ -13,3 +13,10 @@ export const containerStyles: SxProps<Theme> = (theme: Theme = blueTheme) => {
     },
   };
 };
+
+export const buttonContainerStyles: SxProps<Theme> = {
+  display: 'flex',
+  justifyContent: 'flex-end',
+};
+
+export const buttonStyles: SxProps<Theme> = { backgroundColor: 'primary' };
