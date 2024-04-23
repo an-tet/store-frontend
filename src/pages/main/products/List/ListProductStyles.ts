@@ -4,7 +4,7 @@ import { blueTheme } from '../../../../theme/blueTheme';
 export const containerStyles: SxProps<Theme> = (theme: Theme = blueTheme) => {
   const { breakpoints } = theme;
   return {
-    m: '3rem auto 10px',
+    m: '0 auto 10px',
     [breakpoints.up('md')]: {
       width: '80%',
     },

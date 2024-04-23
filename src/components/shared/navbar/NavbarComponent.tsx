@@ -15,8 +15,6 @@ export const NavbarComponent = ({
   const { pathname } = useLocation();
 
   const resolvePathname = (pathname: string): string => {
-    console.log(pathname);
-
     switch (pathname) {
       case '/product/list' ||
         '/product/create' ||
