@@ -28,3 +28,6 @@ dist-ssr
 sonarqube/extensions
 sonarqube/data
 sonarqube/logs
+
+#environments
+.env
