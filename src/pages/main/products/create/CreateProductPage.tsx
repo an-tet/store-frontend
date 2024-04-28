@@ -5,21 +5,27 @@ import * as yup from 'yup';
 import { wordsAndSpaces } from '../../../../constants/RegexPatterns';
 import {
   Button,
-  Checkbox,
+  FormControl,
+  FormControlLabel,
   Grid,
+  InputLabel,
   MenuItem,
   Select,
+  Switch,
   TextField,
 } from '@mui/material';
+import { containerFormStyles, formStyles } from './CreateProductStyles';
+import { MuiColorInput } from 'mui-color-input';
 
 export const CreateProductPage = () => {
   const initialProductForm: ProductModel = {
     name: '',
     detail: '',
     price: 0,
-    status: false,
+    status: true,
     stock: 0,
-    supplier_id: -1,
+    color: '#000000',
+    supplier_id: 0,
   };
 
   const validationSchema = yup.object({
@@ -49,6 +55,13 @@ export const CreateProductPage = () => {
     supplier_id: yup
       .number()
       .required('El campo Proveedor es un campo requerido'),
+    color: yup
+      .string()
+      .required('El campo Color es un campo requerido')
+      .matches(
+        /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/,
+        'El campo Color debe tener un formato hexadecimal válido'
+      ),
   });
 
   const formik = useFormik({
@@ -59,101 +72,124 @@ export const CreateProductPage = () => {
     },
   });
 
-  // const handleChange = (
-  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  // ) => {
-  //   setProductForm({
-  //     ...productForm,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
   return (
     <RootLayout>
-      <Grid container sx={{ display: 'flex', justifyContent: 'center' }}>
-        <form onSubmit={formik.handleSubmit} style={{ width: '70vw' }}>
-          <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
-            <TextField
-              fullWidth
-              id='name'
-              name='name'
-              label='Nombre'
-              value={formik.values.name}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.name && Boolean(formik.errors.name)}
-              helperText={formik.touched.name && formik.errors.name}
-              sx={{ mr: 2 }}
-            />
+      <Grid container sx={containerFormStyles}>
+        <form onSubmit={formik.handleSubmit} style={formStyles}>
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+              <TextField
+                fullWidth
+                id='name'
+                name='name'
+                label='Nombre'
+                value={formik.values.name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.name && Boolean(formik.errors.name)}
+                helperText={formik.touched.name && formik.errors.name}
+                sx={{ mr: 2 }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+              <TextField
+                fullWidth
+                id='detail'
+                name='detail'
+                label='Detalle'
+                value={formik.values.detail}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.detail && Boolean(formik.errors.detail)}
+                helperText={formik.touched.detail && formik.errors.detail}
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
-            <TextField
-              fullWidth
-              id='detail'
-              name='detail'
-              label='Detalle'
-              value={formik.values.detail}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.detail && Boolean(formik.errors.detail)}
-              helperText={formik.touched.detail && formik.errors.detail}
-            />
+
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+              <TextField
+                fullWidth
+                id='price'
+                name='price'
+                label='Precio'
+                type='number'
+                value={formik.values.price}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.price && Boolean(formik.errors.price)}
+                helperText={formik.touched.price && formik.errors.price}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+              {' '}
+              <TextField
+                fullWidth
+                id='stock'
+                name='stock'
+                label='Stock'
+                type='number'
+                value={formik.values.stock}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.stock && Boolean(formik.errors.stock)}
+                helperText={formik.touched.stock && formik.errors.stock}
+              />
+            </Grid>
           </Grid>
 
-          <TextField
-            fullWidth
-            id='price'
-            name='price'
-            label='Precio'
-            type='number'
-            value={formik.values.price}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.price && Boolean(formik.errors.price)}
-            helperText={formik.touched.price && formik.errors.price}
-          />
+          <Grid container spacing={1} sx={{ mb: 5 }}>
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <InputLabel id='supplier_id'>Proveedor</InputLabel>
+                <Select
+                  id='supplier_id'
+                  name='supplier_id'
+                  label='Proveedor'
+                  value={formik.values.supplier_id}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched.supplier_id &&
+                    Boolean(formik.errors.supplier_id)
+                  }
+                >
+                  <MenuItem value={0}>Proveedor 1</MenuItem>
+                  <MenuItem value={1}>Proveedor 2</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs='auto' sm='auto'>
+              <MuiColorInput
+                format='hex'
+                id='color'
+                name='color'
+                label='Color'
+                value={formik.values.color}
+                onChange={formik.handleChange}
+              />
+            </Grid>
+            <Grid item xs='auto' sm='auto' sx={{ ml: 2 }}>
+              <FormControlLabel
+                control={
+                  <Switch
+                    id='status'
+                    name='status'
+                    checked={formik.values.status}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                }
+                label='Activar usuario'
+              />
+            </Grid>
+          </Grid>
 
-          <TextField
-            fullWidth
-            id='stock'
-            name='stock'
-            label='Stock'
-            type='number'
-            value={formik.values.stock}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.stock && Boolean(formik.errors.stock)}
-            helperText={formik.touched.stock && formik.errors.stock}
-          />
-
-          <Checkbox
-            id='status'
-            name='status'
-            checked={formik.values.status}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-
-          <Select
-            fullWidth
-            id='supplier_id'
-            name='supplier_id'
-            label='Proveedor'
-            value={formik.values.supplier_id}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={
-              formik.touched.supplier_id && Boolean(formik.errors.supplier_id)
-            }
-          >
-            <MenuItem value={-1}>Selecciona un proveedor</MenuItem>
-            <MenuItem value={1}>Proveedor 1</MenuItem>
-            <MenuItem value={2}>Proveedor 2</MenuItem>
-          </Select>
-
-          <Button variant='contained' type='submit'>
-            Guardar
-          </Button>
+          <Grid container justifyContent='center'>
+            <Button variant='contained' type='submit'>
+              Guardar
+            </Button>
+          </Grid>
         </form>
       </Grid>
     </RootLayout>

@@ -5,5 +5,6 @@ export type ProductModel = {
   price: number;
   stock: number;
   status: boolean;
+  color: string;
   supplier_id: number;
 };
