@@ -1,78 +1,197 @@
-import { useState } from 'react';
-
-import IconButton from '@mui/material/IconButton';
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
-import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
+import { RootLayout } from '../../RootLayout';
 import { ProductModel } from '../../../../models/ProductModel';
-import TableContainer from '@mui/material/TableContainer';
-import Table from '@mui/material/Table';
-import TableHead from '@mui/material/TableHead';
-import TableBody from '@mui/material/TableBody';
-import { Paper } from '@mui/material';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import { wordsAndSpaces } from '../../../../constants/RegexPatterns';
+import {
+  Button,
+  FormControl,
+  FormControlLabel,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Switch,
+  TextField,
+} from '@mui/material';
+import { containerFormStyles, formStyles } from './CreateProductStyles';
+import { MuiColorInput } from 'mui-color-input';
 
-const product = {
-  products: [
-    {
-      id: 1,
-      name: 'name',
-      detail: 'detail',
-      price: 100,
-      stock: 10,
-      status: true,
-      supplier_id: 1,
+export const CreateProductPage = () => {
+  const initialProductForm: ProductModel = {
+    name: '',
+    detail: '',
+    price: 0,
+    status: true,
+    stock: 0,
+    color: '#000000',
+    supplier_id: 0,
+  };
+
+  const validationSchema = yup.object({
+    name: yup
+      .string()
+      .required('El campo Nombre es un campo requerido')
+      .min(3, 'El campo Nombre debe tener al menos 3 caracteres')
+      .matches(
+        wordsAndSpaces,
+        'El nombre solo puede contener letras y espacios'
+      ),
+    detail: yup
+      .string()
+      .required('El campo Detalle es un campo requerido')
+      .min(20, 'El campo Detalle debe tener al menos 20 caracteres')
+      .max(200, 'El campo Detalle debe tener como máximo 200 caracteres'),
+    price: yup
+      .number()
+      .required('El campo Precio es un campo requerido')
+      .min(1, 'El campo Precio debe ser al menos 100'),
+    stock: yup
+      .number()
+      .integer('El campo Stock debe ser un número entero')
+      .required('El campo Stock es un campo requerido')
+      .min(0, 'El campo Stock debe ser al menos 1'),
+    status: yup.boolean().required('El campo Estado es un campo requerido'),
+    supplier_id: yup
+      .number()
+      .required('El campo Proveedor es un campo requerido'),
+    color: yup
+      .string()
+      .required('El campo Color es un campo requerido')
+      .matches(
+        /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/,
+        'El campo Color debe tener un formato hexadecimal válido'
+      ),
+  });
+
+  const formik = useFormik({
+    initialValues: initialProductForm,
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
     },
-  ],
-};
+  });
 
-export const CreateProductPage = (
-  props: { products: ProductModel[] } = product
-) => {
-  console.log(props);
-
-  const { products } = props;
-  const [open, setOpen] = useState(false);
   return (
-    <>
-      <TableContainer component={Paper}>
-        <Table aria-label='collapsible table'>
-          <TableHead>
-            <TableRow>
-              <TableCell />
-              <TableCell>name</TableCell>
-              <TableCell align='right'>detail</TableCell>
-              <TableCell align='right'>price</TableCell>
-              <TableCell align='right'>stock</TableCell>
-              <TableCell align='right'>status</TableCell>
-              <TableCell align='right'>supplier_id</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {products.map((product) => (
-              <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-                <TableCell>
-                  <IconButton
-                    aria-label='expand row'
-                    size='small'
-                    onClick={() => setOpen(!open)}
-                  >
-                    {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-                  </IconButton>
-                </TableCell>
-                <TableCell component='th' scope='row'>
-                  {product.id}
-                </TableCell>
-                <TableCell align='right'>{product.name}</TableCell>
-                <TableCell align='right'>{product.detail}</TableCell>
-                <TableCell align='right'>{product.price}</TableCell>
-                <TableCell align='right'>{product.stock}</TableCell>
-                <TableCell align='right'>{product.status}</TableCell>
-                <TableCell align='right'>{product.supplier_id}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </>
+    <RootLayout>
+      <Grid container sx={containerFormStyles}>
+        <form onSubmit={formik.handleSubmit} style={formStyles}>
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+              <TextField
+                fullWidth
+                id='name'
+                name='name'
+                label='Nombre'
+                value={formik.values.name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.name && Boolean(formik.errors.name)}
+                helperText={formik.touched.name && formik.errors.name}
+                sx={{ mr: 2 }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+              <TextField
+                fullWidth
+                id='detail'
+                name='detail'
+                label='Detalle'
+                value={formik.values.detail}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.detail && Boolean(formik.errors.detail)}
+                helperText={formik.touched.detail && formik.errors.detail}
+              />
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+              <TextField
+                fullWidth
+                id='price'
+                name='price'
+                label='Precio'
+                type='number'
+                value={formik.values.price}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.price && Boolean(formik.errors.price)}
+                helperText={formik.touched.price && formik.errors.price}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+              {' '}
+              <TextField
+                fullWidth
+                id='stock'
+                name='stock'
+                label='Stock'
+                type='number'
+                value={formik.values.stock}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.stock && Boolean(formik.errors.stock)}
+                helperText={formik.touched.stock && formik.errors.stock}
+              />
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={1} sx={{ mb: 5 }}>
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <InputLabel id='supplier_id'>Proveedor</InputLabel>
+                <Select
+                  id='supplier_id'
+                  name='supplier_id'
+                  label='Proveedor'
+                  value={formik.values.supplier_id}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched.supplier_id &&
+                    Boolean(formik.errors.supplier_id)
+                  }
+                >
+                  <MenuItem value={0}>Proveedor 1</MenuItem>
+                  <MenuItem value={1}>Proveedor 2</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs='auto' sm='auto'>
+              <MuiColorInput
+                format='hex'
+                id='color'
+                name='color'
+                label='Color'
+                value={formik.values.color}
+                onChange={formik.handleChange}
+              />
+            </Grid>
+            <Grid item xs='auto' sm='auto' sx={{ ml: 2 }}>
+              <FormControlLabel
+                control={
+                  <Switch
+                    id='status'
+                    name='status'
+                    checked={formik.values.status}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                }
+                label='Activar usuario'
+              />
+            </Grid>
+          </Grid>
+
+          <Grid container justifyContent='center'>
+            <Button variant='contained' type='submit'>
+              Guardar
+            </Button>
+          </Grid>
+        </form>
+      </Grid>
+    </RootLayout>
   );
 };

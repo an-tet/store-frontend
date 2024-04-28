@@ -25,7 +25,7 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout title='Inicio de sesión'>
-      <form onSubmit={handleSubmit}>
+      <Grid component='form' onSubmit={handleSubmit}>
         <Grid
           container
           direction='column'
@@ -95,7 +95,7 @@ export const LoginPage = () => {
             </Grid>
           </Grid>
         </Grid>
-      </form>
+      </Grid>
     </AuthLayout>
   );
 };
