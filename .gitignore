@@ -29,5 +29,8 @@ sonarqube/extensions
 sonarqube/data
 sonarqube/logs
 
-#environments
+# environments
 .env
+
+# Testing
+coverage
