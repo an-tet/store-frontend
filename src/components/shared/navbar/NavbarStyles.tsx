@@ -3,7 +3,7 @@ import { styled } from '@mui/material';
 
 import { AppBarPropsInterface } from '../interfaces/AppBarPropsInterface';
 
-export const AppBar = styled(MuiAppBar, {
+export const NavbarStyles = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarPropsInterface>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
