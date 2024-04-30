@@ -8,7 +8,9 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "vitest watch",
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "coverage": "vitest --coverage",
     "sonar": "node ./sonarqube/sonarscan.js"
   },
   "dependencies": {
@@ -17,8 +19,10 @@
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
     "@reduxjs/toolkit": "^2.2.3",
+    "@vitest/ui": "^1.5.2",
     "dotenv": "^16.4.5",
     "formik": "^2.4.5",
+    "jsx": "react-jsx",
     "mui-color-input": "^2.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,15 +30,18 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^15.0.5",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^1.5.2",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "sonarqube-scanner": "^3.4.0",
+    "jsdom": "^24.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.1.6",
     "vitest": "^1.5.2"

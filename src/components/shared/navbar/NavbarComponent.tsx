@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Flip } from '@mui/icons-material';
 import { IconButton, Toolbar, Typography } from '@mui/material';
 
-import { AppBar } from './NavbarStyles';
+import { NavbarStyles } from './NavbarStyles';
 
 export const NavbarComponent = ({
   setOpen,
@@ -31,7 +31,7 @@ export const NavbarComponent = ({
   };
 
   return (
-    <AppBar position='fixed' open={state} color={'transparent'} sx={{}}>
+    <NavbarStyles position='fixed' open={state} color={'transparent'} sx={{}}>
       <Toolbar
         sx={{
           display: 'flex',
@@ -55,6 +55,6 @@ export const NavbarComponent = ({
           {resolvePathname(pathname)}
         </Typography>
       </Toolbar>
-    </AppBar>
+    </NavbarStyles>
   );
 };

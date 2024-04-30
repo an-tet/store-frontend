@@ -34,3 +34,4 @@ sonarqube/logs
 
 # Testing
 coverage
+report

@@ -13,7 +13,6 @@ scanner(
       'sonar.projectVersion': '0.0.1',
       'sonar.sourceEncoding': 'UTF-8',
       'sonar.projectDescription': 'store project for pymes',
-      'sonar.tests': 'test',
       'sonar.login': process.env.SONARQUBE_TOKEN,
     },
   },

@@ -2,7 +2,6 @@ import { styled, Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 
 import { blueTheme } from '../../../theme/blueTheme';
-import { drawerWidth } from '../constants';
 
 import './Sidebar.css';
 
@@ -36,7 +35,7 @@ export const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme = blueTheme, open }) => ({
   color: theme.palette.getContrastText(theme.palette.warning.light),
-  width: drawerWidth,
+  width: 240,
   flexShrink: 0,
   whiteSpace: 'nowrap',
   boxSizing: 'border-box',

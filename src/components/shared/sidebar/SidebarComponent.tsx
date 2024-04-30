@@ -1,5 +1,4 @@
 import { Drawer } from './SidebarStyles';
-
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -14,9 +13,9 @@ import {
   SupportAgent,
 } from '@mui/icons-material';
 
-export const SidebarComponent = ({ state }: { state: boolean }) => {
+export function SidebarComponent({ state }: { state: boolean }) {
   return (
-    <Drawer variant='permanent' open={state}>
+    <Drawer id='sidebar' variant='permanent' open={state}>
       <List>
         <Tooltip title='Logo' placement='top'>
           <ListItem
@@ -66,12 +65,6 @@ export const SidebarComponent = ({ state }: { state: boolean }) => {
             sx={{
               display: 'block',
               color: 'primary.contrastText',
-              // '&:focus': {
-              //   backgroundColor: 'primary.main',
-              // },
-              // '&:hover': {
-              //   backgroundColor: 'primary.main',
-              // },
             }}
           >
             <ListItemButton
@@ -102,4 +95,4 @@ export const SidebarComponent = ({ state }: { state: boolean }) => {
       </List>
     </Drawer>
   );
-};
+}
