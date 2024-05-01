@@ -1,7 +1,7 @@
 import { Link as RouterLink } from 'react-router-dom';
 import { Button, Grid, Link, TextField } from '@mui/material';
 import { ArrowBackIos } from '@mui/icons-material';
-import { AuthLayout } from '../login/AuthLayout';
+import { AuthLayout } from '../login/auth.layout';
 
 export const RecoveryPage = () => {
   return (

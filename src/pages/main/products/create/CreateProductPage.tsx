@@ -1,5 +1,5 @@
 import { RootLayout } from '../../RootLayout';
-import { ProductModel } from '../../../../models/ProductModel';
+import { ProductModel } from '../../../../models/product.model';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { wordsAndSpaces } from '../../../../constants/RegexPatterns';
@@ -75,7 +75,11 @@ export const CreateProductPage = () => {
   return (
     <RootLayout>
       <Grid container sx={containerFormStyles}>
-        <form onSubmit={formik.handleSubmit} style={formStyles}>
+        <Grid
+          component='form'
+          onSubmit={formik.handleSubmit}
+          style={formStyles}
+        >
           <Grid container spacing={1}>
             <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
               <TextField
@@ -190,7 +194,7 @@ export const CreateProductPage = () => {
               Guardar
             </Button>
           </Grid>
-        </form>
+        </Grid>
       </Grid>
     </RootLayout>
   );

@@ -1,5 +1,5 @@
 // Auth module
-export { LoginPage } from './auth/login/LoginPage';
+export { LoginPage } from './auth/login/login.page';
 export { RecoveryPage } from './auth/recovery/RecoveryPage';
 
 // Main module
