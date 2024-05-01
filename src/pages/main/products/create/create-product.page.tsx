@@ -14,8 +14,7 @@ import {
   Switch,
   TextField,
 } from '@mui/material';
-import { containerFormStyles, formStyles } from './CreateProductStyles';
-import { MuiColorInput } from 'mui-color-input';
+import { containerFormStyles, formStyles } from './create-product.styles';
 
 export const CreateProductPage = () => {
   const initialProductForm: ProductModel = {
@@ -24,7 +23,6 @@ export const CreateProductPage = () => {
     price: 0,
     status: true,
     stock: 0,
-    color: '#000000',
     supplier_id: 0,
   };
 
@@ -50,18 +48,11 @@ export const CreateProductPage = () => {
       .number()
       .integer('El campo Stock debe ser un número entero')
       .required('El campo Stock es un campo requerido')
-      .min(0, 'El campo Stock debe ser al menos 1'),
+      .min(1, 'El campo Stock debe ser al menos 1'),
     status: yup.boolean().required('El campo Estado es un campo requerido'),
     supplier_id: yup
       .number()
       .required('El campo Proveedor es un campo requerido'),
-    color: yup
-      .string()
-      .required('El campo Color es un campo requerido')
-      .matches(
-        /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/,
-        'El campo Color debe tener un formato hexadecimal válido'
-      ),
   });
 
   const formik = useFormik({
@@ -162,16 +153,6 @@ export const CreateProductPage = () => {
                   <MenuItem value={1}>Proveedor 2</MenuItem>
                 </Select>
               </FormControl>
-            </Grid>
-            <Grid item xs='auto' sm='auto'>
-              <MuiColorInput
-                format='hex'
-                id='color'
-                name='color'
-                label='Color'
-                value={formik.values.color}
-                onChange={formik.handleChange}
-              />
             </Grid>
             <Grid item xs='auto' sm='auto' sx={{ ml: 2 }}>
               <FormControlLabel

@@ -13,7 +13,7 @@ export { UpdateUserPage } from './main/users/update/UpdateUserPage';
 
 // Product module
 export { ListProductPage } from './main/products/List/ListProductPage';
-export { CreateProductPage } from './main/products/create/CreateProductPage';
+export { CreateProductPage } from './main/products/create/create-product.page';
 export { UpdateProductPage } from './main/products/update/UpdateProductPage';
 
 // Customer module
