@@ -5,7 +5,7 @@ import {
   buttonContainerStyles,
   buttonStyles,
   containerStyles,
-} from './ListProductStyles';
+} from './list-product.styles';
 
 import { RootLayout } from '../../root.layout';
 import { TableComponent } from '../../../../components';
@@ -19,8 +19,8 @@ export const ListProductPage = () => {
           <Grid item xs={12} sx={buttonContainerStyles}>
             <Button
               variant='contained'
-              sx={buttonStyles}
               href='/product/create'
+              sx={buttonStyles}
             >
               <Add />
             </Button>

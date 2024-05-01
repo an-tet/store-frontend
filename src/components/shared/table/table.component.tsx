@@ -15,13 +15,13 @@ import {
   TableContainer,
   TablePagination,
 } from '@mui/material';
-import { TablePropsInterface } from '../interfaces/TablePropsInterface';
+import { TablePropsInterface } from '../interfaces/table-props.interface';
 import {
   containerStyles,
   inputStyles,
   searchTableStyles,
   tableStyles,
-} from './TableStyles';
+} from './table.styles';
 
 export const TableComponent = (props: TablePropsInterface) => {
   const { headers, searchItem, actions } = props;
