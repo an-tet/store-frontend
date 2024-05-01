@@ -15,8 +15,8 @@ import {
 } from '@mui/material';
 import { AuthLayout } from './auth.layout';
 import { useFormik } from 'formik';
-import { loginValidationSchema } from './login.validation';
 import { LoginModel } from '../../../models/login.model';
+import { loginValidationSchema } from './login.validation';
 
 export const LoginPage = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -26,11 +26,18 @@ export const LoginPage = () => {
     password: '',
   };
 
-  const formik = useFormik({
+  const {
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isSubmitting,
+    touched,
+    errors,
+    values,
+  } = useFormik({
     initialValues: initialLoginForm,
     validationSchema: loginValidationSchema,
     onSubmit: (formValues) => {
-      // TODO: Implement login logic with redux store
       alert(JSON.stringify(formValues, null, 2));
       navigate('/');
     },
@@ -38,7 +45,7 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout title='Inicio de sesión'>
-      <Grid component='form' onSubmit={formik.submitForm}>
+      <Grid component='form' onSubmit={handleSubmit}>
         <Grid
           container
           direction='column'
@@ -51,11 +58,11 @@ export const LoginPage = () => {
               name='email'
               label='Correo electrónico'
               variant='outlined'
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={touched.email && Boolean(errors.email)}
+              helperText={touched.email && errors.email}
             />
           </Grid>
 
@@ -67,16 +74,21 @@ export const LoginPage = () => {
               name='password'
               label='Contraseña'
               variant='outlined'
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.password && Boolean(formik.errors.password)}
-              helperText={formik.touched.password && formik.errors.password}
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={touched.password && Boolean(errors.password)}
+              helperText={touched.password && errors.password}
             />
           </Grid>
           <Grid container sx={{ justifyContent: 'center', mb: 4 }}>
             <Grid item>
-              <Button variant='contained' type='submit' name='login-button'>
+              <Button
+                variant='contained'
+                type='submit'
+                name='login-button'
+                disabled={isSubmitting}
+              >
                 Iniciar sesión
               </Button>
             </Grid>
