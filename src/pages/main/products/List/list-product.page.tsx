@@ -9,7 +9,7 @@ import {
 
 import { RootLayout } from '../../root.layout';
 import { TableComponent } from '../../../../components';
-import { products } from '../../../../data/ProductMock';
+import { productsMock } from '../../../../data/product.mock';
 
 export const ListProductPage = () => {
   return (
@@ -25,7 +25,7 @@ export const ListProductPage = () => {
               <Add />
             </Button>
           </Grid>
-          <TableComponent {...products} />
+          <TableComponent {...productsMock} />
         </Grid>
       </RootLayout>
     </>

@@ -1,7 +1,7 @@
 import { TablePropsInterface } from '../components/shared/interfaces/table-props.interface';
 
 // TODO: Replace the following mock data with a call to the API
-export const products: TablePropsInterface = {
+export const productsMock: TablePropsInterface = {
   headers: [
     { key: 'id', text: 'id' },
     { key: 'name', text: 'Nombre' },

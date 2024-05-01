@@ -2,7 +2,7 @@ import { RootLayout } from '../../root.layout';
 import { ProductModel } from '../../../../models/product.model';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { wordsAndSpaces } from '../../../../constants/RegexPatterns';
+import { wordsAndSpaces } from '../../../../constants/regex-patterns.constant';
 import {
   Button,
   FormControl,
