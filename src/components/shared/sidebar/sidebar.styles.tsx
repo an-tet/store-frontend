@@ -7,6 +7,7 @@ import './Sidebar.css';
 
 const hideDrawer = (theme: Theme = blueTheme): CSSObject => ({
   width: 0,
+  visibility: 'hidden',
   backgroundColor: 'transparent',
   color: 'transparent',
   height: `calc(100% - ${theme.spacing(3)})`,
@@ -35,6 +36,7 @@ export const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme = blueTheme, open }) => ({
   color: theme.palette.getContrastText(theme.palette.warning.light),
+  visibility: 'visible',
   width: 240,
   flexShrink: 0,
   whiteSpace: 'nowrap',

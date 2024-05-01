@@ -1,4 +1,4 @@
-import { Drawer } from './SidebarStyles';
+import { Drawer } from './sidebar.styles';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -15,7 +15,7 @@ import {
 
 export function SidebarComponent({ state }: { state: boolean }) {
   return (
-    <Drawer id='sidebar' variant='permanent' open={state}>
+    <Drawer data-testid='sidebar' variant='permanent' open={state}>
       <List>
         <Tooltip title='Logo' placement='top'>
           <ListItem
