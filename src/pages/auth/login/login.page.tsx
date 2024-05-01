@@ -17,6 +17,7 @@ import { AuthLayout } from './auth.layout';
 import { useFormik } from 'formik';
 import { LoginModel } from '../../../models/login.model';
 import { loginValidationSchema } from './login.validation';
+import { ArrowForwardIos } from '@mui/icons-material';
 
 export const LoginPage = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -26,22 +27,15 @@ export const LoginPage = () => {
     password: '',
   };
 
-  const {
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    isSubmitting,
-    touched,
-    errors,
-    values,
-  } = useFormik({
-    initialValues: initialLoginForm,
-    validationSchema: loginValidationSchema,
-    onSubmit: (formValues) => {
-      alert(JSON.stringify(formValues, null, 2));
-      navigate('/');
-    },
-  });
+  const { handleChange, handleBlur, handleSubmit, touched, errors, values } =
+    useFormik({
+      initialValues: initialLoginForm,
+      validationSchema: loginValidationSchema,
+      onSubmit: (formValues) => {
+        alert(JSON.stringify(formValues, null, 2));
+        navigate('/');
+      },
+    });
 
   return (
     <AuthLayout title='Inicio de sesión'>
@@ -83,19 +77,21 @@ export const LoginPage = () => {
           </Grid>
           <Grid container sx={{ justifyContent: 'center', mb: 4 }}>
             <Grid item>
-              <Button
-                variant='contained'
-                type='submit'
-                name='login-button'
-                disabled={isSubmitting}
-              >
+              <Button variant='contained' type='submit' name='login-button'>
                 Iniciar sesión
               </Button>
             </Grid>
           </Grid>
 
-          <Grid container sx={{ justifyContent: 'space-between' }}>
-            <Grid item xs={6}>
+          <Grid
+            container
+            sx={{
+              justifyContent: { lg: 'space-between' },
+              alignItems: { xs: 'center' },
+            }}
+            direction={{ xs: 'column', lg: 'row' }}
+          >
+            <Grid item xs={12} lg={6}>
               <FormControlLabel
                 control={<Checkbox size='small' />}
                 label={
@@ -114,7 +110,8 @@ export const LoginPage = () => {
             </Grid>
             <Grid
               item
-              xs={6}
+              xs={12}
+              lg={6}
               sx={{
                 fontSize: '0.8rem',
                 display: 'flex',
@@ -129,6 +126,12 @@ export const LoginPage = () => {
                 color={'primary.light'}
               >
                 ¿Olvidaste tu contraseña?
+                <ArrowForwardIos
+                  sx={{
+                    fontSize: '.8rem',
+                    verticalAlign: 'middle',
+                  }}
+                />
               </Link>
             </Grid>
           </Grid>
