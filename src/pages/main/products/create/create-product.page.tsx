@@ -1,4 +1,4 @@
-import { RootLayout } from '../../RootLayout';
+import { RootLayout } from '../../root.layout';
 import { ProductModel } from '../../../../models/product.model';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -66,11 +66,7 @@ export const CreateProductPage = () => {
   return (
     <RootLayout>
       <Grid container sx={containerFormStyles}>
-        <Grid
-          component='form'
-          onSubmit={formik.handleSubmit}
-          style={formStyles}
-        >
+        <Grid component='form' onSubmit={formik.handleSubmit} sx={formStyles}>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
               <TextField

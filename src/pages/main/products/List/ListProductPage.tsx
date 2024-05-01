@@ -7,7 +7,7 @@ import {
   containerStyles,
 } from './ListProductStyles';
 
-import { RootLayout } from '../../RootLayout';
+import { RootLayout } from '../../root.layout';
 import { TableComponent } from '../../../../components';
 import { products } from '../../../../data/ProductMock';
 

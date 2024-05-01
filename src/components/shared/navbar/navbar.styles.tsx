@@ -6,17 +6,16 @@ import { AppBarPropsInterface } from '../interfaces/AppBarPropsInterface';
 export const NavbarStyles = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarPropsInterface>(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  width: `100%`,
   boxShadow: 'none',
   paddingLeft: theme.spacing(9),
+  zIndex: theme.zIndex.drawer,
+  backgroundColor: theme.palette.background.paper,
   transition: theme.transitions.create(['width', 'padding'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
     paddingLeft: 0,
-    width: `calc(100% )`,
     transition: theme.transitions.create(['width', 'padding'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,

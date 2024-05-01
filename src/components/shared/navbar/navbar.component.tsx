@@ -20,7 +20,7 @@ export const NavbarComponent = ({
   };
 
   return (
-    <NavbarStyles position='fixed' open={state} color={'transparent'} sx={{}}>
+    <NavbarStyles position='fixed' open={state}>
       <Toolbar
         sx={{
           display: 'flex',

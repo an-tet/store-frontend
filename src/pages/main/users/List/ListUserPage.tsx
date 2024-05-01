@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
 import { Typography } from '@mui/material';
-import { RootLayout } from '../../RootLayout';
+import { RootLayout } from '../../root.layout';
 
 export const ListUserPage = () => {
   return (

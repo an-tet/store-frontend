@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 
 import { Image } from '@mui/icons-material';
-import { RootLayout } from '../RootLayout';
+import { RootLayout } from '../root.layout';
 
 export const HomePage = () => {
   return (

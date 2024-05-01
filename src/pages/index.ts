@@ -3,7 +3,7 @@ export { LoginPage } from './auth/login/login.page';
 export { RecoveryPage } from './auth/recovery/recovery.page';
 
 // Main module
-export { RootPage } from './main/RootPage';
+export { RootPage } from './main/root.page';
 export { HomePage } from './main/home/HomePage';
 
 // User module
