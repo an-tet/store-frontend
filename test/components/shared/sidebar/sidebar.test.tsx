@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { SidebarComponent } from '../../../../src/components/shared/sidebar/sidebar.component';
+import { SidebarComponent } from '../../../../src/components';
 
 describe('NavbarComponent', () => {
   test('should render sidebar component', () => {
