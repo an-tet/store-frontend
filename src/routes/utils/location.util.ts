@@ -5,6 +5,11 @@ export const resolvePathname = (pathname: string): string => {
       '/product/edit' ||
       '/product/delete':
       return 'Producto';
+    case '/customer/list' ||
+      '/customer/create' ||
+      '/customer/edit' ||
+      '/customer/delete':
+      return 'Cliente';
     default:
       return 'Principal';
   }
