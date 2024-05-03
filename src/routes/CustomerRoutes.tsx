@@ -2,7 +2,7 @@ import { Navigate, Outlet, RouteObject } from 'react-router-dom';
 import {
   CreateCustomerPage,
   ListCustomerPage,
-  UpdateCustomerPage,
+  EditCustomerPage,
 } from '../pages';
 
 export const CustomerRoutes: RouteObject = {
@@ -12,6 +12,6 @@ export const CustomerRoutes: RouteObject = {
     { path: '', element: <Navigate to='list' /> },
     { index: true, path: 'list', element: <ListCustomerPage /> },
     { path: 'create', element: <CreateCustomerPage /> },
-    { path: 'update/:id', element: <UpdateCustomerPage /> },
+    { path: 'edit/:id', element: <EditCustomerPage /> },
   ],
 };

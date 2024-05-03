@@ -19,4 +19,4 @@ export { UpdateProductPage } from './main/products/update/update-product.page';
 // Customer module
 export { ListCustomerPage } from './main/customer/List/list-customer.page';
 export { CreateCustomerPage } from './main/customer/create/create-customer.page';
-export { UpdateCustomerPage } from './main/customer/update/update-customer.page';
+export { EditCustomerPage } from './main/customer/update/edit-customer.page';

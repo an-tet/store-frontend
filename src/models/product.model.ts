@@ -1,9 +1,9 @@
 export type ProductModel = {
-  id?: number;
+  id?: string;
   name: string;
   detail: string;
   price: number;
   stock: number;
-  status: boolean;
-  supplier_id: number;
+  status: string;
+  supplier: string;
 };

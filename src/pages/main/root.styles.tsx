@@ -1,7 +1,9 @@
 import { SxProps, Theme } from '@mui/material';
-import { blueTheme } from '../../../../theme/blueTheme';
+import { blueTheme } from '../../theme/blueTheme';
 
-export const containerStyles: SxProps<Theme> = (theme: Theme = blueTheme) => {
+export const containerListStyles: SxProps<Theme> = (
+  theme: Theme = blueTheme
+) => {
   const { breakpoints } = theme;
   return {
     m: '0 auto 10px',
@@ -14,9 +16,9 @@ export const containerStyles: SxProps<Theme> = (theme: Theme = blueTheme) => {
   };
 };
 
-export const buttonContainerStyles: SxProps<Theme> = {
+export const buttonContainerListStyles: SxProps<Theme> = {
   display: 'flex',
   justifyContent: 'flex-end',
 };
 
-export const buttonStyles: SxProps<Theme> = { backgroundColor: 'primary' };
+export const buttonListStyles: SxProps<Theme> = { backgroundColor: 'primary' };
