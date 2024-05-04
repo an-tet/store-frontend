@@ -4,6 +4,6 @@ export type ProductModel = {
   detail: string;
   price: number;
   stock: number;
-  status: string;
+  status: boolean;
   supplier: string;
 };

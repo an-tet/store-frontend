@@ -13,7 +13,7 @@ export class ProductMapper {
       detail: data.detail,
       price: data.price,
       stock: data.stock,
-      status: this.activeToModelShape(data.status),
+      status: data.status,
       supplier_id: this.supplierToModelShape(supplierList, data.supplier),
     };
   };
@@ -27,17 +27,9 @@ export class ProductMapper {
       detail: entity.detail,
       price: entity.price,
       stock: entity.stock,
-      status: this.activeToEntityShape(entity.status),
+      status: entity.status,
       supplier: this.supplierToEntityShape(supplierList, entity.supplier_id),
     };
-  };
-
-  private static activeToEntityShape = (active: boolean): string => {
-    return active ? 'Activo' : 'Inactivo';
-  };
-
-  private static activeToModelShape = (active: string): boolean => {
-    return active === 'Activo' ? true : false;
   };
 
   private static supplierToEntityShape = (
