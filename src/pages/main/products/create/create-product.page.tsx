@@ -1,5 +1,5 @@
 import { RootLayout } from '../../root.layout';
-import { ProductModel } from '../../../../models/product.model';
+import { ProductModel } from '../../../../models/product/product.model';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { wordsAndSpaces } from '../../../../constants/regex-patterns.constant';
@@ -154,8 +154,8 @@ export const CreateProductPage = () => {
               <FormControlLabel
                 control={
                   <Switch
-                    id='status'
-                    name='status'
+                    id='active'
+                    name='active'
                     checked={formik.values.status}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}

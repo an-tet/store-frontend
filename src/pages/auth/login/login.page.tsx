@@ -15,7 +15,7 @@ import {
 } from '@mui/material';
 import { AuthLayout } from './auth.layout';
 import { useFormik } from 'formik';
-import { LoginModel } from '../../../models/login.model';
+import { LoginModel } from '../../../models/auth/login.model';
 import { loginValidationSchema } from './login.validation';
 import { ArrowForwardIos } from '@mui/icons-material';
 

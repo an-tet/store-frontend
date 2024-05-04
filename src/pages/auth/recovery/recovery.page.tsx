@@ -8,7 +8,7 @@ import { ArrowBackIos } from '@mui/icons-material';
 import { AuthLayout } from '../login/auth.layout';
 import { useFormik } from 'formik';
 import { recoveryValidationSchema } from './recovery.validation';
-import { RecoveryModel } from '../../../models/recovery.model';
+import { RecoveryModel } from '../../../models/auth/recovery.model';
 
 export const RecoveryPage = () => {
   const navigate: NavigateFunction = useNavigate();

@@ -1,5 +1,4 @@
-import { DataGrid, gridClasses, useGridApiRef } from '@mui/x-data-grid';
-import { useEffect } from 'react';
+import { DataGrid, gridClasses } from '@mui/x-data-grid';
 import { grey } from '@mui/material/colors';
 import { Grid } from '@mui/material';
 import { TablePropsInterface } from '../interfaces/customer-table.interface';
@@ -8,14 +7,6 @@ import { SearchToolbar } from './searchToolbar/search-toolbar.component';
 import { RowSpacing } from './row-spacing.component';
 
 export const TableComponent = (data: TablePropsInterface) => {
-  const apiRef = useGridApiRef();
-
-  useEffect(() => {
-    if (apiRef.current) {
-      apiRef.current.autosizeColumns({ expand: true });
-    }
-  }, [apiRef]);
-
   return (
     <>
       <Grid sx={{ minHeight: 400, width: '100%', mt: 3 }}>
@@ -29,7 +20,6 @@ export const TableComponent = (data: TablePropsInterface) => {
           getRowSpacing={RowSpacing()}
           editMode='row'
           density='comfortable'
-          apiRef={apiRef}
           sx={{
             [`& .${gridClasses.row}`]: {
               bgcolor: (theme) =>

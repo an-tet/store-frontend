@@ -1,16 +1,15 @@
-import { ProductModel } from '../models/product.model';
-import { GridRowsProp } from '@mui/x-data-grid';
+import { ProductEntity } from '../models/product/product.entity';
 
 // TODO: Replace the following mock data with a call to the API
-export const productsMock: GridRowsProp<ProductModel> = [
+export const productsMock: ProductEntity[] = [
   {
     id: '1',
     name: 'computador',
     detail: 'detail',
     price: 100,
     stock: 10,
-    status: 'active',
-    supplier: 'supplier',
+    status: true,
+    supplier_id: 1,
   },
   {
     id: '2',
@@ -18,8 +17,8 @@ export const productsMock: GridRowsProp<ProductModel> = [
     detail: 'detail',
     price: 100,
     stock: 10,
-    status: 'active',
-    supplier: 'supplier',
+    status: true,
+    supplier_id: 2,
   },
   {
     id: '3',
@@ -27,8 +26,8 @@ export const productsMock: GridRowsProp<ProductModel> = [
     detail: 'detail',
     price: 100,
     stock: 10,
-    status: 'active',
-    supplier: 'supplier',
+    status: true,
+    supplier_id: 3,
   },
   {
     id: '4',
@@ -36,8 +35,8 @@ export const productsMock: GridRowsProp<ProductModel> = [
     detail: 'detail',
     price: 100,
     stock: 10,
-    status: 'active',
-    supplier: 'supplier',
+    status: true,
+    supplier_id: 1,
   },
   {
     id: '5',
@@ -45,8 +44,8 @@ export const productsMock: GridRowsProp<ProductModel> = [
     detail: 'detail',
     price: 100,
     stock: 10,
-    status: 'active',
-    supplier: 'supplier',
+    status: true,
+    supplier_id: 1,
   },
   {
     id: '6',
@@ -54,7 +53,7 @@ export const productsMock: GridRowsProp<ProductModel> = [
     detail: 'detail',
     price: 100,
     stock: 10,
-    status: 'active',
-    supplier: 'supplier',
+    status: true,
+    supplier_id: 3,
   },
 ];

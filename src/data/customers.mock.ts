@@ -1,5 +1,5 @@
 import { GridRowsProp } from '@mui/x-data-grid';
-import { CustomerModel } from '../models/customer.model';
+import { CustomerModel } from '../models/customer/customer.model';
 
 // TODO: Replace the following mock data with a call to the API
 export const customersMock: GridRowsProp<CustomerModel> = [
