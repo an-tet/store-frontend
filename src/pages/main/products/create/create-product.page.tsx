@@ -9,14 +9,12 @@ import {
   FormControlLabel,
   Grid,
   InputLabel,
-  Link,
   MenuItem,
   Select,
   Switch,
   TextField,
 } from '@mui/material';
 import { containerFormStyles, formStyles } from './create-product.styles';
-import { ArrowBackIos } from '@mui/icons-material';
 import { BackLink } from '../../../../components/shared/backLink/back-link.component';
 
 export const CreateProductPage = () => {
