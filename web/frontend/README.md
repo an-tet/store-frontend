@@ -2,15 +2,18 @@
 
 ## Description
 
-Portable sales system for small enterprises without costs and running in all places desktop, web and mobile environment. The application stores the data in cloud storage tear like Google Drive and OneDrive, resulting in minimal costs over time.
+This project is a web application for a store management system. The application is the frontend of the store system and is responsible for the user interface and user experience. The application is built using React and Typescript.
 
 ## Setup
 
-### Environment variables
+<!-- ### Environment variables
+
+> [!NOTE]
+> Avoid this configuration
 
 Use the `.env` file to set the environment variables.
 
-- ``SONARQUBE_TOKEN``: Token to connect to SonarQube used in `./sonarqube/sonarscan.js` file
+- ``SONARQUBE_TOKEN``: Token to connect to SonarQube used in `./sonarqube/sonarscan.js` file -->
 
 ### Dependencies
 
@@ -26,7 +29,7 @@ Then you can install the project dependencies running the command bellow:
 yarn
 ```
 
-### SonarQube
+<!-- ### SonarQube
 
 For running SonarQube on community edition you need to get `podman`, `docker` or `SonarQube` installed in your own machine. after that you need to create bellow folder structure in your project root:
 
@@ -38,7 +41,7 @@ When SonarQube have been up and the folder structure have been created, you can 
 
 ```bash
 node ./sonarqube/sonarscan.js
-```
+``` -->
 
 ### Execution
 
@@ -53,8 +56,18 @@ yarn start
 
 ## Testing
 
+### Unit tests
+
 For running the tests we use `vitest` as test runner and `jest` as test framework. You can run the tests running the command bellow:
 
 ```node
 yarn test
+```
+
+### Coverage
+
+For running the coverage we use `vitest` as test runner and `jest` as test framework. You can run the coverage running the command bellow:
+
+```node
+yarn coverage
 ```
