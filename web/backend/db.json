@@ -1,0 +1,300 @@
+{
+  "costumer": [
+    {
+      "id": "67fc559b-fdad-4ffb-8571-dcd74aa42094",
+      "documentType": "PEP",
+      "dni": 80253,
+      "fullName": "Garry Watsica",
+      "email": "Isaias_Christiansen35@hotmail.com",
+      "phone": "1-513-473-9476 x539",
+      "birthday": "1963-08-21T19:48:17.889Z"
+    },
+    {
+      "id": "50840b36-122a-4ce2-aeea-dc645bf38758",
+      "documentType": "CC",
+      "dni": 54961,
+      "fullName": "Courtney Erdman",
+      "email": "Gaetano_Okuneva57@hotmail.com",
+      "phone": "642-311-4223 x552",
+      "birthday": "1984-11-11T20:11:30.695Z"
+    },
+    {
+      "id": "30f718c1-56c8-44ec-83e0-f905c2344057",
+      "documentType": "CE",
+      "dni": 75043,
+      "fullName": "Ollie McCullough",
+      "email": "Amelia9@yahoo.com",
+      "phone": "689-956-8443 x134",
+      "birthday": "1989-03-18T15:08:23.686Z"
+    },
+    {
+      "id": "f15a5bee-4277-454b-a603-0fe22c17ef85",
+      "documentType": "NIE",
+      "dni": 38874,
+      "fullName": "Amos Schulist I",
+      "email": "Newell_Harvey54@yahoo.com",
+      "phone": "(389) 929-8432 x4365",
+      "birthday": "1993-07-13T08:44:09.781Z"
+    },
+    {
+      "id": "d4a6a0e8-e6e1-4d06-a29b-5212c7efe99b",
+      "documentType": "TIE",
+      "dni": 77651,
+      "fullName": "Brandon Abernathy",
+      "email": "Nikita0@yahoo.com",
+      "phone": "(222) 691-3134 x6645",
+      "birthday": "1986-07-30T00:01:27.533Z"
+    },
+    {
+      "id": "eebe547b-728a-4ff0-8f2c-964fbaaac2e8",
+      "documentType": "TI",
+      "dni": 736,
+      "fullName": "Jenny Hauck",
+      "email": "Rhianna45@gmail.com",
+      "phone": "724.239.6518 x2691",
+      "birthday": "1962-11-08T15:48:46.071Z"
+    },
+    {
+      "id": "a5032916-dabc-4eca-8d37-6928c6875761",
+      "documentType": "TIE",
+      "dni": 61984,
+      "fullName": "Andres Erdman",
+      "email": "John.Abernathy@gmail.com",
+      "phone": "265.921.5571",
+      "birthday": "1978-08-23T11:34:21.839Z"
+    },
+    {
+      "id": "506245f0-ac56-4be0-b0da-6e6edff45da2",
+      "documentType": "TIE",
+      "dni": 77801,
+      "fullName": "Jeffery Haley",
+      "email": "Dillan_Marquardt95@yahoo.com",
+      "phone": "1-460-762-8247",
+      "birthday": "1958-10-25T06:49:14.901Z"
+    },
+    {
+      "id": "e2ffa222-b33c-410c-85b4-98c372fab264",
+      "documentType": "DNI",
+      "dni": 89052,
+      "fullName": "Caroline Rice",
+      "email": "Myrna_Hayes54@yahoo.com",
+      "phone": "613.223.7689 x887",
+      "birthday": "1993-12-10T19:27:52.093Z"
+    },
+    {
+      "id": "2f66e169-0576-4f51-9672-c6a414eeaa4e",
+      "documentType": "TI",
+      "dni": 4465,
+      "fullName": "Ernest Homenick",
+      "email": "Lula_Labadie@gmail.com",
+      "phone": "1-523-691-0389 x377",
+      "birthday": "1970-05-22T16:46:14.046Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "fc43459d-b54a-4dda-8527-0c9653504a3b",
+      "documentType": "PEP",
+      "dni": 24609,
+      "fullName": "Sylvester Anderson",
+      "email": "Maximus.Kiehn60@gmail.com",
+      "phone": "460-807-1470 x89772",
+      "password": "mQkhlEBxZHurOC_",
+      "birthday": "1970-04-05T12:12:48.771Z",
+      "shirtSize": "M",
+      "status": true
+    },
+    {
+      "id": "e9d0ac8c-0048-4c91-8575-d463d23c1125",
+      "documentType": "CE",
+      "dni": 80435,
+      "fullName": "Jody Fisher V",
+      "email": "Audrey61@yahoo.com",
+      "phone": "1-409-736-4407 x199",
+      "password": "vIHzxf9k3Be7bTX",
+      "birthday": "2000-11-08T04:21:35.093Z",
+      "shirtSize": "S",
+      "status": false
+    },
+    {
+      "id": "8b53fd43-dc9c-4ce7-9c26-18d60e8e1fc0",
+      "documentType": "PEP",
+      "dni": 30074,
+      "fullName": "Charlie Wintheiser",
+      "email": "Marcel.Raynor@hotmail.com",
+      "phone": "518-639-9738 x017",
+      "password": "EsO9VzP3Ch8N5tx",
+      "birthday": "1987-07-23T03:54:21.629Z",
+      "shirtSize": "XXL",
+      "status": false
+    },
+    {
+      "id": "84f66f57-b658-4682-bccc-a7dcff0e6550",
+      "documentType": "RC",
+      "dni": 68880,
+      "fullName": "Nancy Barrows",
+      "email": "Syble_Champlin@gmail.com",
+      "phone": "1-931-453-8915 x4908",
+      "password": "ak6cRSLAwdHlNZn",
+      "birthday": "1995-01-14T03:44:38.016Z",
+      "shirtSize": "XXL",
+      "status": true
+    },
+    {
+      "id": "22466d47-d8aa-4a10-a34e-9d9747dfaada",
+      "documentType": "TIE",
+      "dni": 99705,
+      "fullName": "Sue Gerhold",
+      "email": "Toby_Greenfelder@hotmail.com",
+      "phone": "(373) 560-0904 x8489",
+      "password": "jfl5VcMZnAaMaXB",
+      "birthday": "1977-03-13T07:49:06.350Z",
+      "shirtSize": "M",
+      "status": false
+    }
+  ],
+  "products": [
+    {
+      "id": "c9d933a9-8184-43b5-a5fe-0922349ecd8f",
+      "name": "Luxurious Cotton Chips",
+      "detail": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+      "price": "192.00",
+      "stock": 1,
+      "status": true,
+      "supplierId": "bbcb319a-5bc4-47a9-8bf4-b5dc67816e3e"
+    },
+    {
+      "id": "cf39db55-92d3-42da-93b9-ea7d4e3b604d",
+      "name": "Practical Wooden Bacon",
+      "detail": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+      "price": "348.00",
+      "stock": 1,
+      "status": true,
+      "supplierId": "6115da40-4022-4f64-a652-57e97d5d1ed9"
+    },
+    {
+      "id": "91a57ae2-1ed5-4e22-8c9a-8781b05b1362",
+      "name": "Generic Bronze Computer",
+      "detail": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+      "price": "781.00",
+      "stock": 0,
+      "status": false,
+      "supplierId": "ea5f7972-fa08-4bd5-a230-92871cec3217"
+    },
+    {
+      "id": "e9e89f25-3c1a-44f5-8a4a-d44dc65784af",
+      "name": "Electronic Concrete Hat",
+      "detail": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+      "price": "203.00",
+      "stock": 1,
+      "status": false,
+      "supplierId": "4dbb9c8b-0621-4715-a2da-321e55e7a575"
+    },
+    {
+      "id": "9b972a47-db8b-4e94-9b4e-f169a1620407",
+      "name": "Rustic Rubber Hat",
+      "detail": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+      "price": "845.00",
+      "stock": 1,
+      "status": false,
+      "supplierId": "191843c0-801f-4df4-abe5-d7d0d9723f41"
+    },
+    {
+      "id": "03636953-61d1-4f50-9bda-a6343abb8921",
+      "name": "Tasty Frozen Fish",
+      "detail": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+      "price": "543.00",
+      "stock": 0,
+      "status": true,
+      "supplierId": "d67e6237-084a-4f84-985f-5534cc53c4f6"
+    },
+    {
+      "id": "35813e47-b24f-4dd3-a57a-422128fc7410",
+      "name": "Awesome Granite Hat",
+      "detail": "The Football Is Good For Training And Recreational Purposes",
+      "price": "881.00",
+      "stock": 0,
+      "status": false,
+      "supplierId": "bf9b2191-ad57-4158-9585-ec9b0ad9413d"
+    },
+    {
+      "id": "3c047be3-5b05-4eee-a321-5cb4fc7103e6",
+      "name": "Generic Frozen Shoes",
+      "detail": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+      "price": "683.00",
+      "stock": 1,
+      "status": false,
+      "supplierId": "60a5111e-b6d0-4f36-b1bb-7aa10e46b104"
+    },
+    {
+      "id": "e6a33d47-d7f6-475f-9958-f5829dea78a5",
+      "name": "Gorgeous Granite Shoes",
+      "detail": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+      "price": "456.00",
+      "stock": 0,
+      "status": false,
+      "supplierId": "14d9972a-fdaa-4a9c-8e1e-90da09dd9ab0"
+    },
+    {
+      "id": "dd08b595-468b-4120-8294-d499181589d7",
+      "name": "Awesome Granite Salad",
+      "detail": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+      "price": "289.00",
+      "stock": 1,
+      "status": true,
+      "supplierId": "476c15dc-bd37-43e9-9374-49e2f123faa9"
+    }
+  ],
+  "supplier": [
+    {
+      "id": "bbcb319a-5bc4-47a9-8bf4-b5dc67816e3e",
+      "name": "Halvorson, Raynor and Kling",
+      "phone": "1-214-997-8760 x96123"
+    },
+    {
+      "id": "6115da40-4022-4f64-a652-57e97d5d1ed9",
+      "name": "Hartmann - Raynor",
+      "phone": "(900) 870-5252 x15483"
+    },
+    {
+      "id": "ea5f7972-fa08-4bd5-a230-92871cec3217",
+      "name": "Graham, Kautzer and Hand",
+      "phone": "1-425-607-4260"
+    },
+    {
+      "id": "4dbb9c8b-0621-4715-a2da-321e55e7a575",
+      "name": "Harvey - Predovic",
+      "phone": "(622) 808-6470 x912"
+    },
+    {
+      "id": "191843c0-801f-4df4-abe5-d7d0d9723f41",
+      "name": "Mohr, Brakus and Windler",
+      "phone": "774-317-5810"
+    },
+    {
+      "id": "d67e6237-084a-4f84-985f-5534cc53c4f6",
+      "name": "Kohler, Bernhard and Larson",
+      "phone": "1-852-446-5509 x4665"
+    },
+    {
+      "id": "bf9b2191-ad57-4158-9585-ec9b0ad9413d",
+      "name": "Rohan - Zulauf",
+      "phone": "1-376-812-0165 x706"
+    },
+    {
+      "id": "60a5111e-b6d0-4f36-b1bb-7aa10e46b104",
+      "name": "Crona, Koss and Moen",
+      "phone": "616.883.9881 x954"
+    },
+    {
+      "id": "14d9972a-fdaa-4a9c-8e1e-90da09dd9ab0",
+      "name": "Glover, Kuhic and Mayer",
+      "phone": "237.983.8974 x5683"
+    },
+    {
+      "id": "476c15dc-bd37-43e9-9374-49e2f123faa9",
+      "name": "Wuckert - O'Hara",
+      "phone": "778.538.8136 x397"
+    }
+  ]
+}
