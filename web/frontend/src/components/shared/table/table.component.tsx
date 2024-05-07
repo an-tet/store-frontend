@@ -8,26 +8,24 @@ import { RowSpacing } from './row-spacing.component';
 
 export const TableComponent = (data: TablePropsInterface) => {
   return (
-    <>
-      <Grid sx={{ minHeight: 400, width: '100%', mt: 3 }}>
-        <DataGrid
-          ignoreDiacritics
-          slots={{
-            noRowsOverlay: CustomNoRowsOverlay,
-            toolbar: SearchToolbar,
-          }}
-          {...data}
-          getRowSpacing={RowSpacing()}
-          editMode='row'
-          density='comfortable'
-          sx={{
-            [`& .${gridClasses.row}`]: {
-              bgcolor: (theme) =>
-                theme.palette.mode === 'light' ? grey[200] : grey[900],
-            },
-          }}
-        />
-      </Grid>
-    </>
+    <Grid sx={{ minHeight: 400, width: '100%', mt: 3 }}>
+      <DataGrid
+        ignoreDiacritics
+        slots={{
+          noRowsOverlay: CustomNoRowsOverlay,
+          toolbar: SearchToolbar,
+        }}
+        {...data}
+        getRowSpacing={RowSpacing()}
+        editMode='row'
+        density='comfortable'
+        sx={{
+          [`& .${gridClasses.row}`]: {
+            bgcolor: (theme) =>
+              theme.palette.mode === 'light' ? grey[200] : grey[900],
+          },
+        }}
+      />
+    </Grid>
   );
 };
