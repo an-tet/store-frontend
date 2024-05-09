@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   postgres:
-    image: postgres:lastest
+    image: postgres:16.2
     container_name: postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
@@ -12,3 +12,6 @@ services:
       - '5432:5432'
     volumes:
       - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
