@@ -10,6 +10,7 @@ import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Customer } from './entities/customer.entity';
 import { Repository } from 'typeorm';
+import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
 @Injectable()
 export class CustomersService {
@@ -29,8 +30,12 @@ export class CustomersService {
     }
   }
 
-  findAll() {
-    return this.customerRepository.find();
+  findAll(paginationDto: PaginationDto) {
+    const { limit = 10, offSet = 0 } = paginationDto;
+    return this.customerRepository.find({
+      take: limit,
+      skip: offSet,
+    });
   }
 
   findOne(id: string) {
@@ -58,13 +63,12 @@ export class CustomersService {
 
     if (!customer) throw new NotFoundException();
 
-    return this.customerRepository.delete(customer);
+    return this.customerRepository.delete(id);
   }
 
   handleExceptions(error: any) {
     this.logger.error(error);
 
-    // Error: duplicate key value violates unique constraint
     if (error.code === '23505')
       throw new HttpException('customer already exists', HttpStatus.CONFLICT);
 
