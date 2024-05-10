@@ -1,8 +1,9 @@
 import { IsIn, IsOptional, IsString } from 'class-validator';
+import { documentTypes } from 'src/common/constants/constants';
 
 export class CreateCustomerDto {
   @IsString()
-  @IsIn(['DNI', 'NIE', 'TIE', 'PEP', 'CE', 'RC', 'CC', 'TI', 'SC', 'PAS'])
+  @IsIn(documentTypes)
   documentType: string;
 
   @IsString()

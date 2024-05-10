@@ -1,3 +1,4 @@
+import { roles } from 'src/common/constants/constants';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -5,8 +6,8 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('text', { unique: true, nullable: false })
-  username: string;
+  @Column('text', { nullable: false })
+  email: string;
 
   @Column('text', { nullable: false })
   password: string;
@@ -20,9 +21,6 @@ export class User {
   @Column('text', { nullable: false })
   fullName: string;
 
-  @Column('text', { nullable: false })
-  email: string;
-
   @Column('date', { nullable: false })
   birthday: string;
 
@@ -35,6 +33,6 @@ export class User {
   @Column('bool', { nullable: false, default: true })
   status: boolean;
 
-  @Column('text', { array: true, nullable: true, default: ['user'] })
+  @Column('text', { array: true, nullable: true, default: roles })
   roles: string[];
 }

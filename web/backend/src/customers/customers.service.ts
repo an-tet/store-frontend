@@ -51,7 +51,9 @@ export class CustomersService {
     });
 
     if (!customer)
-      throw new NotFoundException(`customer with id: "${id}" not found`);
+      throw new NotFoundException(
+        `El cliente no fue encontrado con el id: "${id}"`,
+      );
 
     await this.customerRepository.save(customer);
 
@@ -70,7 +72,7 @@ export class CustomersService {
     this.logger.error(error);
 
     if (error.code === '23505')
-      throw new HttpException('customer already exists', HttpStatus.CONFLICT);
+      throw new HttpException('El usuario ya existe', HttpStatus.CONFLICT);
 
     throw new Error('Error no controlado, contacte con el equipo técnico');
   }
