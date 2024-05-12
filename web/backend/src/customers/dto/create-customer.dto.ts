@@ -1,12 +1,12 @@
-import { IsIn, IsOptional, IsString } from 'class-validator';
-import { documentTypes } from 'src/common/constants/constants';
+import { IsEnum, IsOptional, IsString } from 'class-validator';
+import { documentType } from 'src/common/enums/document-type.enum';
 
 export class CreateCustomerDto {
   @IsString({ message: 'El tipo de documento debe ser un string' })
-  @IsIn(documentTypes, {
+  @IsEnum(documentType, {
     message:
       'El tipo de documento debe ser uno de los siguientes tipos de documento: '.concat(
-        documentTypes.join(', '),
+        Object.values(documentType).join(', '),
       ),
   })
   documentType: string;

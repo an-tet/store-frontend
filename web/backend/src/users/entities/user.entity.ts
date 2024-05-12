@@ -1,9 +1,11 @@
-import { roles } from 'src/common/constants/constants';
+import { ValidRoles } from 'src/auth/enum/valid-roles';
+import { Product } from 'src/products/entities/product.entity';
 import {
   BeforeInsert,
   BeforeUpdate,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -39,8 +41,11 @@ export class User {
   @Column('bool', { nullable: false, default: true })
   status: boolean;
 
-  @Column('text', { nullable: true, default: roles })
+  @Column('text', { nullable: true, default: ValidRoles })
   role: string;
+
+  @OneToMany(() => Product, (product) => product.user)
+  product: Product;
 
   @BeforeInsert()
   checkFieldsBeforeInsert() {

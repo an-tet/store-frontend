@@ -1,19 +1,16 @@
 import {
-  IsArray,
   IsBoolean,
   IsDateString,
   IsEmail,
-  IsIn,
+  IsEnum,
   IsOptional,
   IsString,
   MaxLength,
   MinLength,
 } from 'class-validator';
-import {
-  documentTypes,
-  roles,
-  shirtSizes,
-} from 'src/common/constants/constants';
+import { ValidRoles } from 'src/auth/enum/valid-roles';
+import { documentType } from 'src/common/enums/document-type.enum';
+import { shirtSizes } from 'src/products/enums/shirt-size.enum';
 
 export class CreateUserDto {
   @MinLength(8, { message: 'La contraseña debe tener al menos 8 caracteres' })
@@ -24,7 +21,11 @@ export class CreateUserDto {
   password: string;
 
   @IsString({ message: 'El tipo de documento debe ser un string' })
-  @IsIn(documentTypes)
+  @IsEnum(documentType, {
+    message: 'El tipo de documento debe ser uno de los siguientes: '.concat(
+      Object.values(documentType).join(', '),
+    ),
+  })
   documentType: string;
 
   @IsString({ message: 'El número de documento debe ser un string' })
@@ -46,8 +47,10 @@ export class CreateUserDto {
   phone: string;
 
   @IsString({ message: 'La dirección debe ser un string' })
-  @IsIn(shirtSizes, {
-    message: 'La talla de camiseta debe ser una talla válida',
+  @IsEnum(shirtSizes, {
+    message: 'La talla de camiseta debe ser una talla válida: '.concat(
+      Object.values(shirtSizes).join(', '),
+    ),
   })
   shirtSize: string;
 
@@ -56,8 +59,10 @@ export class CreateUserDto {
   status: boolean;
 
   @IsString({ message: 'El rol debe ser un string' })
-  @IsIn(roles, {
-    message: 'El rol debe ser uno de los siguientes: "admin", "user"',
+  @IsEnum(ValidRoles, {
+    message: 'El rol debe ser uno de los siguientes: '.concat(
+      Object.values(ValidRoles).join(', '),
+    ),
   })
   role: string;
 }
