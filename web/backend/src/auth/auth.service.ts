@@ -13,7 +13,6 @@ export class AuthService {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
-
     private readonly jwtService: JwtService,
   ) {}
 
@@ -21,7 +20,7 @@ export class AuthService {
     const { email, password } = loginUserDto;
     const user = await this.userRepository.findOne({
       where: { email },
-      select: { email: true, password: true },
+      select: { id: true, email: true, password: true },
     });
 
     if (!user || !compareSync(password, user.password))
@@ -31,7 +30,7 @@ export class AuthService {
 
     return {
       ...user,
-      token: this.getToken({ email }),
+      token: this.getToken({ id: user.id }),
     };
   }
 

@@ -55,10 +55,9 @@ export class CreateUserDto {
   @IsOptional()
   status: boolean;
 
-  @IsArray({ message: 'Los roles deben ser un array de strings' })
+  @IsString({ message: 'El rol debe ser un string' })
   @IsIn(roles, {
-    each: true,
     message: 'El rol debe ser uno de los siguientes: "admin", "user"',
   })
-  roles: string[];
+  role: string;
 }

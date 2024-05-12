@@ -12,10 +12,10 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('text', { nullable: false, select: false })
+  @Column('text', { nullable: false })
   email: string;
 
-  @Column('text', { nullable: false })
+  @Column('text', { nullable: false, select: false })
   password: string;
 
   @Column('text', { nullable: false })
@@ -39,8 +39,8 @@ export class User {
   @Column('bool', { nullable: false, default: true })
   status: boolean;
 
-  @Column('text', { array: true, nullable: true, default: roles })
-  roles: string[];
+  @Column('text', { nullable: true, default: roles })
+  role: string;
 
   @BeforeInsert()
   checkFieldsBeforeInsert() {
