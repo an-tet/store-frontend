@@ -1,7 +1,6 @@
 import { IsEmail } from 'class-validator';
 
-// TODO: Change message error in Spanish
 export class RecoveryAuthDto {
-  @IsEmail()
+  @IsEmail({}, { message: 'El email debe ser un email válido' })
   email: string;
 }

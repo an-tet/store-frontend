@@ -15,41 +15,47 @@ import {
   shirtSizes,
 } from 'src/common/constants/constants';
 
-// TODO: Change message error in Spanish
 export class CreateUserDto {
-  @MinLength(8)
-  @MaxLength(20)
-  @IsString()
+  @MinLength(8, { message: 'La contraseña debe tener al menos 8 caracteres' })
+  @MaxLength(20, {
+    message: 'La contraseña debe tener como máximo 20 caracteres',
+  })
+  @IsString({ message: 'La contraseña debe ser un string' })
   password: string;
 
-  @IsString()
+  @IsString({ message: 'El tipo de documento debe ser un string' })
   @IsIn(documentTypes)
   documentType: string;
 
-  @IsString()
+  @IsString({ message: 'El número de documento debe ser un string' })
   dni: string;
 
-  @IsString()
+  @IsString({ message: 'El nombre completo debe ser un string' })
   fullName: string;
 
-  @IsEmail()
+  @IsEmail({}, { message: 'El email debe ser un email válido' })
   email: string;
 
-  @IsDateString()
+  @IsDateString(
+    {},
+    { message: 'La fecha de nacimiento debe ser una fecha válida' },
+  )
   birthday: string;
 
-  @IsString()
+  @IsString({ message: 'El teléfono debe ser un string' })
   phone: string;
 
-  @IsString()
-  @IsIn(shirtSizes)
+  @IsString({ message: 'La dirección debe ser un string' })
+  @IsIn(shirtSizes, {
+    message: 'La talla de camiseta debe ser una talla válida',
+  })
   shirtSize: string;
 
-  @IsBoolean()
+  @IsBoolean({ message: 'El estado debe ser un valor valido' })
   @IsOptional()
   status: boolean;
 
-  @IsArray()
+  @IsArray({ message: 'Los roles deben ser un array de strings' })
   @IsIn(roles, {
     each: true,
     message: 'El rol debe ser uno de los siguientes: "admin", "user"',

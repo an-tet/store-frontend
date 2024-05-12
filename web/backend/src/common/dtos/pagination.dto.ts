@@ -1,12 +1,15 @@
 import { IsOptional, IsPositive } from 'class-validator';
 
-// TODO: Change message error in Spanish
 export class PaginationDto {
-  @IsPositive()
+  @IsPositive({
+    message: 'La página debe ser un número positivo',
+  })
   @IsOptional()
   limit: number;
 
-  @IsPositive()
+  @IsPositive({
+    message: 'El offset debe ser un número positivo',
+  })
   @IsOptional()
   offSet: number;
 }
