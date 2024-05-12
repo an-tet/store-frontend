@@ -11,7 +11,7 @@ import { PaginationDto } from 'src/common/dtos/pagination.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
-import * as bcrypt from 'bcrypt';
+import { encodeSync } from 'src/common/utilities/bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -27,7 +27,7 @@ export class UsersService {
 
       const user = this.userRepository.create({
         ...createUser,
-        password: bcrypt.hashSync(password, 10),
+        password: encodeSync(password),
       });
       return await this.userRepository.save(user);
     } catch (error) {

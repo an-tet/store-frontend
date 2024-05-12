@@ -1,12 +1,18 @@
 import { roles } from 'src/common/constants/constants';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('text', { nullable: false })
+  @Column('text', { nullable: false, select: false })
   email: string;
 
   @Column('text', { nullable: false })
@@ -35,4 +41,15 @@ export class User {
 
   @Column('text', { array: true, nullable: true, default: roles })
   roles: string[];
+
+  @BeforeInsert()
+  checkFieldsBeforeInsert() {
+    this.email = this.email.toLowerCase().trim();
+    this.fullName = this.fullName.toLowerCase();
+  }
+
+  @BeforeUpdate()
+  checkFieldsBeforeUpdate() {
+    this.checkFieldsBeforeInsert();
+  }
 }

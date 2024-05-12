@@ -7,7 +7,7 @@ import { RecoveryAuthDto } from './dto/recovery-auth.dto';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('register')
+  @Post('login')
   login(@Body() loginUserDto: LoginAuthDto) {
     return this.authService.login(loginUserDto);
   }
