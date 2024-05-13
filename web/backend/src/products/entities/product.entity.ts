@@ -22,12 +22,17 @@ export class Product {
   @Column('int', {
     default: 0,
   })
-  stock: string;
+  stock: number;
 
   @Column('bool', {
     default: true,
   })
-  status: string;
+  status: boolean;
+
+  @Column('text', {
+    nullable: true,
+  })
+  imageUrl: string;
 
   @ManyToOne(() => User, (user) => user.product, { eager: true })
   user: User;
