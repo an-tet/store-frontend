@@ -39,6 +39,13 @@ export class AuthService {
     return;
   }
 
+  validateSession(user: User) {
+    return {
+      ...user,
+      token: this.getToken({ id: user.id }),
+    };
+  }
+
   private getToken(payload: JwtPayload) {
     return this.jwtService.sign(payload);
   }

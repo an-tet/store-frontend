@@ -45,10 +45,11 @@ export class ProductsService {
     });
   }
 
-  async update(id: string, updateProductDto: UpdateProductDto) {
+  async update(id: string, updateProductDto: UpdateProductDto, user: User) {
     const product = await this.productRepository.preload({
       id,
       ...updateProductDto,
+      user,
     });
 
     if (!product)
