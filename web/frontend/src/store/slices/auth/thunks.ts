@@ -14,7 +14,6 @@ export const loginThunk = (credentials: LoginModel) => {
   return async (dispatch: AppDispatch) => {
     dispatch(checkingCredentials());
     const res: AxiosResponse = await storeApi.post('auth/login', credentials);
-    console.log(res);
 
     dispatch(login(res.data));
   };

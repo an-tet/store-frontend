@@ -48,7 +48,6 @@ export const LoginPage = () => {
           })
           .catch(({ response }: AxiosError) => {
             const error: ErrorResponse = response?.data as ErrorResponse;
-            console.log(error);
 
             const errorMessage = Array.isArray(error.message)
               ? error.message[0]
