@@ -15,6 +15,12 @@ export class AuthController {
     return this.authService.login(loginUserDto);
   }
 
+  @Post('logout')
+  @Auth()
+  logout(@GetUser() user: User) {
+    return this.authService.logout(user);
+  }
+
   @Post('recovery')
   recovery(@Body() recoveryUserDto: RecoveryAuthDto) {
     return this.authService.recovery(recoveryUserDto);

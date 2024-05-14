@@ -15,6 +15,13 @@ async function bootstrap() {
       },
     }),
   );
+
+  app.enableCors({
+    allowedHeaders: '*',
+    origin: 'http://localhost:3000',
+    credentials: true,
+  });
+
   app.setGlobalPrefix('api');
   const configService = app.get(ConfigService);
 

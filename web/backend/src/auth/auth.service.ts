@@ -27,12 +27,14 @@ export class AuthService {
       throw new UnauthorizedException(
         'El email o la contraseña son incorrectos',
       );
-
+    delete user.password;
     return {
       ...user,
       token: this.getToken({ id: user.id }),
     };
   }
+
+  logout(user: User) {}
 
   recovery(recoveryUserDto: RecoveryAuthDto) {
     // TODO: Implement password recovery in the future
