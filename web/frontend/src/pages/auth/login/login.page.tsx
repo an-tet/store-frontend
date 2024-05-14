@@ -18,8 +18,17 @@ import { useFormik } from 'formik';
 import { LoginModel } from '../../../models/auth/login.model';
 import { loginValidationSchema } from './login.validation';
 import { ArrowForwardIos } from '@mui/icons-material';
+import { loginThunk } from '../../../store/slices/auth/thunks';
+import { useAppDispatch } from '../../../store';
+import {
+  errorNotification,
+  successNotification,
+} from '../../../components/shared/notifications/notification.provider';
+import { ErrorResponse } from '../../../models/auth/error.model';
+import { AxiosError } from 'axios';
 
 export const LoginPage = () => {
+  const dispatch = useAppDispatch();
   const navigate: NavigateFunction = useNavigate();
 
   const initialLoginForm: LoginModel = {
@@ -31,9 +40,22 @@ export const LoginPage = () => {
     useFormik({
       initialValues: initialLoginForm,
       validationSchema: loginValidationSchema,
-      onSubmit: (formValues) => {
-        alert(JSON.stringify(formValues, null, 2));
-        navigate('/');
+      onSubmit: (formValues: LoginModel) => {
+        dispatch(loginThunk(formValues))
+          .then(() => {
+            successNotification('Inicio de sesión exitoso');
+            navigate('/');
+          })
+          .catch(({ response }: AxiosError) => {
+            const error: ErrorResponse = response?.data as ErrorResponse;
+            console.log(error);
+
+            const errorMessage = Array.isArray(error.message)
+              ? error.message[0]
+              : error.message;
+
+            errorNotification(errorMessage || '');
+          });
       },
     });
 

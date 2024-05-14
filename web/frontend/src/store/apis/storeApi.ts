@@ -1,21 +1,8 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import axios from 'axios';
 
-export const storeApi = createApi({
-  reducerPath: 'store',
-
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:3001',
-  }),
-
-  endpoints: (builder) => ({
-    getCustomers: builder.query({
-      query: () => '/users',
-    }),
-
-    getCustomerById: builder.query({
-      query: (userId) => `/users/${userId}`,
-    }),
-  }),
+export const storeApi = axios.create({
+  baseURL: 'http://localhost:3001/api/',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
-
-export const { useGetCustomersQuery, useGetCustomerByIdQuery } = storeApi;

@@ -1,6 +1,6 @@
 export type AuthModel = {
+  id: string;
   status: string;
-  uid: string;
   email: string;
   displayName: string;
   photoURL: string;
