@@ -8,15 +8,33 @@ import { Tooltip } from '@mui/material';
 import {
   Home,
   Image,
+  Logout,
   Person,
   ShoppingBag,
   SupportAgent,
 } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../store/slices/auth/auth.slice';
+import { useNavigate } from 'react-router-dom';
 
 export function SidebarComponent({ state }: { state: boolean }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/auth/login');
+  };
+
+  const listItems = [
+    { icon: Home, text: 'Principal', href: '/' },
+    { icon: SupportAgent, text: 'Usuarios', href: '/user/list' },
+    { icon: Person, text: 'Clientes', href: '/customer/list' },
+    { icon: ShoppingBag, text: 'Productos', href: '/product/list' },
+  ];
   return (
     <Drawer data-testid='sidebar' variant='permanent' open={state}>
-      <List>
+      <List sx={{ height: '100%' }}>
         <Tooltip title='Logo' placement='top'>
           <ListItem
             key={-1}
@@ -53,12 +71,7 @@ export function SidebarComponent({ state }: { state: boolean }) {
             </ListItemButton>
           </ListItem>
         </Tooltip>
-        {[
-          { icon: Home, text: 'Principal', href: '/' },
-          { icon: SupportAgent, text: 'Usuarios', href: '/user/list' },
-          { icon: Person, text: 'Clientes', href: '/customer/list' },
-          { icon: ShoppingBag, text: 'Productos', href: '/product/list' },
-        ].map((item, index) => (
+        {listItems.map((item, index) => (
           <ListItem
             key={index}
             disablePadding
@@ -92,6 +105,41 @@ export function SidebarComponent({ state }: { state: boolean }) {
             </ListItemButton>
           </ListItem>
         ))}
+        <ListItem
+          onClick={handleLogout}
+          key={-1}
+          disablePadding
+          sx={{
+            color: 'primary.contrastText',
+            position: 'absolute',
+            bottom: 10,
+          }}
+        >
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                mr: state ? 3 : 'auto',
+                justifyContent: 'center',
+                color: 'primary.contrastText',
+              }}
+            >
+              {
+                <Logout
+                  sx={{
+                    fontSize: state ? '4em' : '2rem',
+                    transition: 'font-size 0.3s',
+                  }}
+                />
+              }
+            </ListItemIcon>
+          </ListItemButton>
+        </ListItem>
       </List>
     </Drawer>
   );

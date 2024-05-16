@@ -4,5 +4,6 @@ export type AuthModel = {
   email: string;
   displayName: string;
   photoURL: string;
+  token: string;
   errorMessages: string;
 };

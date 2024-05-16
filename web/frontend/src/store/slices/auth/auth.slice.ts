@@ -4,6 +4,7 @@ import { AuthModel } from '../../../models/auth/auth.model';
 const initialState: AuthModel = {
   status: 'not-authenticated',
   id: '',
+  token: '',
   email: '',
   displayName: '',
   photoURL: '',
@@ -21,17 +22,24 @@ export const authSlice = createSlice({
       state.displayName = payload.displayName;
       state.photoURL = payload.photoURL;
       state.errorMessages = payload.errorMessages || '';
+      localStorage.setItem('token', payload.token);
     },
-    logout: (state: AuthModel, { payload }: PayloadAction<AuthModel>) => {
+    logout: (state: AuthModel) => {
       state.status = 'not-authenticated';
       state.id = '';
       state.email = '';
       state.displayName = '';
       state.photoURL = '';
-      state.errorMessages = payload.errorMessages || '';
+      state.errorMessages = '';
+      localStorage.removeItem('token');
     },
     checkingCredentials: (state: AuthModel) => {
       state.status = 'loading';
+      state.id = '';
+      state.email = '';
+      state.displayName = '';
+      state.photoURL = '';
+      state.errorMessages = '';
     },
   },
 });
