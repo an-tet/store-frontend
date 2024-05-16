@@ -12,16 +12,19 @@ const initialState: AuthModel = {
 };
 
 export const authSlice = createSlice({
-  name: 'customer',
+  name: 'auth',
   initialState: initialState,
   reducers: {
     login: (state: AuthModel, { payload }: PayloadAction<AuthModel>) => {
+      console.log(payload);
+
       state.status = 'authenticated';
       state.id = payload.id;
       state.email = payload.email;
       state.displayName = payload.displayName;
       state.photoURL = payload.photoURL;
       state.errorMessages = payload.errorMessages || '';
+      state.token = payload.token;
       localStorage.setItem('token', payload.token);
     },
     logout: (state: AuthModel) => {
@@ -31,6 +34,7 @@ export const authSlice = createSlice({
       state.displayName = '';
       state.photoURL = '';
       state.errorMessages = '';
+      state.token = '';
       localStorage.removeItem('token');
     },
     checkingCredentials: (state: AuthModel) => {
@@ -40,6 +44,20 @@ export const authSlice = createSlice({
       state.displayName = '';
       state.photoURL = '';
       state.errorMessages = '';
+      state.token = '';
+    },
+    validateSession: (
+      state: AuthModel,
+      { payload }: PayloadAction<AuthModel>
+    ) => {
+      state.status = 'authenticated';
+      state.id = payload.id;
+      state.email = payload.email;
+      state.displayName = payload.displayName;
+      state.photoURL = payload.photoURL;
+      state.errorMessages = payload.errorMessages || '';
+      state.token = payload.token;
+      localStorage.setItem('token', payload.token);
     },
   },
 });

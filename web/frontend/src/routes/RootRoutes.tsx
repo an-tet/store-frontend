@@ -1,13 +1,13 @@
 import { Navigate, RouteObject } from 'react-router-dom';
-import { RootPage } from '../pages';
 import { HomeRoutes } from './HomeRoutes';
 import { UserRoutes } from './UserRoutes';
 import { ProductRoutes } from './ProductRoutes';
 import { CustomerRoutes } from './CustomerRoutes';
+import ProtectedRoutes from './components/protected-routes.component';
 
 export const RootRoutes: RouteObject = {
   path: '',
-  element: <RootPage />,
+  element: <ProtectedRoutes />,
   children: [
     HomeRoutes,
     UserRoutes,
