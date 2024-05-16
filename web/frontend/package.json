@@ -10,8 +10,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:watch": "vitest watch",
-    "coverage": "vitest --coverage",
-    "sonar": "node ./sonarqube/sonarscan.js"
+    "coverage": "vitest --coverage"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
