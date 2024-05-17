@@ -13,8 +13,11 @@ export const checkingAuthenticationThunk = () => {
 export const loginThunk = (credentials: LoginModel) => {
   return async (dispatch: AppDispatch) => {
     dispatch(checkingCredentials());
-    const res: AxiosResponse = await storeApi.post('auth/login', credentials);
+    const { data }: AxiosResponse = await storeApi.post(
+      'auth/login',
+      credentials
+    );
 
-    dispatch(login(res.data));
+    dispatch(login(data));
   };
 };

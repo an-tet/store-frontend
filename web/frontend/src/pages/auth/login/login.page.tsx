@@ -18,7 +18,7 @@ import { useFormik } from 'formik';
 import { LoginModel } from '../../../models/auth/login.model';
 import { loginValidationSchema } from './login.validation';
 import { ArrowForwardIos } from '@mui/icons-material';
-import { loginThunk } from '../../../store/slices/auth/thunks';
+import { loginThunk } from '../../../store/slices/auth/auth.thunk';
 import { useAppDispatch } from '../../../store';
 import {
   errorNotification,
