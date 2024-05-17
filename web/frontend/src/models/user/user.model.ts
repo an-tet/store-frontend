@@ -1,5 +1,5 @@
 export type UserModel = {
-  id: string;
+  id?: string;
   documentType: string;
   dni: string;
   fullName: string;

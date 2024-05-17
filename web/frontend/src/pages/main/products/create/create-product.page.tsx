@@ -1,5 +1,3 @@
-import { RootLayout } from '../../root.layout';
-import { ProductModel } from '../../../../models/product/product.model';
 import { useFormik } from 'formik';
 import {
   Button,
@@ -12,20 +10,13 @@ import {
   Switch,
   TextField,
 } from '@mui/material';
-import { containerFormStyles, formStyles } from './create-product.styles';
+import { RootLayout } from '../../root.layout';
 import { BackLink } from '../../../../components/shared/backLink/back-link.component';
 import { productValidationSchema } from '../validation/product.validation';
+import { containerFormStyles, formStyles } from '../../root.styles';
+import { initialProductForm } from './initial-product-form';
 
 export const CreateProductPage = () => {
-  const initialProductForm: ProductModel = {
-    name: '',
-    detail: '',
-    price: 0,
-    status: true,
-    stock: 0,
-    supplier: '',
-  };
-
   const formik = useFormik({
     initialValues: initialProductForm,
     validationSchema: productValidationSchema,

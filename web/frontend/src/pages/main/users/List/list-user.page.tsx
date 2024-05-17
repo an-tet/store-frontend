@@ -27,11 +27,7 @@ export const ListUserPage = () => {
     <RootLayout>
       <Grid container sx={containerListStyles}>
         <Grid item xs={12} sx={buttonContainerListStyles}>
-          <Button
-            variant='contained'
-            href='/customer/create'
-            sx={buttonListStyles}
-          >
+          <Button variant='contained' href='/user/create' sx={buttonListStyles}>
             <Add />
           </Button>
         </Grid>
