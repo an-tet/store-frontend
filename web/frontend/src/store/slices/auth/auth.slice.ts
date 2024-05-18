@@ -16,8 +16,6 @@ export const authSlice = createSlice({
   initialState: initialState,
   reducers: {
     login: (state: AuthModel, { payload }: PayloadAction<AuthModel>) => {
-      console.log(payload);
-
       state.status = 'authenticated';
       state.id = payload.id;
       state.email = payload.email;

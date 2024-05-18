@@ -4,12 +4,6 @@ import { storeApi } from '../../apis';
 import { AppDispatch } from '../../store';
 import { checkingCredentials, login } from './auth.slice';
 
-export const checkingAuthenticationThunk = () => {
-  return async (dispatch: AppDispatch) => {
-    dispatch(checkingCredentials());
-  };
-};
-
 export const loginThunk = (credentials: LoginModel) => {
   return async (dispatch: AppDispatch) => {
     dispatch(checkingCredentials());
