@@ -5,7 +5,6 @@ import {
   Body,
   Patch,
   Param,
-  Delete,
   Query,
   ParseUUIDPipe,
 } from '@nestjs/common';
@@ -47,9 +46,9 @@ export class UsersController {
     return this.usersService.update(id, updateUserDto);
   }
 
-  @Delete(':id')
+  @Patch('/toggle-state/:id')
   @Auth(ValidRoles.admin)
-  remove(@Param('id', ParseUUIDPipe) id: string) {
-    return this.usersService.remove(id);
+  toggleState(@Param('id', ParseUUIDPipe) id: string) {
+    return this.usersService.toggleState(id);
   }
 }

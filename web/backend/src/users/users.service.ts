@@ -67,12 +67,12 @@ export class UsersService {
     return user;
   }
 
-  async remove(id: string) {
-    const customer = await this.findOne(id);
+  async toggleState(id: string) {
+    const user = await this.findOne(id);
 
-    if (!customer) throw new NotFoundException();
+    if (!user) throw new NotFoundException();
 
-    return this.userRepository.delete(id);
+    return this.userRepository.update(id, { status: !user.status });
   }
 
   handleExceptions(error: any) {

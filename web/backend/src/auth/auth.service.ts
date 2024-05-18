@@ -20,10 +20,10 @@ export class AuthService {
     const { email, password } = loginUserDto;
     const user = await this.userRepository.findOne({
       where: { email },
-      select: { id: true, email: true, password: true },
+      select: { id: true, email: true, password: true, status: true },
     });
 
-    if (!user || !compareSync(password, user.password))
+    if (!user || !compareSync(password, user.password) || user.status !== true)
       throw new UnauthorizedException(
         'El email o la contraseña son incorrectos',
       );
