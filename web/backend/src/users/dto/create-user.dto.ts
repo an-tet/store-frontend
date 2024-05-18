@@ -29,6 +29,8 @@ export class CreateUserDto {
   documentType: string;
 
   @IsString({ message: 'El número de documento debe ser un string' })
+  @MinLength(5)
+  @MaxLength(12)
   dni: string;
 
   @IsString({ message: 'El nombre completo debe ser un string' })

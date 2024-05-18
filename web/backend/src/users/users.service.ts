@@ -29,7 +29,9 @@ export class UsersService {
         ...createUser,
         password: encodeSync(password),
       });
-      return await this.userRepository.save(user);
+      const userSaved = await this.userRepository.save(user);
+      delete userSaved.password;
+      return userSaved;
     } catch (error) {
       this.handleExceptions(error);
     }
@@ -77,7 +79,7 @@ export class UsersService {
     this.logger.error(error);
 
     if (error.code === '23505')
-      throw new HttpException('El usuario ya existe', HttpStatus.CONFLICT);
+      throw new HttpException('El correo ya existe', HttpStatus.CONFLICT);
 
     throw new Error('Error no controlado, contacte con el equipo técnico');
   }
