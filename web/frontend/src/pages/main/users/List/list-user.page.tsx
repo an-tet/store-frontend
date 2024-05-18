@@ -8,7 +8,7 @@ import {
   containerListStyles,
 } from '../../root.styles';
 import { TableComponent } from '../../../../components';
-import { customerTableData } from '../../../../components/shared/table/table.config';
+import { tableConfig } from '../../../../components/shared/table/table.config';
 import { userListColumns } from './customer-list-columns';
 import { useAppDispatch, useAppSelector } from '../../../../store';
 import { getAllUserThunk } from '../../../../store/slices/user/user.thunk';
@@ -32,11 +32,7 @@ export const ListUserPage = () => {
           </Button>
         </Grid>
         <TableComponent
-          {...customerTableData(
-            userListColumns,
-            selector.users,
-            userListActions
-          )}
+          {...tableConfig(userListColumns, selector.users, userListActions)}
         />
       </Grid>
     </RootLayout>

@@ -6,12 +6,8 @@ import {
 } from '../../../../constants/regex-patterns.constant';
 import { shirtSizeEnum } from '../../../../enum/shirt-size.enum';
 import { roleEnum } from '../../../../enum/role.enum';
-export const userValidationSchema = yup.object({
-  password: yup
-    .string()
-    .min(8, 'La contraseña debe tener al menos 8 caracteres')
-    .max(20, 'La contraseña debe tener como máximo 20 caracteres')
-    .required('La contraseña es requerida'),
+
+const commonValidations = {
   documentType: yup
     .string()
     .required('El tipo de documento es requerido')
@@ -47,4 +43,17 @@ export const userValidationSchema = yup.object({
     .string()
     .required('El rol es requerido')
     .oneOf(Object.values(roleEnum), 'El rol es inválido'),
+};
+
+export const userCreateValidationSchema = yup.object({
+  ...commonValidations,
+  password: yup
+    .string()
+    .min(8, 'La contraseña debe tener al menos 8 caracteres')
+    .max(20, 'La contraseña debe tener como máximo 20 caracteres')
+    .required('La contraseña es requerida'),
+});
+
+export const userUpdateValidationSchema = yup.object({
+  ...commonValidations,
 });

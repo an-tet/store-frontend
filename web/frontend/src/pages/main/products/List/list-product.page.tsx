@@ -11,7 +11,7 @@ import { RootLayout } from '../../root.layout';
 import { TableComponent } from '../../../../components';
 import { productsMock } from '../../../../data/product.mock';
 import { productListColumns } from './product-list-columns';
-import { customerTableData } from '../../../../components/shared/table/table.config';
+import { tableConfig } from '../../../../components/shared/table/table.config';
 import { ProductModel } from '../../../../models/product/product.model';
 import { ProductMapper } from '../../../../mapper/product/product.mapper';
 import { supplierList } from '../../../../data/supplier.mock';
@@ -43,11 +43,7 @@ export const ListProductPage = () => {
             </Button>
           </Grid>
           <TableComponent
-            {...customerTableData(
-              productListColumns,
-              requestProducts(),
-              actions
-            )}
+            {...tableConfig(productListColumns, requestProducts(), actions)}
           />
         </Grid>
       </RootLayout>

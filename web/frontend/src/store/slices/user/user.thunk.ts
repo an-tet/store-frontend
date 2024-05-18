@@ -13,9 +13,17 @@ export const getAllUserThunk = () => {
 };
 
 export const createUserThunk = (user: UserModel) => {
-  return async (dispatch: AppDispatch) => {
+  return async () => {
     const { data } = await storeApi.post('users', user);
-    dispatch(createUserThunk(data));
+    return data;
+  };
+};
+
+export const updateUserThunk = (user: UserModel) => {
+  return async () => {
+    const id = user.id;
+    delete user.id;
+    const { data } = await storeApi.patch(`users/${id}`, user);
     return data;
   };
 };

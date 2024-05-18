@@ -16,7 +16,9 @@ export const CellItemAction = (
         <GridActionsCellItem
           icon={<Edit color='primary' />}
           label='Editar'
-          onClick={() => navigate(action.path + params.id)}
+          onClick={() =>
+            navigate(action.path + params.id, { state: params.row })
+          }
         />
       );
     }

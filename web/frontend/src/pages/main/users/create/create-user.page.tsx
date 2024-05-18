@@ -1,3 +1,6 @@
+import { useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
+import dayjs from 'dayjs';
 import {
   Button,
   FormControl,
@@ -8,11 +11,9 @@ import {
   TextField,
 } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
-import { useFormik } from 'formik';
-import dayjs from 'dayjs';
 import { formatDate } from '../../../../utils/date.util';
 import { RootLayout } from '../../root.layout';
-import { userValidationSchema } from '../validation/user.validation';
+import { userCreateValidationSchema } from '../validation/user.validation';
 import { BackLink } from '../../../../components/shared/backLink/back-link.component';
 import { UserModel } from '../../../../models/user/user.model';
 import { shirtSizeEnum, roleEnum, documentTypeEnum } from '../../../../enum';
@@ -22,7 +23,6 @@ import { createUserThunk } from '../../../../store/slices/user/user.thunk';
 import { AxiosError } from 'axios';
 import { handleMessageError } from '../../../../exceptions/message-error.exception';
 import { successNotification } from '../../../../components/shared/notifications/notification.provider';
-import { useNavigate } from 'react-router-dom';
 
 export const CreateUserPage = () => {
   const dispatch = useAppDispatch();
@@ -42,7 +42,7 @@ export const CreateUserPage = () => {
 
   const formik = useFormik({
     initialValues: initialUserForm,
-    validationSchema: userValidationSchema,
+    validationSchema: userCreateValidationSchema,
     onSubmit: (values: UserModel) => {
       const user: UserModel = {
         ...values,
@@ -50,8 +50,10 @@ export const CreateUserPage = () => {
       };
 
       dispatch(createUserThunk(user))
-        .then(() => {
-          successNotification('Usuario creado exitosamente');
+        .then((res) => {
+          console.log(res);
+
+          successNotification('Usuario modificado exitosamente');
           navigate('/user/list');
         })
         .catch((error: AxiosError) => handleMessageError(error));

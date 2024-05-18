@@ -2,7 +2,7 @@ import { Dayjs } from 'dayjs';
 
 export type UserModel = {
   id?: string;
-  password: string;
+  password?: string;
   documentType: string;
   dni: string;
   fullName: string;

@@ -3,7 +3,7 @@ import { GridColDef, GridRowParams, GridRowsProp } from '@mui/x-data-grid';
 import { CellItemAction } from './cell-item-actions.component';
 import { TableActionInterface } from '../interfaces/table-action.interface';
 
-export const customerTableData = (
+export const tableConfig = (
   columns: GridColDef[],
   data: GridRowsProp,
   actions: TableActionInterface[]

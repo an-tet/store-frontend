@@ -7,7 +7,7 @@ import {
 } from '../../root.styles';
 import { Add } from '@mui/icons-material';
 import { TableComponent } from '../../../../components';
-import { customerTableData } from '../../../../components/shared/table/table.config';
+import { tableConfig } from '../../../../components/shared/table/table.config';
 import { customersMock } from '../../../../data/customers.mock';
 import { customerListColumns } from './customer-list-columns';
 import { TableActionInterface } from '../../../../components/shared/interfaces/table-action.interface';
@@ -30,7 +30,7 @@ export const ListCustomerPage = () => {
           </Button>
         </Grid>
         <TableComponent
-          {...customerTableData(customerListColumns, customersMock, actions)}
+          {...tableConfig(customerListColumns, customersMock, actions)}
         />
       </Grid>
     </RootLayout>
