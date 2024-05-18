@@ -14,16 +14,11 @@ import {
 } from '@mui/material';
 import { containerFormStyles, formStyles } from './edit-product.styles';
 import { BackLink } from '../../../../components/shared/backLink/back-link.component';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { productValidationSchema } from '../validation/product.validation';
-import { RootState, store } from '../../../../store';
-import { useSelector } from 'react-redux';
 
 export const EditProductPage = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
-  const { customer } = useSelector((state: RootState) => state.customers);
-  // const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {

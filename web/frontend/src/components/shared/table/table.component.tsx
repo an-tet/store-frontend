@@ -10,6 +10,8 @@ export const TableComponent = (data: TablePropsInterface) => {
   return (
     <Grid sx={{ minHeight: 400, width: '100%', mt: 3 }}>
       <DataGrid
+        initialState={{ pagination: { paginationModel: { pageSize: 5 } } }}
+        pageSizeOptions={[5, 10, 25]}
         ignoreDiacritics
         slots={{
           noRowsOverlay: CustomNoRowsOverlay,

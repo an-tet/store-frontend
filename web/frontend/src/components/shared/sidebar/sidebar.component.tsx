@@ -13,12 +13,12 @@ import {
   ShoppingBag,
   SupportAgent,
 } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
-import { logout } from '../../../store/slices/auth/auth.slice';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../store';
+import { logout } from '../../../store/slices/auth/auth.slice';
 
 export function SidebarComponent({ state }: { state: boolean }) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {

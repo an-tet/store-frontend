@@ -9,6 +9,8 @@ import { blueTheme } from './theme/blueTheme';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import { SnackbarProvider } from 'notistack';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -16,7 +18,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <CssBaseline />
       <Provider store={store}>
         <SnackbarProvider />
-        <RouterProvider router={Routes} />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <RouterProvider router={Routes} />
+        </LocalizationProvider>
       </Provider>
     </ThemeProvider>
   </React.StrictMode>

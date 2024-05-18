@@ -7,21 +7,34 @@ import {
   Select,
   TextField,
 } from '@mui/material';
-import { RootLayout } from '../../root.layout';
-import { BackLink } from '../../../../components/shared/backLink/back-link.component';
-import { containerFormStyles, formStyles } from '../../root.styles';
-import { userValidationSchema } from '../validation/user.validation';
+import { DatePicker } from '@mui/x-date-pickers';
 import { useFormik } from 'formik';
+import dayjs from 'dayjs';
+import { formatDate } from '../../../../utils/date.util';
+import { RootLayout } from '../../root.layout';
+import { userValidationSchema } from '../validation/user.validation';
+import { BackLink } from '../../../../components/shared/backLink/back-link.component';
 import { UserModel } from '../../../../models/user/user.model';
-import { documentTypeEnum } from '../../../../enum/document-type.enum';
+import { shirtSizeEnum, roleEnum, documentTypeEnum } from '../../../../enum';
+import { containerFormStyles, formStyles } from '../../root.styles';
+import { useAppDispatch } from '../../../../store';
+import { createUserThunk } from '../../../../store/slices/user/user.thunk';
+import { AxiosError } from 'axios';
+import { handleMessageError } from '../../../../exceptions/message-error.exception';
+import { successNotification } from '../../../../components/shared/notifications/notification.provider';
+import { useNavigate } from 'react-router-dom';
 
 export const CreateUserPage = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const initialUserForm: UserModel = {
-    documentType: 'CC',
+    documentType: '',
     dni: '',
+    password: '',
     fullName: '',
     email: '',
-    birthday: '',
+    birthday: dayjs(),
     phone: '',
     shirtSize: '',
     role: '',
@@ -30,8 +43,18 @@ export const CreateUserPage = () => {
   const formik = useFormik({
     initialValues: initialUserForm,
     validationSchema: userValidationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (values: UserModel) => {
+      const user: UserModel = {
+        ...values,
+        birthday: formatDate(dayjs(values.birthday)),
+      };
+
+      dispatch(createUserThunk(user))
+        .then(() => {
+          successNotification('Usuario creado exitosamente');
+          navigate('/user/list');
+        })
+        .catch((error: AxiosError) => handleMessageError(error));
     },
   });
 
@@ -41,7 +64,7 @@ export const CreateUserPage = () => {
         <BackLink to={'/user/list'} />
         <Grid component='form' onSubmit={formik.handleSubmit} sx={formStyles}>
           <Grid container spacing={1}>
-            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
               <FormControl fullWidth>
                 <InputLabel id='document_type'>Tipo de documento</InputLabel>
                 <Select
@@ -71,7 +94,23 @@ export const CreateUserPage = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
+              <TextField
+                fullWidth
+                type='password'
+                id='password'
+                name='password'
+                label='Contraseña'
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
+                helperText={formik.touched.password && formik.errors.password}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
               <TextField
                 fullWidth
                 id='dni'
@@ -84,75 +123,114 @@ export const CreateUserPage = () => {
                 helperText={formik.touched.dni && formik.errors.dni}
               />
             </Grid>
-          </Grid>
-          {/* TODO:End create user page and integrate with backend */}
-          {/* <Grid container spacing={1}>
-            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
               <TextField
                 fullWidth
-                id='price'
-                name='price'
-                label='Precio'
-                type='number'
-                value={formik.values.price}
+                id='fullName'
+                name='fullName'
+                label='Nombre completo'
+                type='text'
+                value={formik.values.fullName}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                error={formik.touched.price && Boolean(formik.errors.price)}
-                helperText={formik.touched.price && formik.errors.price}
+                error={
+                  formik.touched.fullName && Boolean(formik.errors.fullName)
+                }
+                helperText={formik.touched.fullName && formik.errors.fullName}
               />
             </Grid>
-            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
               <TextField
                 fullWidth
-                id='stock'
-                name='stock'
-                label='Stock'
-                type='number'
-                value={formik.values.stock}
+                id='email'
+                name='email'
+                label='email'
+                type='email'
+                value={formik.values.email}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                error={formik.touched.stock && Boolean(formik.errors.stock)}
-                helperText={formik.touched.stock && formik.errors.stock}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
               />
             </Grid>
-          </Grid>
-          <Grid container spacing={1} sx={{ mb: 5 }}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} lg={3}>
               <FormControl fullWidth>
-                <InputLabel id='supplier_id'>Proveedor</InputLabel>
+                <DatePicker
+                  label='Fecha de nacimiento'
+                  format='DD/MM/YYYY'
+                  value={dayjs(formik.values.birthday)}
+                  onChange={() => {
+                    formik.setFieldValue(
+                      'birthday',
+                      dayjs(formik.values.birthday)
+                    );
+                  }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
+              <TextField
+                fullWidth
+                id='phone'
+                name='phone'
+                label='Celular'
+                type='number'
+                value={formik.values.phone}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.phone && Boolean(formik.errors.phone)}
+                helperText={formik.touched.phone && formik.errors.phone}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
+              <FormControl fullWidth>
+                <InputLabel id='shirt_size'>Talla de camisa</InputLabel>
                 <Select
-                  id='supplier_id'
-                  name='supplier_id'
-                  label='Proveedor'
-                  value={formik.values.supplier}
-                  onChange={formik.handleChange}
+                  id='shirt_size'
+                  name='shirt_size'
+                  labelId='shirt_size'
+                  label='Talla de camisa'
+                  value={formik.values.shirtSize}
+                  onChange={(e) =>
+                    formik.setFieldValue('shirtSize', e.target.value as string)
+                  }
                   onBlur={formik.handleBlur}
                   error={
-                    formik.touched.supplier && Boolean(formik.errors.supplier)
+                    formik.touched.shirtSize && Boolean(formik.errors.shirtSize)
                   }
                 >
-                  <MenuItem value={0}>Proveedor 1</MenuItem>
-                  <MenuItem value={1}>Proveedor 2</MenuItem>
+                  {Object.values(shirtSizeEnum).map((shirtSize) => (
+                    <MenuItem key={shirtSize} value={shirtSize}>
+                      {shirtSize}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs='auto' sm='auto' sx={{ ml: 2 }}>
-              <FormControlLabel
-                control={
-                  <Switch
-                    id='status'
-                    name='status'
-                    checked={formik.values.status}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                }
-                label={formik.values.status ? 'Activado' : 'Desactivado'}
-              />
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
+              <FormControl fullWidth>
+                <InputLabel id='role'>Rol</InputLabel>
+                <Select
+                  id='role'
+                  name='role'
+                  labelId='role'
+                  label='Talla de camisa'
+                  value={formik.values.role}
+                  onChange={(e) =>
+                    formik.setFieldValue('role', e.target.value as string)
+                  }
+                  onBlur={formik.handleBlur}
+                  error={formik.touched.role && Boolean(formik.errors.role)}
+                >
+                  {Object.values(roleEnum).map((role) => (
+                    <MenuItem key={role} value={role}>
+                      {role}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </Grid>
           </Grid>
-
-           */}
           <Grid container justifyContent='center' spacing={2}>
             <Button variant='contained' type='submit'>
               Guardar

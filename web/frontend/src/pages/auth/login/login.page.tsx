@@ -1,3 +1,5 @@
+import { AxiosError } from 'axios';
+import { useFormik } from 'formik';
 import {
   NavigateFunction,
   Link as RouterLink,
@@ -13,19 +15,14 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import { ArrowForwardIos } from '@mui/icons-material';
 import { AuthLayout } from './auth.layout';
-import { useFormik } from 'formik';
 import { LoginModel } from '../../../models/auth/login.model';
 import { loginValidationSchema } from './login.validation';
-import { ArrowForwardIos } from '@mui/icons-material';
 import { loginThunk } from '../../../store/slices/auth/auth.thunk';
 import { useAppDispatch } from '../../../store';
-import {
-  errorNotification,
-  successNotification,
-} from '../../../components/shared/notifications/notification.provider';
-import { ErrorResponse } from '../../../models/auth/error.model';
-import { AxiosError } from 'axios';
+import { successNotification } from '../../../components/shared/notifications/notification.provider';
+import { handleMessageError } from '../../../exceptions/message-error.exception';
 
 export const LoginPage = () => {
   const dispatch = useAppDispatch();
@@ -46,15 +43,7 @@ export const LoginPage = () => {
             successNotification('Inicio de sesión exitoso');
             navigate('/');
           })
-          .catch(({ response }: AxiosError) => {
-            const error: ErrorResponse = response?.data as ErrorResponse;
-
-            const errorMessage = Array.isArray(error.message)
-              ? error.message[0]
-              : error.message;
-
-            errorNotification(errorMessage || '');
-          });
+          .catch((error: AxiosError) => handleMessageError(error));
       },
     });
 

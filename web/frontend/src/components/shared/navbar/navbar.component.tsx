@@ -4,7 +4,7 @@ import { Flip } from '@mui/icons-material';
 import { IconButton, Toolbar, Typography } from '@mui/material';
 
 import { NavbarStyles } from './navbar.styles';
-import { resolvePathname } from '../../../routes/utils/location.util';
+import { resolvePathname } from '../../../utils/location.util';
 
 export const NavbarComponent = ({
   setOpen,
