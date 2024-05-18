@@ -37,6 +37,7 @@ export const CreateUserPage = () => {
     birthday: dayjs(),
     phone: '',
     shirtSize: '',
+    status: '',
     role: '',
   };
 
@@ -50,9 +51,7 @@ export const CreateUserPage = () => {
       };
 
       dispatch(createUserThunk(user))
-        .then((res) => {
-          console.log(res);
-
+        .then(() => {
           successNotification('Usuario modificado exitosamente');
           navigate('/user/list');
         })

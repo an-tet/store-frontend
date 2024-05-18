@@ -27,3 +27,11 @@ export const updateUserThunk = (user: UserModel) => {
     return data;
   };
 };
+
+export const toggleUserStateThunk = (id: string) => {
+  return async (dispatch: AppDispatch) => {
+    const { data } = await storeApi.patch(`users/toggle-state/${id}`);
+    getAllUserThunk()(dispatch);
+    return data;
+  };
+};

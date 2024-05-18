@@ -2,5 +2,5 @@ import { TableActionInterface } from '../../../../components/shared/interfaces/t
 
 export const userListActions: TableActionInterface[] = [
   { type: 'edit', path: '/user/edit/' },
-  { type: 'delete', path: '/user/delete/' },
+  { type: 'toggle', path: '/user/toggle-state/' },
 ];

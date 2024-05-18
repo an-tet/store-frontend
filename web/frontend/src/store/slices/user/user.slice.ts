@@ -21,9 +21,19 @@ export const userSlice = createSlice({
       state: UserState,
       { payload }: PayloadAction<UserModel[]>
     ) => {
-      state.users = payload;
+      state.users = payload.map((user) => {
+        return {
+          ...user,
+          status: user.status ? 'Activo' : 'Inactivo',
+        };
+      });
+    },
+    clearUsersState: (state: UserState) => {
+      state.errorMessages = [];
+      state.users = [];
+      state.isFetching = false;
     },
   },
 });
 
-export const { getAllUSers } = userSlice.actions;
+export const { getAllUSers, clearUsersState } = userSlice.actions;

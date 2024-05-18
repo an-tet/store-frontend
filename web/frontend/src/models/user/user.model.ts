@@ -9,6 +9,7 @@ export type UserModel = {
   email: string;
   birthday: string | Dayjs;
   phone: string;
+  status: string;
   shirtSize: string;
   role: string;
 };

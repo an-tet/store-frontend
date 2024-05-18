@@ -17,6 +17,7 @@ export const userListColumns: GridColDef[] = [
     flex: 1,
     minWidth: 100,
   },
+  { field: 'status', headerName: 'Estado', flex: 1, minWidth: 100 },
   { field: 'phone', headerName: 'Teléfono', flex: 1, minWidth: 100 },
   { field: 'shirtSize', headerName: 'Talla de camisa', flex: 1, minWidth: 100 },
   { field: 'role', headerName: 'Rol', flex: 1, minWidth: 100 },

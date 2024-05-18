@@ -15,14 +15,14 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../store';
-import { logout } from '../../../store/slices/auth/auth.slice';
+import { logoutThunk } from '../../../store/slices/auth/auth.thunk';
 
 export function SidebarComponent({ state }: { state: boolean }) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logoutThunk());
     navigate('/auth/login');
   };
 
