@@ -28,14 +28,14 @@ This project is a web application for a store management system. The application
 
 ## Setup
 
-<!-- ### Environment variables
+### Prerequisites
 
-> [!NOTE]
-> Avoid this configuration
+You need to have installed the backend project to run the frontend project. You can find the backend project in the link bellow: [backend](https://github.com/an-tet/store/tree/main/web/backend)
 
-Use the `.env` file to set the environment variables.
+additionally you need to have installed the following tools:
 
-- ``SONARQUBE_TOKEN``: Token to connect to SonarQube used in `./sonarqube/sonarscan.js` file -->
+- Node.js
+- npm, yarn or another package manager
 
 ### Dependencies
 
@@ -50,20 +50,6 @@ Then you can install the project dependencies running the command bellow:
 ```node
 yarn
 ```
-
-<!-- ### SonarQube
-
-For running SonarQube on community edition you need to get `podman`, `docker` or `SonarQube` installed in your own machine. after that you need to create bellow folder structure in your project root:
-
-- `sonarqube/extensions`
-- `sonarqube/data`
-- `sonarqube/logs`
-
-When SonarQube have been up and the folder structure have been created, you can run the command bellow and synchronize the project with SonarQube from your container.
-
-```bash
-node ./sonarqube/sonarscan.js
-``` -->
 
 ### Execution
 
