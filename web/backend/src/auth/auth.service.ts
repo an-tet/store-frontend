@@ -1,6 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { LoginAuthDto } from './dto/login-auth.dto';
-import { RecoveryAuthDto } from './dto/recovery-auth.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/users/entities/user.entity';
 import { Repository } from 'typeorm';
@@ -20,7 +19,13 @@ export class AuthService {
     const { email, password } = loginUserDto;
     const user = await this.userRepository.findOne({
       where: { email },
-      select: { id: true, email: true, password: true, status: true },
+      select: {
+        id: true,
+        email: true,
+        password: true,
+        status: true,
+        role: true,
+      },
     });
 
     if (!user || !compareSync(password, user.password) || user.status !== true)
@@ -32,13 +37,6 @@ export class AuthService {
       ...user,
       token: this.getToken({ id: user.id }),
     };
-  }
-
-  logout(user: User) {}
-
-  recovery(recoveryUserDto: RecoveryAuthDto) {
-    // TODO: Implement password recovery in the future
-    return;
   }
 
   validateSession(user: User) {
