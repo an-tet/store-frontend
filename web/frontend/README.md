@@ -4,6 +4,28 @@
 
 This project is a web application for a store management system. The application is the frontend of the store system and is responsible for the user interface and user experience. The application is built using React and Typescript.
 
+## Project structure
+
+```powershell
+    ├───public
+    ├───src
+    │   ├───assets # Images, fonts and other assets
+    │   ├───components
+    │   ├───constants
+    │   ├───data # Mocks but it will be deleted
+    │   ├───enum
+    │   ├───exceptions
+    │   ├───interfaces
+    │   ├───mapper # Data mapper 
+    │   ├───models
+    │   ├───pages # UI pages
+    │   ├───routes
+    │   ├───store # Redux store
+    │   ├───theme
+    │   └───utils
+    └───test
+```
+
 ## Setup
 
 <!-- ### Environment variables
