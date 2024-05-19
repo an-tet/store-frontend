@@ -3,11 +3,11 @@ import { HomeRoutes } from './HomeRoutes';
 import { UserRoutes } from './UserRoutes';
 import { ProductRoutes } from './ProductRoutes';
 import { CustomerRoutes } from './CustomerRoutes';
-import ProtectedRoutes from './components/protected-routes.component';
+import AuthRoutesProtection from './components/auth-routes-protection.component';
 
 export const RootRoutes: RouteObject = {
   path: '',
-  element: <ProtectedRoutes />,
+  element: <AuthRoutesProtection />,
   children: [
     HomeRoutes,
     UserRoutes,

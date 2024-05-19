@@ -6,9 +6,7 @@ const initialState: AuthModel = {
   id: '',
   token: '',
   email: '',
-  displayName: '',
-  photoURL: '',
-  errorMessages: '',
+  role: '',
 };
 
 export const authSlice = createSlice({
@@ -19,30 +17,24 @@ export const authSlice = createSlice({
       state.status = 'authenticated';
       state.id = payload.id;
       state.email = payload.email;
-      state.displayName = payload.displayName;
-      state.photoURL = payload.photoURL;
-      state.errorMessages = payload.errorMessages || '';
       state.token = payload.token;
-      localStorage.setItem('token', payload.token);
+      state.role = payload.role;
+      localStorage.setItem('user', JSON.stringify(payload));
     },
     logout: (state: AuthModel) => {
       state.status = 'not-authenticated';
       state.id = '';
       state.email = '';
-      state.displayName = '';
-      state.photoURL = '';
-      state.errorMessages = '';
       state.token = '';
-      localStorage.removeItem('token');
+      state.role = '';
+      localStorage.removeItem('user');
     },
     checkingCredentials: (state: AuthModel) => {
       state.status = 'loading';
       state.id = '';
       state.email = '';
-      state.displayName = '';
-      state.photoURL = '';
-      state.errorMessages = '';
       state.token = '';
+      state.role = '';
     },
     validateSession: (
       state: AuthModel,
@@ -51,11 +43,9 @@ export const authSlice = createSlice({
       state.status = 'authenticated';
       state.id = payload.id;
       state.email = payload.email;
-      state.displayName = payload.displayName;
-      state.photoURL = payload.photoURL;
-      state.errorMessages = payload.errorMessages || '';
       state.token = payload.token;
-      localStorage.setItem('token', payload.token);
+      state.role = payload.role;
+      localStorage.setItem('user', JSON.stringify(payload));
     },
   },
 });

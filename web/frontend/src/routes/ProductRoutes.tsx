@@ -4,10 +4,13 @@ import {
   ListProductPage,
   UpdateProductPage,
 } from '../pages';
+import RoleRoutesProtection from './components/role-routes-protection.component';
+import { roleEnum } from '../enum';
 
+const allowedRoles = [roleEnum.admin, roleEnum.seller];
 export const ProductRoutes: RouteObject = {
   path: 'product',
-  element: <Outlet />,
+  element: <RoleRoutesProtection roles={allowedRoles} component={<Outlet />} />,
   children: [
     { path: '', element: <Navigate to='list' /> },
     { index: true, path: 'list', element: <ListProductPage /> },
