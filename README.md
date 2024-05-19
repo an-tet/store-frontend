@@ -6,6 +6,16 @@ Portable sales system for small enterprises without costs and running in all pla
 
 ## projects
 
+### Structure
+
+```powershell
+├───desktop
+├───mobile
+└───web
+    ├───backend
+    └───frontend
+```
+
 - [web](./web) ``in progress``
   - [frontend](./web/frontend)
   - [backend](./web/backend)
