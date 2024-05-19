@@ -10,6 +10,7 @@ Portable sales system for small enterprises without costs and running in all pla
 
 ```powershell
 ├───desktop
+├───diagrams
 ├───mobile
 └───web
     ├───backend
