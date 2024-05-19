@@ -37,6 +37,13 @@ additionally you need to have installed the following tools:
 - Node.js
 - npm, yarn or another package manager
 
+### Environment variables
+
+The project uses environment variables to configure the application. You can copy a `.env.template` file in the root of the project and rename it to `.env`. After that you can set the variables in the file.
+
+> [!NOTE]
+> If you change the backend port you need to change the port in the `.env` file.
+
 ### Dependencies
 
 The first step have been installed node and npm or yarn in your machine. After that you need to install the package manager with `yarn` running the command bellow:
