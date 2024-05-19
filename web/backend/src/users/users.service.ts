@@ -75,6 +75,37 @@ export class UsersService {
     return this.userRepository.update(id, { status: !user.status });
   }
 
+  async seed() {
+    const [_, count] = await this.userRepository.findAndCount({});
+    if (count > 0)
+      throw new HttpException(
+        'No puede usar esta funcionalidad si ya existen usuarios',
+        HttpStatus.CONFLICT,
+      );
+
+    const adminUser = {
+      password: '123456789',
+      documentType: 'CC',
+      dni: '0000000000',
+      fullName: 'admin',
+      email: 'admin@gmail.com',
+      birthday: '1900-01-01',
+      phone: '0000000000',
+      shirtSize: 'XS',
+      status: true,
+      role: 'admin',
+    };
+
+    const user = this.userRepository.create({
+      ...adminUser,
+      password: encodeSync(adminUser.password),
+    });
+    const userSaved = await this.userRepository.save(user);
+    delete userSaved.password;
+
+    return userSaved;
+  }
+
   handleExceptions(error: any) {
     this.logger.error(error);
 

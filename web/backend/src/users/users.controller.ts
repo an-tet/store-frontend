@@ -51,4 +51,9 @@ export class UsersController {
   toggleState(@Param('id', ParseUUIDPipe) id: string) {
     return this.usersService.toggleState(id);
   }
+
+  @Post('seed')
+  seed() {
+    return this.usersService.seed();
+  }
 }
