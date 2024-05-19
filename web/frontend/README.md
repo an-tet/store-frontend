@@ -39,15 +39,15 @@ additionally you need to have installed the following tools:
 
 ### Dependencies
 
-The first step have been installed node and npm in your machine. After that you need to install the package manager `yarn` running the command bellow:
+The first step have been installed node and npm or yarn in your machine. After that you need to install the package manager with `yarn` running the command bellow:
 
-```node
+```shell
 npm install -g yarn
 ```
 
 Then you can install the project dependencies running the command bellow:
 
-```node
+```shell
 yarn
 ```
 
