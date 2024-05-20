@@ -7,14 +7,15 @@ import { AuthModel } from '../../models/auth/auth.model';
 const AuthRoutesProtection = () => {
   const dispatch = useAppDispatch();
   const authStored = localStorage.getItem('user');
-  const auth: AuthModel = JSON.parse(authStored || '{}');
+  if (authStored !== null) {
+    const auth: AuthModel = JSON.parse(authStored);
+    dispatch(login(auth));
 
-  dispatch(login(auth));
-
-  if (auth.token) return <RootPage />;
-  else {
-    dispatch(logout());
-    return <Navigate to='/auth/login' replace />;
+    if (auth.token) return <RootPage />;
+    else {
+      dispatch(logout());
+      return <Navigate to='/auth/login' replace />;
+    }
   }
 };
 
