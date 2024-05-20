@@ -68,4 +68,4 @@ yarn run test
 
 You can import the postman collection to test the API. You can access the collection in the link bellow:
 
-[Postman Collection](https://www.postman.com/an-tet/workspace/personal/collection/18469786-e6e97a6e-bb33-488a-acf4-22ddc6117a8f?action=share&creator=18469786&active-environment=18469786-9eb6ddf1-339c-4d2f-b2a6-1680aae1febc)
+[Postman Collection](https://documenter.getpostman.com/view/18469786/2sA3JM6Lbi)
