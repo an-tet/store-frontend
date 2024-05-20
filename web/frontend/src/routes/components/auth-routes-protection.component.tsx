@@ -17,6 +17,8 @@ const AuthRoutesProtection = () => {
       return <Navigate to='/auth/login' replace />;
     }
   }
+  dispatch(logout());
+  return <Navigate to='/auth/login' replace />;
 };
 
 export default AuthRoutesProtection;
