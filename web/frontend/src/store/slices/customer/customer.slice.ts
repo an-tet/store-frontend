@@ -2,15 +2,15 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { CustomerModel } from '../../../models/customer/customer.model';
 
 interface CustomerStateInterface {
-  page: number;
+  isFetching: boolean;
   customers: CustomerModel[];
-  isLoading: boolean;
+  errorMessages: string[];
 }
 
 const initialState: CustomerStateInterface = {
-  page: 0,
+  isFetching: false,
   customers: [],
-  isLoading: false,
+  errorMessages: [],
 };
 
 export const customerSlice = createSlice({
@@ -18,18 +18,17 @@ export const customerSlice = createSlice({
   initialState: initialState,
   reducers: {
     startLoading: (state) => {
-      state.isLoading = true;
+      state.isFetching = true;
     },
-    getAll: (
+    getAllCustomers: (
       state: CustomerStateInterface,
-      action: PayloadAction<CustomerStateInterface>
+      { payload }: PayloadAction<CustomerModel[]>
     ) => {
-      state.isLoading = false;
-      state.page = action.payload.page;
-      state.customers = action.payload.customers;
+      state.isFetching = false;
+      state.customers = payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { startLoading, getAll } = customerSlice.actions;
+export const { startLoading, getAllCustomers } = customerSlice.actions;

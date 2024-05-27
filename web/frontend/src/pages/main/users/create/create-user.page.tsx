@@ -21,7 +21,7 @@ import { containerFormStyles, formStyles } from '../../root.styles';
 import { useAppDispatch } from '../../../../store';
 import { createUserThunk } from '../../../../store/slices/user/user.thunk';
 import { AxiosError } from 'axios';
-import { handleMessageError } from '../../../../exceptions/message-error.exception';
+import { MessageErrorException } from '../../../../exceptions/message-error.exception';
 import { successNotification } from '../../../../components/shared/notifications/notification.provider';
 
 export const CreateUserPage = () => {
@@ -55,7 +55,7 @@ export const CreateUserPage = () => {
           successNotification('Usuario modificado exitosamente');
           navigate('/user/list');
         })
-        .catch((error: AxiosError) => handleMessageError(error));
+        .catch((error: AxiosError) => MessageErrorException(error?.message));
     },
   });
 
@@ -73,7 +73,6 @@ export const CreateUserPage = () => {
                   name='document_type'
                   labelId='document_type'
                   label='Tipo de documento'
-                  defaultValue='CC'
                   value={formik.values.documentType}
                   onChange={(e) =>
                     formik.setFieldValue(

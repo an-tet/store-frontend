@@ -1,9 +1,11 @@
+import { Dayjs } from 'dayjs';
+
 export type CustomerModel = {
-  id: string;
+  id?: string;
   documentType: string;
   dni: string;
   fullName: string;
   email: string;
-  birthday: string;
+  birthday: string | Dayjs;
   phone: string;
 };

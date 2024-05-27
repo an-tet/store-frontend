@@ -9,7 +9,7 @@ import {
 } from '../../root.styles';
 import { TableComponent } from '../../../../components';
 import { tableConfig } from '../../../../components/shared/table/table.config';
-import { userListColumns } from './customer-list-columns';
+import { userListColumns } from './user-list-columns';
 import { useAppDispatch, useAppSelector } from '../../../../store';
 import { getAllUserThunk } from '../../../../store/slices/user/user.thunk';
 import { useEffect } from 'react';
