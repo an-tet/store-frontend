@@ -97,6 +97,19 @@ export const CreateUserPage = () => {
             <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
               <TextField
                 fullWidth
+                id='dni'
+                name='dni'
+                label='Número de documento'
+                value={formik.values.dni}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.dni && Boolean(formik.errors.dni)}
+                helperText={formik.touched.dni && formik.errors.dni}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
+              <TextField
+                fullWidth
                 type='password'
                 id='password'
                 name='password'
@@ -108,19 +121,6 @@ export const CreateUserPage = () => {
                   formik.touched.password && Boolean(formik.errors.password)
                 }
                 helperText={formik.touched.password && formik.errors.password}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
-              <TextField
-                fullWidth
-                id='dni'
-                name='dni'
-                label='Número de documento'
-                value={formik.values.dni}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={formik.touched.dni && Boolean(formik.errors.dni)}
-                helperText={formik.touched.dni && formik.errors.dni}
               />
             </Grid>
             <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
