@@ -24,19 +24,11 @@ import { containerFormStyles, formStyles } from '../../root.styles';
 import { documentTypeEnum } from '../../../../enum';
 import { DatePicker } from '@mui/x-date-pickers';
 import { ErrorResponse } from '../../../../models/auth/error.model';
+import { initialCustomerForm } from './initial-customer-form';
 
 export const CreateCustomerPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const initialCustomerForm: CustomerModel = {
-    documentType: '',
-    dni: '',
-    fullName: '',
-    email: '',
-    birthday: dayjs(),
-    phone: '',
-  };
 
   const formik = useFormik({
     initialValues: initialCustomerForm,

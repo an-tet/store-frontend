@@ -13,23 +13,23 @@ export const getAllCustomerThunk = () => {
   };
 };
 
-export const createCustomerThunk = (Customer: CustomerModel) => {
+export const createCustomerThunk = (customer: CustomerModel) => {
   return async () => {
     const { data }: AxiosResponse<CustomerModel> = await storeApi.post(
       'customers',
-      Customer
+      customer
     );
     return data;
   };
 };
 
-export const updateCustomerThunk = (Customer: CustomerModel) => {
+export const updateCustomerThunk = (customer: CustomerModel) => {
   return async () => {
-    const id = Customer.id;
-    delete Customer.id;
+    const id = customer.id;
+    delete customer.id;
     const { data }: AxiosResponse<CustomerModel> = await storeApi.patch(
       `customers/${id}`,
-      Customer
+      customer
     );
     return data;
   };
