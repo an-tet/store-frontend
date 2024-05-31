@@ -1,18 +1,13 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { ProductModel } from '../../../models/product/product.model';
-import { productsMock } from '../../../data/product.mock';
-import { ProductMapper } from '../../../mapper/product/product.mapper';
-import { supplierList } from '../../../data/supplier.mock';
 interface ProductStateInterface {
-  page: number;
   products: ProductModel[];
-  isLoading: boolean;
+  isFetching: boolean;
 }
 
 const initialState: ProductStateInterface = {
-  page: 0,
+  isFetching: false,
   products: [],
-  isLoading: false,
 };
 
 export const productSlice = createSlice({
@@ -20,18 +15,17 @@ export const productSlice = createSlice({
   initialState: initialState,
   reducers: {
     startLoadingProducts: (state) => {
-      state.isLoading = true;
+      state.isFetching = true;
     },
-    getAll: (
+    getAllProducts: (
       state: ProductStateInterface,
-      action: PayloadAction<ProductStateInterface>
+      { payload }: PayloadAction<ProductModel[]>
     ) => {
-      state.isLoading = false;
-      state.page = action.payload.page;
-      state.products = ProductMapper.arrayToModel(productsMock, supplierList);
+      state.isFetching = false;
+      state.products = payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { startLoadingProducts, getAll } = productSlice.actions;
+export const { startLoadingProducts, getAllProducts } = productSlice.actions;

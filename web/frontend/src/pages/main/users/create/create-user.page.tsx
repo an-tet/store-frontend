@@ -21,7 +21,7 @@ import { containerFormStyles, formStyles } from '../../root.styles';
 import { useAppDispatch } from '../../../../store';
 import { createUserThunk } from '../../../../store/slices/user/user.thunk';
 import { AxiosError } from 'axios';
-import { handleMessageError } from '../../../../exceptions/message-error.exception';
+import { MessageErrorException } from '../../../../exceptions/message-error.exception';
 import { successNotification } from '../../../../components/shared/notifications/notification.provider';
 
 export const CreateUserPage = () => {
@@ -55,7 +55,7 @@ export const CreateUserPage = () => {
           successNotification('Usuario modificado exitosamente');
           navigate('/user/list');
         })
-        .catch((error: AxiosError) => handleMessageError(error));
+        .catch((error: AxiosError) => MessageErrorException(error?.message));
     },
   });
 
@@ -73,7 +73,6 @@ export const CreateUserPage = () => {
                   name='document_type'
                   labelId='document_type'
                   label='Tipo de documento'
-                  defaultValue='CC'
                   value={formik.values.documentType}
                   onChange={(e) =>
                     formik.setFieldValue(
@@ -98,6 +97,19 @@ export const CreateUserPage = () => {
             <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
               <TextField
                 fullWidth
+                id='dni'
+                name='dni'
+                label='Número de documento'
+                value={formik.values.dni}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.dni && Boolean(formik.errors.dni)}
+                helperText={formik.touched.dni && formik.errors.dni}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
+              <TextField
+                fullWidth
                 type='password'
                 id='password'
                 name='password'
@@ -109,19 +121,6 @@ export const CreateUserPage = () => {
                   formik.touched.password && Boolean(formik.errors.password)
                 }
                 helperText={formik.touched.password && formik.errors.password}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
-              <TextField
-                fullWidth
-                id='dni'
-                name='dni'
-                label='Número de documento'
-                value={formik.values.dni}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={formik.touched.dni && Boolean(formik.errors.dni)}
-                helperText={formik.touched.dni && formik.errors.dni}
               />
             </Grid>
             <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>

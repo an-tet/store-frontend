@@ -2,6 +2,7 @@ import * as yup from 'yup';
 import { documentTypeEnum } from '../../../../enum/document-type.enum';
 import {
   colombianCellphoneRegex,
+  colombianDNIRegex,
   wordsSpacesAccents,
 } from '../../../../constants/regex-patterns.constant';
 import { shirtSizeEnum } from '../../../../enum/shirt-size.enum';
@@ -15,7 +16,8 @@ const commonValidations = {
   dni: yup
     .string()
     .min(6, 'El número de documento debe tener al menos 6 dígitos')
-    .max(10, 'El número de documento debe tener como máximo 10 dígitos')
+    .max(12, 'El número de documento debe tener como máximo 12 dígitos')
+    .matches(colombianDNIRegex, 'El número de documento es inválido')
     .required('El número de documento es requerido'),
   fullName: yup
     .string()
@@ -28,7 +30,10 @@ const commonValidations = {
     .string()
     .email('El correo electrónico es inválido')
     .required('El correo electrónico es requerido'),
-  birthday: yup.date().required('La fecha de nacimiento es requerida'),
+  birthday: yup
+    .date()
+    .typeError('La fecha de nacimiento es inválida')
+    .required('La fecha de nacimiento es requerida'),
   phone: yup
     .string()
     .min(10, 'El teléfono debe tener al menos 10 caracteres')

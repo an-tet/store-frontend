@@ -8,15 +8,20 @@ import {
 import { Add } from '@mui/icons-material';
 import { TableComponent } from '../../../../components';
 import { tableConfig } from '../../../../components/shared/table/table.config';
-import { customersMock } from '../../../../data/customers.mock';
 import { customerListColumns } from './customer-list-columns';
-import { TableActionInterface } from '../../../../components/shared/interfaces/table-action.interface';
+import { customerListActions } from './customer-list-actions';
+import { useAppDispatch, useAppSelector } from '../../../../store';
+import { useEffect } from 'react';
+import { getAllCustomerThunk } from '../../../../store/slices/customer/customer.thunk';
 
 export const ListCustomerPage = () => {
-  const actions: TableActionInterface[] = [
-    { type: 'edit', path: '/customer/edit/' },
-    { type: 'delete', path: '/customer/delete/' },
-  ];
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getAllCustomerThunk());
+  }, [dispatch]);
+
+  const selector = useAppSelector((state) => state.customers);
   return (
     <RootLayout>
       <Grid container sx={containerListStyles}>
@@ -30,7 +35,11 @@ export const ListCustomerPage = () => {
           </Button>
         </Grid>
         <TableComponent
-          {...tableConfig(customerListColumns, customersMock, actions)}
+          {...tableConfig(
+            customerListColumns,
+            selector.customers,
+            customerListActions
+          )}
         />
       </Grid>
     </RootLayout>

@@ -3,6 +3,7 @@ import { RootPage } from '../../pages';
 import { useAppDispatch } from '../../store';
 import { login, logout } from '../../store/slices/auth/auth.slice';
 import { AuthModel } from '../../models/auth/auth.model';
+import { MessageErrorException } from '../../exceptions/message-error.exception';
 
 const AuthRoutesProtection = () => {
   const dispatch = useAppDispatch();
@@ -12,13 +13,15 @@ const AuthRoutesProtection = () => {
     dispatch(login(auth));
 
     if (auth.token) return <RootPage />;
-    else {
-      dispatch(logout());
-      return <Navigate to='/auth/login' replace />;
-    }
+    else return CloseSession();
   }
-  dispatch(logout());
-  return <Navigate to='/auth/login' replace />;
+  return CloseSession();
 };
 
+const CloseSession = () => {
+  const dispatch = useAppDispatch();
+  dispatch(logout());
+  MessageErrorException('Sesión cerrada, inicie sesión nuevamente');
+  return <Navigate to='/auth/login' replace />;
+};
 export default AuthRoutesProtection;

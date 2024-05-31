@@ -15,13 +15,32 @@ import { BackLink } from '../../../../components/shared/backLink/back-link.compo
 import { productValidationSchema } from '../validation/product.validation';
 import { containerFormStyles, formStyles } from '../../root.styles';
 import { initialProductForm } from './initial-product-form';
+import { createProductThunk } from '../../../../store/slices/product/customer.thunk';
+import { useAppDispatch } from '../../../../store';
+import { useNavigate } from 'react-router-dom';
+import { successNotification } from '../../../../components/shared/notifications/notification.provider';
+import { AxiosError } from 'axios';
+import { ErrorResponse } from '../../../../models/auth/error.model';
+import { MessageErrorException } from '../../../../exceptions/message-error.exception';
 
 export const CreateProductPage = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: initialProductForm,
     validationSchema: productValidationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (product) => {
+      dispatch(createProductThunk(product))
+        .then(() => {
+          const successMessage = 'Producto creado exitosamente';
+          successNotification(successMessage);
+          navigate('/product/list');
+        })
+        .catch(({ response }: AxiosError) => {
+          const error: ErrorResponse = response?.data as ErrorResponse;
+          MessageErrorException(error?.message);
+        });
     },
   });
 
@@ -31,7 +50,7 @@ export const CreateProductPage = () => {
         <BackLink to={'/product/list'} />
         <Grid component='form' onSubmit={formik.handleSubmit} sx={formStyles}>
           <Grid container spacing={1}>
-            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
               <TextField
                 fullWidth
                 id='name'
@@ -45,7 +64,7 @@ export const CreateProductPage = () => {
                 sx={{ mr: 2 }}
               />
             </Grid>
-            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
               <TextField
                 fullWidth
                 id='detail'
@@ -58,9 +77,7 @@ export const CreateProductPage = () => {
                 helperText={formik.touched.detail && formik.errors.detail}
               />
             </Grid>
-          </Grid>
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
               <TextField
                 fullWidth
                 id='price'
@@ -74,7 +91,7 @@ export const CreateProductPage = () => {
                 helperText={formik.touched.price && formik.errors.price}
               />
             </Grid>
-            <Grid item xs={12} sm={6} sx={{ mb: 2 }}>
+            <Grid item xs={12} sm={6} lg={3} sx={{ mb: 2 }}>
               <TextField
                 fullWidth
                 id='stock'
@@ -88,8 +105,6 @@ export const CreateProductPage = () => {
                 helperText={formik.touched.stock && formik.errors.stock}
               />
             </Grid>
-          </Grid>
-          <Grid container spacing={1} sx={{ mb: 5 }}>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel id='supplier_id'>Proveedor</InputLabel>
@@ -105,7 +120,6 @@ export const CreateProductPage = () => {
                   }
                 >
                   <MenuItem value={0}>Proveedor 1</MenuItem>
-                  <MenuItem value={1}>Proveedor 2</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -124,8 +138,7 @@ export const CreateProductPage = () => {
               />
             </Grid>
           </Grid>
-
-          <Grid container justifyContent='center' spacing={2}>
+          <Grid container justifyContent='center' spacing={2} sx={{ mt: 5 }}>
             <Button variant='contained' type='submit'>
               Guardar
             </Button>

@@ -22,7 +22,8 @@ import { loginValidationSchema } from './login.validation';
 import { loginThunk } from '../../../store/slices/auth/auth.thunk';
 import { useAppDispatch } from '../../../store';
 import { successNotification } from '../../../components/shared/notifications/notification.provider';
-import { handleMessageError } from '../../../exceptions/message-error.exception';
+import { MessageErrorException } from '../../../exceptions/message-error.exception';
+import { ErrorResponse } from '../../../models/auth/error.model';
 
 export const LoginPage = () => {
   const dispatch = useAppDispatch();
@@ -43,7 +44,10 @@ export const LoginPage = () => {
             successNotification('Inicio de sesión exitoso');
             navigate('/');
           })
-          .catch((error: AxiosError) => handleMessageError(error));
+          .catch(({ response }: AxiosError) => {
+            const error: ErrorResponse = response?.data as ErrorResponse;
+            MessageErrorException(error?.message);
+          });
       },
     });
 

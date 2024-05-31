@@ -1,6 +1,6 @@
 import { ProductEntity } from '../../models/product/product.entity';
 import { ProductModel } from '../../models/product/product.model';
-import { SupplierEntity } from '../../models/supplier/supplier.entity';
+import { SupplierEntity } from '../../models/supplier/supplier.model';
 
 export class ProductMapper {
   static toEntity = (

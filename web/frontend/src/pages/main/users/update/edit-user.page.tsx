@@ -21,10 +21,10 @@ import { containerFormStyles, formStyles } from '../../root.styles';
 import { useAppDispatch } from '../../../../store';
 import { updateUserThunk } from '../../../../store/slices/user/user.thunk';
 import { AxiosError } from 'axios';
-import { handleMessageError } from '../../../../exceptions/message-error.exception';
+import { MessageErrorException } from '../../../../exceptions/message-error.exception';
 import { successNotification } from '../../../../components/shared/notifications/notification.provider';
 
-export const UpdateUserPage = () => {
+export const EditUserPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { state }: { state: UserModel } = useLocation();
@@ -40,7 +40,7 @@ export const UpdateUserPage = () => {
           successNotification('Usuario creado exitosamente');
           navigate('/user/list');
         })
-        .catch((error: AxiosError) => handleMessageError(error));
+        .catch((error: AxiosError) => MessageErrorException(error?.message));
     },
   });
 

@@ -9,25 +9,21 @@ import {
 
 import { RootLayout } from '../../root.layout';
 import { TableComponent } from '../../../../components';
-import { productsMock } from '../../../../data/product.mock';
 import { productListColumns } from './product-list-columns';
 import { tableConfig } from '../../../../components/shared/table/table.config';
-import { ProductModel } from '../../../../models/product/product.model';
-import { ProductMapper } from '../../../../mapper/product/product.mapper';
-import { supplierList } from '../../../../data/supplier.mock';
-import { TableActionInterface } from '../../../../components/shared/interfaces/table-action.interface';
+import { productListActions } from './product-list-actions';
+import { useAppDispatch, useAppSelector } from '../../../../store';
+import { useEffect } from 'react';
+import { getAllProductsThunk } from '../../../../store/slices/product/customer.thunk';
 
 export const ListProductPage = () => {
-  const actions: TableActionInterface[] = [
-    { type: 'edit', path: '/product/edit/' },
-    { type: 'delete', path: '/product/delete/' },
-  ];
+  const dispatch = useAppDispatch();
 
-  const requestProducts = (): ProductModel[] => {
-    return productsMock.map((product) =>
-      ProductMapper.toModel(product, supplierList)
-    );
-  };
+  useEffect(() => {
+    dispatch(getAllProductsThunk());
+  }, [dispatch]);
+
+  const selector = useAppSelector((state) => state.products);
 
   return (
     <>
@@ -43,7 +39,11 @@ export const ListProductPage = () => {
             </Button>
           </Grid>
           <TableComponent
-            {...tableConfig(productListColumns, requestProducts(), actions)}
+            {...tableConfig(
+              productListColumns,
+              selector.products,
+              productListActions
+            )}
           />
         </Grid>
       </RootLayout>
