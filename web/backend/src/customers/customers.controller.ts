@@ -5,7 +5,6 @@ import {
   Body,
   Patch,
   Param,
-  Delete,
   ParseUUIDPipe,
   Query,
 } from '@nestjs/common';
@@ -45,11 +44,5 @@ export class CustomersController {
     @Body() updateCustomerDto: UpdateCustomerDto,
   ) {
     return this.customersService.update(id, updateCustomerDto);
-  }
-
-  @Delete(':id')
-  @Auth(ValidRoles.admin, ValidRoles.seller)
-  remove(@Param('id', ParseUUIDPipe) id: string) {
-    return this.customersService.remove(id);
   }
 }

@@ -60,12 +60,6 @@ export class CustomersService {
     return customer;
   }
 
-  async remove(id: string) {
-    const customer = await this.findOne(id);
-    if (!customer) throw new NotFoundException();
-    return this.customerRepository.delete(id);
-  }
-
   // TODO: Create error manager service
   handleExceptions(error: any) {
     this.logger.error(error);

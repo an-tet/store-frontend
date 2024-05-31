@@ -19,7 +19,6 @@ export class CreateCustomerDto {
   @IsString({
     message: 'El nombre completo debe ser un string',
   })
-  @IsOptional()
   fullName?: string;
 
   @IsString({
