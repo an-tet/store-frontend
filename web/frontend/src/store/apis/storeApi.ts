@@ -21,8 +21,6 @@ storeApi.interceptors.request.use((config) => {
 storeApi.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error: AxiosError) => {
-    console.log(error);
-
     if (error.response && error.response.status === 401)
       localStorage.removeItem('user');
     return Promise.reject(error);
