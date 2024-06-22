@@ -32,6 +32,7 @@ export function SidebarComponent({ state }: { state: boolean }) {
     { icon: Person, text: 'Clientes', href: '/customer/list' },
     { icon: ShoppingBag, text: 'Productos', href: '/product/list' },
   ];
+
   return (
     <Drawer data-testid='sidebar' variant='permanent' open={state}>
       <List sx={{ height: '100%' }}>
@@ -131,6 +132,7 @@ export function SidebarComponent({ state }: { state: boolean }) {
             >
               {
                 <Logout
+                  data-testid='logout-button'
                   sx={{
                     fontSize: state ? '4em' : '2rem',
                     transition: 'font-size 0.3s',
