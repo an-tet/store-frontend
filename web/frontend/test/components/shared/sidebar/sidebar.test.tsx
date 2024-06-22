@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import { NavigationComponent } from '../../../mocks/navigation.mock';
 
-describe('SidebarComponent', () => {
+describe('should test sidebar component on core behavior', () => {
   test('should render sidebar component', () => {
     render(<NavigationComponent />);
     expect(screen.getByTestId('sidebar')).toBeInTheDocument();
@@ -35,7 +35,7 @@ describe('SidebarComponent', () => {
     expect(menuItems[3]).toHaveTextContent('Productos');
   });
 
-  test('should redirect to login', async () => {
+  test('should logout and redirect to login route', async () => {
     render(<NavigationComponent initialState={false} />);
     const logoutButton = screen.getByTestId('logout-button');
 
