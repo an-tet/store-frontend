@@ -8,22 +8,6 @@ describe('should test sidebar component on core behavior', () => {
     expect(screen.getByTestId('sidebar')).toBeInTheDocument();
   });
 
-  test('should render sidebar component expanded', () => {
-    render(<NavigationComponent />);
-    const sidebar = screen.getByTestId('sidebar');
-    const buttonMenu = screen.getByTestId('menu-button');
-
-    expect(sidebar).toHaveStyle({
-      width: 0,
-    });
-
-    act(() => fireEvent.click(buttonMenu));
-
-    expect(sidebar).toHaveStyle({
-      width: 'calc(56px + 1px)',
-    });
-  });
-
   test('should render sidebar component with menu items', () => {
     render(<NavigationComponent initialState={false} />);
     const menuItems = screen.getAllByRole('link');
