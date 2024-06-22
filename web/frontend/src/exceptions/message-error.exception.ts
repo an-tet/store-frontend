@@ -1,4 +1,4 @@
-import { errorNotification } from '../components/shared/notifications/notification.provider';
+import { ErrorNotification } from '../components/shared/notifications/notification.provider';
 
 export const MessageErrorException = (
   error:
@@ -9,5 +9,5 @@ export const MessageErrorException = (
     ? (error[0] as string)
     : (error as string);
 
-  errorNotification(errorMessage);
+  ErrorNotification(errorMessage);
 };

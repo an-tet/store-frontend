@@ -1,6 +1,6 @@
 import { enqueueSnackbar } from 'notistack';
 
-export const errorNotification = (message: string) => {
+export const ErrorNotification = (message: string) => {
   enqueueSnackbar(message, {
     variant: 'error',
     anchorOrigin: {
