@@ -1,15 +1,15 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import { NavigationComponent } from '../../../mocks/navigation.mock';
+import { NavigationComponentMock } from '../../../mocks/navigation.mock';
 
 describe('should test navbar component on core behavior', () => {
   test('should render navbar component', () => {
-    render(<NavigationComponent />);
+    render(<NavigationComponentMock />);
     expect(screen.getByTestId('navbar')).toBeInTheDocument();
   });
 
   test('should render navbar and expanded sidebar component', () => {
-    render(<NavigationComponent />);
+    render(<NavigationComponentMock />);
     const sidebar = screen.getByTestId('sidebar');
     const buttonMenu = screen.getByTestId('menu-button');
 

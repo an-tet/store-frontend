@@ -1,15 +1,15 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import { NavigationComponent } from '../../../mocks/navigation.mock';
+import { NavigationComponentMock } from '../../../mocks/navigation.mock';
 
 describe('should test sidebar component on core behavior', () => {
   test('should render sidebar component', () => {
-    render(<NavigationComponent />);
+    render(<NavigationComponentMock />);
     expect(screen.getByTestId('sidebar')).toBeInTheDocument();
   });
 
   test('should render sidebar component with menu items', () => {
-    render(<NavigationComponent initialState={false} />);
+    render(<NavigationComponentMock initialState={false} />);
     const menuItems = screen.getAllByRole('link');
 
     expect(menuItems).toHaveLength(4);
@@ -20,7 +20,7 @@ describe('should test sidebar component on core behavior', () => {
   });
 
   test('should logout and redirect to login route', async () => {
-    render(<NavigationComponent initialState={false} />);
+    render(<NavigationComponentMock initialState={false} />);
     const logoutButton = screen.getByTestId('logout-button');
 
     act(() => fireEvent.click(logoutButton));

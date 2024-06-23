@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../store';
 import { logoutThunk } from '../../../store/slices/auth/auth.thunk';
 
-export function SidebarComponent({ state }: { state: boolean }) {
+export function SidebarComponent({ state }: Readonly<{ state: boolean }>) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -74,7 +74,7 @@ export function SidebarComponent({ state }: { state: boolean }) {
         </Tooltip>
         {listItems.map((item, index) => (
           <ListItem
-            key={index}
+            key={`${item.text}-${index}`}
             disablePadding
             sx={{
               display: 'block',

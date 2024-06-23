@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { NavbarComponent, SidebarComponent } from '../../src/components';
 import { store } from '../../src/store';
 
-export const NavigationComponent = ({
+export const NavigationComponentMock = ({
   initialState = true,
 }: {
   initialState?: boolean;
