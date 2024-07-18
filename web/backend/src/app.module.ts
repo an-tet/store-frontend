@@ -7,10 +7,13 @@ import { CommonModule } from './common/common.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { envConfig } from './common/config/env.config';
+import * as path from 'path';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
+      envFilePath: path.resolve(__dirname, '../../.env'),
+      isGlobal: true,
       load: [envConfig],
     }),
     TypeOrmModule.forRootAsync({

@@ -1,11 +1,11 @@
 import { ProductEntity } from '../../models/product/product.entity';
 import { ProductModel } from '../../models/product/product.model';
-import { SupplierEntity } from '../../models/supplier/supplier.model';
+import { SupplierModel } from '../../models/supplier/supplier.model';
 
 export class ProductMapper {
-  static toEntity = (
+  static readonly toEntity = (
     data: ProductModel,
-    supplierList: SupplierEntity[]
+    supplierList: SupplierModel[]
   ): ProductEntity => {
     return {
       id: data.id,
@@ -17,9 +17,9 @@ export class ProductMapper {
       supplier_id: this.supplierToModelShape(supplierList, data.supplier),
     };
   };
-  static toModel = (
+  static readonly toModel = (
     entity: ProductEntity,
-    supplierList: SupplierEntity[]
+    supplierList: SupplierModel[]
   ): ProductModel => {
     return {
       id: entity.id,
@@ -32,9 +32,9 @@ export class ProductMapper {
     };
   };
 
-  static arrayToModel = (
+  static readonly arrayToModel = (
     entities: ProductEntity[],
-    supplierList: SupplierEntity[]
+    supplierList: SupplierModel[]
   ): ProductModel[] => {
     return entities.map((entity) => ({
       id: entity.id,
@@ -48,22 +48,22 @@ export class ProductMapper {
   };
 
   private static supplierToEntityShape = (
-    supplierList: SupplierEntity[],
+    supplierList: SupplierModel[],
     supplier_id: number
   ): string => {
     return (
-      supplierList.find((supplier) => supplier.id === supplier_id)?.name || 'a'
+      supplierList.find((supplier) => supplier.id === supplier_id)?.name ?? 'a'
     );
   };
 
   private static supplierToModelShape = (
-    supplierList: SupplierEntity[],
+    supplierList: SupplierModel[],
     supplierName: string
   ): number => {
     return (
-      supplierList.find((supplier: SupplierEntity) =>
+      supplierList.find((supplier: SupplierModel) =>
         this.checkSupplierName(supplier.name, supplierName)
-      )?.id || -1
+      )?.id ?? -1
     );
   };
 
