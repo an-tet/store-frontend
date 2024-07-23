@@ -1,0 +1,12 @@
+services:
+  frontend:
+    container_name: frontend
+    ports:
+      - '${VITE_SERVER_PORT}:${VITE_SERVER_PORT}'
+    build:
+      dockerfile: Dockerfile
+    networks:
+      - default_network
+networks:
+  default_network:
+    name: store_network
