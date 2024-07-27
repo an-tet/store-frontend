@@ -1,0 +1,23 @@
+name: frontend CI
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_OC_IP }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_STORE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ${{ secrets.WORK_DIR }}
+            [ ! -d "${{ secrets.WORK_DIR }}/store-frontend" ] && git clone https://github.com/an-tet/store-frontend.git
+            cd store-backend
+            git pull
