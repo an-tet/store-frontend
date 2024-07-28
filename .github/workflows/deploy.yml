@@ -8,6 +8,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      VITE_SERVER_PORT: ${{ secrets.VITE_SERVER_PORT }}
+      VITE_BACK_BASE_URL: ${{ secrets.VITE_BACK_BASE_URL }}
     steps:
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v1.0.3
@@ -17,8 +20,6 @@ jobs:
           key: ${{ secrets.SSH_STORE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            export VITE_SERVER_PORT=${{ secrets.VITE_SERVER_PORT }}
-            export VITE_BACK_BASE_URL=${{ secrets.VITE_BACK_BASE_URL }}
             cd ${{ secrets.WORK_DIR }}
             [ ! -d "${{ secrets.WORK_DIR }}/store-frontend" ] && git clone https://github.com/an-tet/store-frontend.git
             cd store-frontend
