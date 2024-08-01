@@ -5,8 +5,7 @@ export default defineConfig(({ mode }: { mode: string }) => {
   return {
     server: {
       hmr: {
-        host: 'localhost',
-        protocol: 'ws',
+        port: parseInt(env.VITE_SERVER_PORT),
       },
       host: true,
       strictPort: true,
