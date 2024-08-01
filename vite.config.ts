@@ -5,7 +5,8 @@ export default defineConfig(({ mode }: { mode: string }) => {
   return {
     server: {
       hmr: {
-        port: parseInt(env.VITE_SERVER_PORT),
+        host: 'antet.dev',
+        port: 80,
       },
       host: true,
       strictPort: true,
