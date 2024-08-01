@@ -5,8 +5,8 @@ export default defineConfig(({ mode }: { mode: string }) => {
   return {
     server: {
       hmr: {
-        host: 'localhost',
-        port: 3001,
+        host: 'www.antet.dev',
+        port: 80,
       },
       host: true,
       strictPort: true,
