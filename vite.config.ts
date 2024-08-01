@@ -4,6 +4,10 @@ export default defineConfig(({ mode }: { mode: string }) => {
   const env = loadEnv(mode, '', '');
   return {
     server: {
+      hmr: {
+        host: 'localhost',
+        protocol: 'ws',
+      },
       host: true,
       strictPort: true,
       port: parseInt(env.VITE_SERVER_PORT),
