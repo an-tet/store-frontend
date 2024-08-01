@@ -23,6 +23,9 @@ jobs:
             [ ! -d "${{ secrets.WORK_DIR }}/store-frontend" ] && git clone https://github.com/an-tet/store-frontend.git
             cd store-frontend
             git pull
+            touch .env
+            sudo echo BACKEND_APP_PORT=${{ secrets.VITE_SERVER_PORT }} >> .env
+            sudo echo POSTGRES_USER=${{ secrets.VITE_BACK_BASE_URL }} >> .env
             sudo docker stop $(sudo docker ps -a |  grep -E "frontend")
             sudo docker rm $(sudo docker ps -a |  grep -E "frontend")
             sudo docker rmi $(sudo docker images -a | grep -E "frontend")
