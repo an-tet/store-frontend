@@ -6,7 +6,7 @@ services:
     build:
       dockerfile: Dockerfile
     networks:
-      - store-network
+      - store-backend_store-network
 networks:
   store-network:
     external: true
