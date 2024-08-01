@@ -8,5 +8,5 @@ services:
     networks:
       - store-backend_store-network
 networks:
-  store-network:
+  store-backend_store-network:
     external: true
