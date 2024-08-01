@@ -4,10 +4,6 @@ export default defineConfig(({ mode }: { mode: string }) => {
   const env = loadEnv(mode, '', '');
   return {
     server: {
-      hmr: {
-        host: 'www.antet.dev',
-        port: 80,
-      },
       host: true,
       strictPort: true,
       port: parseInt(env.VITE_SERVER_PORT),
