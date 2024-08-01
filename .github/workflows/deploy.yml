@@ -24,8 +24,8 @@ jobs:
             cd store-frontend
             git pull
             touch .env
-            sudo echo BACKEND_APP_PORT=${{ secrets.VITE_SERVER_PORT }} >> .env
-            sudo echo POSTGRES_USER=${{ secrets.VITE_BACK_BASE_URL }} >> .env
+            sudo echo VITE_SERVER_PORT=${{ secrets.VITE_SERVER_PORT }} >> .env
+            sudo echo VITE_BACK_BASE_URL=${{ secrets.VITE_BACK_BASE_URL }} >> .env
             sudo docker stop $(sudo docker ps -a |  grep -E "frontend")
             sudo docker rm $(sudo docker ps -a |  grep -E "frontend")
             sudo docker rmi $(sudo docker images -a | grep -E "frontend")
