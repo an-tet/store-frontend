@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }: { mode: string }) => {
   const env = loadEnv(mode, '', '');
   return {
+    hmr: false,
     server: {
       host: true,
       strictPort: true,
