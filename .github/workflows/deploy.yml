@@ -23,6 +23,7 @@ jobs:
             [ ! -d "${{ secrets.WORK_DIR }}/store-frontend" ] && git clone https://github.com/an-tet/store-frontend.git
             cd store-frontend
             git pull
+            [ -f ".env" ] && sudo rm .env
             touch .env
             sudo echo VITE_SERVER_PORT=${{ secrets.VITE_SERVER_PORT }} >> .env
             sudo echo VITE_BACK_BASE_URL=${{ secrets.VITE_BACK_BASE_URL }} >> .env
